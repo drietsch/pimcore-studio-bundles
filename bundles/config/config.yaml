@@ -17,6 +17,27 @@ pimcore_open_search_client:
             password: 'gBsVeDut723'
             ssl_verification: false
 
+
+pimcore_admin:
+    admin_csp_header:
+        enabled: true
+        additional_urls:
+            connect-src:
+                - 'ws://localhost:3030'
+                - 'ws://localhost:3031'
+                - 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev'
+                - 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-3031.app.github.dev'
+            script-src: 
+                - 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev'
+                - 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-3031.app.github.dev'
+            font-src:
+                - 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev'
+                - 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-3031.app.github.dev'
+            style-src:
+                - 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev'
+                - 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-3031.app.github.dev'  
+
+
 pimcore:
 
 # IMPORTANT Notice!
