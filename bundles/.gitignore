@@ -39,6 +39,8 @@
 
 # composer
 /vendor/
+!/vendor/pimcore/
+!/vendor/pimcore/studio-ui-bundle/
 
 # PhpStorm / IDEA
 .idea
