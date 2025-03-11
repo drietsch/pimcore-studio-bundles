@@ -38,11 +38,10 @@
 /.php-cs-fixer.cache
 
 # composer
-vendor/
-
-!vendor/pimcore/
-!vendor/pimcore/studio-ui-bundle/
-!vendor/pimcore/studio-ui-bundle/**
+/vendor/
+!/vendor/pimcore/
+!/vendor/pimcore/studio-ui-bundle/
+!/vendor/pimcore/studio-ui-bundle/**
 
 # PhpStorm / IDEA
 .idea
