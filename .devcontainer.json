@@ -5,5 +5,7 @@
   },
   "runArgs": [
     "--privileged"
-  ]
+  ],
+  "postCreateCommand": "",
+  "postAttachCommand": ""
 }

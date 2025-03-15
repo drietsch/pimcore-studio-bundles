@@ -1,0 +1,3 @@
+2025/03/15 06:53:31 DEBUG : rclone: Version "v1.53.3-DEV" starting with parameters ["rclone" "mount" "pimcore:" "./assets" "-vv"]
+2025/03/15 06:53:31 DEBUG : Creating backend with remote "pimcore:"
+2025/03/15 06:53:31 DEBUG : Using config file from "/home/vscode/.config/rclone/rclone.conf"
