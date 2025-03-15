@@ -1,3 +1,59 @@
-2025/03/15 06:53:31 DEBUG : rclone: Version "v1.53.3-DEV" starting with parameters ["rclone" "mount" "pimcore:" "./assets" "-vv"]
-2025/03/15 06:53:31 DEBUG : Creating backend with remote "pimcore:"
-2025/03/15 06:53:31 DEBUG : Using config file from "/home/vscode/.config/rclone/rclone.conf"
+2025/03/15 07:58:28 DEBUG : rclone: Version "v1.53.3-DEV" starting with parameters ["rclone" "mount" "pimcore:" "./assets" "-vv"]
+2025/03/15 07:58:28 DEBUG : Creating backend with remote "pimcore:"
+2025/03/15 07:58:28 DEBUG : Using config file from "/home/vscode/.config/rclone/rclone.conf"
+2025/03/15 07:58:28 INFO  : webdav root '': poll-interval is not supported by this remote
+2025/03/15 07:58:28 NOTICE: webdav root '': --vfs-cache-mode writes or full is recommended for this remote as it can't stream
+2025/03/15 07:58:28 DEBUG : webdav root '': Mounting on "./assets"
+2025/03/15 07:58:28 DEBUG : : Root: 
+2025/03/15 07:58:28 DEBUG : : >Root: node=/, err=<nil>
+2025/03/15 07:58:33 DEBUG : /: Lookup: name=".git"
+2025/03/15 07:58:33 DEBUG : pacer: low level retry 1/10 (error 500 Internal Server Error)
+2025/03/15 07:58:33 DEBUG : pacer: Rate limited, increasing sleep to 20ms
+2025/03/15 07:58:33 DEBUG : pacer: low level retry 2/10 (error 500 Internal Server Error)
+2025/03/15 07:58:33 DEBUG : pacer: Rate limited, increasing sleep to 40ms
+2025/03/15 07:58:33 DEBUG : pacer: low level retry 3/10 (error 500 Internal Server Error)
+2025/03/15 07:58:33 DEBUG : pacer: Rate limited, increasing sleep to 80ms
+2025/03/15 07:58:34 DEBUG : pacer: low level retry 4/10 (error 500 Internal Server Error)
+2025/03/15 07:58:34 DEBUG : pacer: Rate limited, increasing sleep to 160ms
+2025/03/15 07:58:34 DEBUG : pacer: low level retry 5/10 (error 500 Internal Server Error)
+2025/03/15 07:58:34 DEBUG : pacer: Rate limited, increasing sleep to 320ms
+2025/03/15 07:58:34 DEBUG : pacer: low level retry 6/10 (error 500 Internal Server Error)
+2025/03/15 07:58:34 DEBUG : pacer: Rate limited, increasing sleep to 640ms
+2025/03/15 07:58:34 DEBUG : pacer: low level retry 7/10 (error 500 Internal Server Error)
+2025/03/15 07:58:34 DEBUG : pacer: Rate limited, increasing sleep to 1.28s
+2025/03/15 07:58:35 DEBUG : pacer: low level retry 8/10 (error 500 Internal Server Error)
+2025/03/15 07:58:35 DEBUG : pacer: Rate limited, increasing sleep to 2s
+2025/03/15 07:58:36 DEBUG : pacer: low level retry 9/10 (error 500 Internal Server Error)
+2025/03/15 07:58:38 DEBUG : pacer: low level retry 10/10 (error 500 Internal Server Error)
+2025/03/15 07:58:38 ERROR : /: Dir.Stat error: couldn't list files: 500 Internal Server Error
+2025/03/15 07:58:38 DEBUG : /: >Lookup: node=<nil>, err=couldn't list files: 500 Internal Server Error
+2025/03/15 07:58:38 DEBUG : /: Lookup: name=".git"
+2025/03/15 07:58:40 DEBUG : pacer: low level retry 1/10 (error 500 Internal Server Error)
+2025/03/15 07:58:42 DEBUG : pacer: low level retry 2/10 (error 500 Internal Server Error)
+2025/03/15 07:58:44 DEBUG : pacer: low level retry 3/10 (error 500 Internal Server Error)
+2025/03/15 07:58:46 DEBUG : pacer: low level retry 4/10 (error 500 Internal Server Error)
+2025/03/15 07:58:49 DEBUG : pacer: low level retry 5/10 (error 500 Internal Server Error)
+2025/03/15 07:58:50 DEBUG : pacer: low level retry 6/10 (error 500 Internal Server Error)
+2025/03/15 07:58:52 DEBUG : pacer: low level retry 7/10 (error 500 Internal Server Error)
+2025/03/15 07:58:54 DEBUG : pacer: low level retry 8/10 (error 500 Internal Server Error)
+2025/03/15 07:58:56 DEBUG : pacer: low level retry 9/10 (error 500 Internal Server Error)
+2025/03/15 07:58:58 DEBUG : pacer: low level retry 10/10 (error 500 Internal Server Error)
+2025/03/15 07:58:58 ERROR : /: Dir.Stat error: couldn't list files: 500 Internal Server Error
+2025/03/15 07:58:58 DEBUG : /: >Lookup: node=<nil>, err=couldn't list files: 500 Internal Server Error
+2025/03/15 07:58:58 DEBUG : /: Attr: 
+2025/03/15 07:58:58 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/03/15 07:58:58 DEBUG : /: ReadDirAll: 
+2025/03/15 07:59:00 DEBUG : pacer: low level retry 1/10 (error 500 Internal Server Error)
+2025/03/15 07:59:02 DEBUG : pacer: low level retry 2/10 (error 500 Internal Server Error)
+2025/03/15 07:59:04 DEBUG : pacer: low level retry 3/10 (error 500 Internal Server Error)
+2025/03/15 07:59:06 DEBUG : pacer: low level retry 4/10 (error 500 Internal Server Error)
+2025/03/15 07:59:08 DEBUG : pacer: Reducing sleep to 1.5s
+2025/03/15 07:59:08 DEBUG : /: >ReadDirAll: item=0, err=<nil>
+2025/03/15 07:59:18 DEBUG : /: Lookup: name=".git"
+2025/03/15 07:59:18 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
+2025/03/15 07:59:18 DEBUG : /: Lookup: name=".git"
+2025/03/15 07:59:18 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
+2025/03/15 07:59:18 DEBUG : /: Attr: 
+2025/03/15 07:59:18 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/03/15 07:59:18 DEBUG : /: ReadDirAll: 
+2025/03/15 07:59:18 DEBUG : /: >ReadDirAll: item=0, err=<nil>

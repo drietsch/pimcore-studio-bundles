@@ -1,0 +1,118 @@
+Starting script execution...
+Error: 'compose' command not found. Please install it before running this script.
+Starting script execution...
+Error: 'compose' command not found. Please install it before running this script.
+Starting script execution...
+Using Codespace: literate-space-palm-tree-x5wwpr4xpcvx7g
+Warning: .env file not found. Skipping API hostname update.
+time="2025-03-15T07:51:22Z" level=warning msg="/workspaces/pimcore-studio-bundles/bundles/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+Docker Compose services are already running.
+Waiting for Docker Compose services to be fully up...
+time="2025-03-15T07:51:22Z" level=warning msg="/workspaces/pimcore-studio-bundles/bundles/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container bundles-opensearch-dashboards-1  Created
+ Container bundles-opensearch-1  Created
+ Container bundles-redis-1  Created
+ Container bundles-mercure-1  Running
+ Container bundles-chrome-1  Created
+ Container bundles-node-1  Created
+ Container bundles-gotenberg-1  Created
+ Container bundles-db-1  Created
+ Container bundles-supervisord-1  Created
+ Container bundles-php-1  Created
+ Container bundles-nginx-1  Created
+ Container bundles-db-1  Starting
+ Container bundles-opensearch-1  Starting
+ Container bundles-node-1  Starting
+ Container bundles-opensearch-dashboards-1  Starting
+ Container bundles-chrome-1  Starting
+ Container bundles-gotenberg-1  Starting
+ Container bundles-redis-1  Starting
+ Container bundles-chrome-1  Started
+ Container bundles-opensearch-1  Started
+ Container bundles-redis-1  Started
+ Container bundles-gotenberg-1  Started
+ Container bundles-opensearch-dashboards-1  Started
+ Container bundles-db-1  Started
+ Container bundles-supervisord-1  Starting
+ Container bundles-php-1  Starting
+ Container bundles-node-1  Started
+ Container bundles-php-1  Started
+ Container bundles-nginx-1  Starting
+ Container bundles-supervisord-1  Started
+ Container bundles-nginx-1  Started
+Waiting for all Docker services to be fully up...
+time="2025-03-15T07:51:26Z" level=warning msg="/workspaces/pimcore-studio-bundles/bundles/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+All Docker Compose services are now running.
+Starting OpenVSCode Server...
+629225960e5e4fc28f65bbd38b4c0d76f1645f13a4fa962e44bbdd639d5fef73
+Updating port 80 visibility to public (attempt 1/10)
+Port 80 is now publicly accessible.
+Updating port 3030 visibility to public (attempt 1/10)
+Port 3030 is now publicly accessible.
+Updating port 3031 visibility to public (attempt 1/10)
+Port 3031 is now publicly accessible.
+All ports are now publicly accessible.
+Mounting assets to WebDAV...
+Error: Container e7bd1f88fe0c380500bb7a7d1853953d0abb3eb61eef45a703d69d9deaeb7417 is not running.
+Starting script execution...
+Using Codespace: literate-space-palm-tree-x5wwpr4xpcvx7g
+Warning: .env file not found. Skipping API hostname update.
+time="2025-03-15T07:55:56Z" level=warning msg="/workspaces/pimcore-studio-bundles/bundles/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+Docker Compose services are already running.
+Starting OpenVSCode Server...
+9406feb5cc1cb144c7a98cca97a9e71b852cc501c2c9fa80f7ededde52322035
+Updating port 80 visibility to public (attempt 1/10)
+error updating port 80 to public: error getting tunnel port: error sending get tunnel port request: unsuccessful request, response: 404 Not Found
+	Not Found
+Retrying in 10 seconds...
+error updating port 80 to public: error getting tunnel port: error sending get tunnel port request: unsuccessful request, response: 404 Not Found
+	Not Found
+Retrying in 20 seconds...
+Starting script execution...
+Using Codespace: literate-space-palm-tree-x5wwpr4xpcvx7g
+Warning: .env file not found. Skipping API hostname update.
+time="2025-03-15T07:58:21Z" level=warning msg="/workspaces/pimcore-studio-bundles/bundles/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+time="2025-03-15T07:58:21Z" level=warning msg="/workspaces/pimcore-studio-bundles/bundles/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+Starting missing Docker Compose services...
+time="2025-03-15T07:58:21Z" level=warning msg="/workspaces/pimcore-studio-bundles/bundles/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container bundles-chrome-1  Created
+ Container bundles-mercure-1  Running
+ Container bundles-db-1  Created
+ Container bundles-redis-1  Created
+ Container bundles-opensearch-dashboards-1  Created
+ Container bundles-node-1  Created
+ Container bundles-php-1  Created
+ Container bundles-gotenberg-1  Created
+ Container bundles-supervisord-1  Created
+ Container bundles-opensearch-1  Created
+ Container bundles-nginx-1  Created
+ Container bundles-node-1  Starting
+ Container bundles-chrome-1  Starting
+ Container bundles-opensearch-dashboards-1  Starting
+ Container bundles-gotenberg-1  Starting
+ Container bundles-redis-1  Starting
+ Container bundles-db-1  Starting
+ Container bundles-opensearch-1  Starting
+ Container bundles-opensearch-1  Started
+ Container bundles-opensearch-dashboards-1  Started
+ Container bundles-redis-1  Started
+ Container bundles-db-1  Started
+ Container bundles-supervisord-1  Starting
+ Container bundles-php-1  Starting
+ Container bundles-chrome-1  Started
+ Container bundles-gotenberg-1  Started
+ Container bundles-node-1  Started
+ Container bundles-php-1  Started
+ Container bundles-nginx-1  Starting
+ Container bundles-supervisord-1  Started
+ Container bundles-nginx-1  Started
+VSCode Server is already running.
+Updating port 80 visibility to public (attempt 1/10)
+Port 80 is now publicly accessible.
+Updating port 3030 visibility to public (attempt 1/10)
+Port 3030 is now publicly accessible.
+Updating port 3031 visibility to public (attempt 1/10)
+Port 3031 is now publicly accessible.
+All ports are now publicly accessible.
+Mounting assets to WebDAV...
+Error: Container e7bd1f88fe0c380500bb7a7d1853953d0abb3eb61eef45a703d69d9deaeb7417 is not running.

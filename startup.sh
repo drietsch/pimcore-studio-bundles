@@ -1,10 +1,17 @@
 #!/bin/bash
 
-# Ensure GitHub CLI is installed
-if ! command -v gh &> /dev/null; then
-    echo "Error: 'gh' command not found. Please install GitHub CLI."
-    exit 1
-fi
+LOG_FILE="script.log"
+exec > >(tee -a "$LOG_FILE") 2>&1
+
+echo "Starting script execution..."
+
+# Ensure required dependencies exist
+for cmd in gh docker rclone; do
+    if ! command -v $cmd &>/dev/null; then
+        echo "Error: '$cmd' command not found. Please install it before running this script."
+        exit 1
+    fi
+done
 
 # Get the current Codespace name
 CODESPACE_NAME=$(gh codespace list --json name --jq '.[0].name' 2>/dev/null)
@@ -21,11 +28,39 @@ else
     echo "Warning: .env file not found. Skipping API hostname update."
 fi
 
+# Check if Docker Compose is already running with all services
+if [ -f bundles/docker-compose.yaml ]; then
+    cd bundles
+
+    total_services=$(docker compose config --services | wc -l)
+    running_services=$(docker compose ps --services --filter "status=running" | wc -l)
+
+    if [ "$running_services" -eq "$total_services" ]; then
+        echo "All Docker Compose services are already running."
+    else
+        echo "Starting missing Docker Compose services..."
+        docker compose up -d
+    fi
+
+    cd ..
+else
+    echo "Error: docker-compose.yaml not found in bundles/. Aborting."
+    exit 1
+fi
+
+# Start OpenVSCode Server only if not already running
+if docker ps | grep -q "gitpod/openvscode-server"; then
+    echo "VSCode Server is already running."
+else
+    echo "Starting OpenVSCode Server..."
+    docker run -d --init -p 3000:3000 -v "$(pwd):/home/workspace:consistent" gitpod/openvscode-server
+fi
+
 # Define the ports to make public
 PORTS=(80 3030 3031)
 VISIBILITY="public"
-MAX_ATTEMPTS=5
-BACKOFF_SECONDS=2  # Initial backoff time
+MAX_ATTEMPTS=10
+BACKOFF_SECONDS=10  # Initial backoff time
 
 # Function to update port visibility with retry logic
 update_port_visibility() {
@@ -58,34 +93,18 @@ done
 
 echo "All ports are now publicly accessible."
 
-# Start Docker Compose
-if [ -f bundles/docker-compose.yaml ]; then
-    echo "Starting Docker Compose..."
-    cd bundles
-    docker compose up -d
-    cd ..
-else
-    echo "Error: docker-compose.yaml not found in bundles/. Aborting."
-    exit 1
-fi
-
-# Wait for Docker Compose services to be fully up
-echo "Waiting for Docker Compose services to be fully up..."
-while ! docker compose -f bundles/docker-compose.yaml ps | grep -q "Up"; do
-    sleep 2
-done
-echo "Docker Compose services are up."
-
-# Start OpenVSCode Server in detached mode
-echo "Starting OpenVSCode Server..."
-docker run -d --init -p 3000:3000 -v "$(pwd):/home/workspace:consistent" gitpod/openvscode-server
-
 # Mount assets to WebDAV using rclone in the background
 echo "Mounting assets to WebDAV..."
 nohup rclone mount pimcore: ./assets -vv > rclone.log 2>&1 &
 
-# Change to the Pimcore Studio UI assets directory and start the npm dev server
-echo "Starting Pimcore Studio UI dev server inside the container..."
-docker exec -it "e7bd1f88fe0c380500bb7a7d1853953d0abb3eb61eef45a703d69d9deaeb7417" /bin/bash -c "cd vendor/pimcore/studio-ui-bundle/assets && npm run dev-server"
+# Check if the specified container is running before executing commands inside it
+CONTAINER_ID="e7bd1f88fe0c380500bb7a7d1853953d0abb3eb61eef45a703d69d9deaeb7417"
+if docker ps -q -f id="$CONTAINER_ID" | grep -q "$CONTAINER_ID"; then
+    echo "Starting Pimcore Studio UI dev server inside the container..."
+    docker exec -it "$CONTAINER_ID" /bin/bash -c "cd vendor/pimcore/studio-ui-bundle/assets && npm run dev-server"
+else
+    echo "Error: Container $CONTAINER_ID is not running."
+    exit 1
+fi
 
 echo "Script execution complete."

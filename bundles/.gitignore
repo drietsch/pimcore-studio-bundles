@@ -45,6 +45,7 @@
 !/vendor/pimcore/studio-ui-bundle/  # Allow only studio-ui-bundle
 
 
+
 # PhpStorm / IDEA
 .idea
 # NetBeans
