@@ -39,12 +39,20 @@
 
 # composer
 
-/vendor/*               # Ignore everything inside vendor
-!/vendor/pimcore/       # Allow only the pimcore directory
-/vendor/pimcore/*       # Ignore everything inside pimcore
-!/vendor/pimcore/studio-ui-bundle/  # Allow only studio-ui-bundle
-/vendor/pimcore/studio-ui-bundle/assets/node_modules/
+# Ignore everything in vendor
+/vendor/
 
+# Allow only vendor/pimcore/
+!vendor/pimcore/
+
+# Ignore everything inside vendor/pimcore, except studio-ui-bundle
+vendor/pimcore/*
+!vendor/pimcore/studio-ui-bundle/
+
+# Ignore node_modules inside studio-ui-bundle
+vendor/pimcore/studio-ui-bundle/assets/node_modules/
+
+# Ignore cache completely
 cache/
 cache/*
 
