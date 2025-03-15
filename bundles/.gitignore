@@ -39,9 +39,10 @@
 
 # composer
 
-/vendor/
-!/vendor/pimcore/
-!/vendor/pimcore/studio-ui-bundle/**
+/vendor/*               # Ignore everything inside vendor
+!/vendor/pimcore/       # Allow only the pimcore directory
+/vendor/pimcore/*       # Ignore everything inside pimcore
+!/vendor/pimcore/studio-ui-bundle/  # Allow only studio-ui-bundle
 
 
 # PhpStorm / IDEA
