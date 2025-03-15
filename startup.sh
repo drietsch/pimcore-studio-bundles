@@ -1,37 +1,8 @@
 #!/bin/bash
 
-LOG_FILE="script.log"
-exec > >(tee -a "$LOG_FILE") 2>&1
-
-echo "Starting script execution..."
-
-# Ensure required dependencies exist
-for cmd in gh docker rclone; do
-    if ! command -v $cmd &>/dev/null; then
-        echo "Error: '$cmd' command not found. Please install it before running this script."
-        exit 1
-    fi
-done
-
-# Get the current Codespace name
-CODESPACE_NAME=$(gh codespace list --json name --jq '.[0].name' 2>/dev/null)
-if [ -z "$CODESPACE_NAME" ]; then
-    echo "Error: Unable to fetch the Codespace name."
-    exit 1
-fi
-echo "Using Codespace: $CODESPACE_NAME"
-
-# Update .env file with the correct Codespace URL
-if [ -f .env ]; then
-    sed -i "s|NEXT_PUBLIC_API_HOSTNAME=http://localhost:8000|NEXT_PUBLIC_API_HOSTNAME=https://$CODESPACE_NAME-8000.app.github.dev|g" .env
-else
-    echo "Warning: .env file not found. Skipping API hostname update."
-fi
-
 # Check if Docker Compose is already running with all services
 if [ -f bundles/docker-compose.yaml ]; then
     cd bundles
-
     total_services=$(docker compose config --services | wc -l)
     running_services=$(docker compose ps --services --filter "status=running" | wc -l)
 
@@ -41,7 +12,6 @@ if [ -f bundles/docker-compose.yaml ]; then
         echo "Starting missing Docker Compose services..."
         docker compose up -d
     fi
-
     cd ..
 else
     echo "Error: docker-compose.yaml not found in bundles/. Aborting."

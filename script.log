@@ -116,3 +116,54 @@ Port 3031 is now publicly accessible.
 All ports are now publicly accessible.
 Mounting assets to WebDAV...
 Error: Container e7bd1f88fe0c380500bb7a7d1853953d0abb3eb61eef45a703d69d9deaeb7417 is not running.
+Starting script execution...
+Using Codespace: literate-space-palm-tree-x5wwpr4xpcvx7g
+Warning: .env file not found. Skipping API hostname update.
+time="2025-03-15T08:11:01Z" level=warning msg="/workspaces/pimcore-studio-bundles/bundles/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+time="2025-03-15T08:11:01Z" level=warning msg="/workspaces/pimcore-studio-bundles/bundles/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+Starting missing Docker Compose services...
+time="2025-03-15T08:11:01Z" level=warning msg="/workspaces/pimcore-studio-bundles/bundles/docker-compose.yaml: the attribute `version` is obsolete, it will be ignored, please remove it to avoid potential confusion"
+ Container bundles-opensearch-1  Created
+ Container bundles-mercure-1  Created
+ Container bundles-redis-1  Created
+ Container bundles-gotenberg-1  Created
+ Container bundles-db-1  Created
+ Container bundles-chrome-1  Created
+ Container bundles-opensearch-dashboards-1  Created
+ Container bundles-node-1  Created
+ Container bundles-supervisord-1  Created
+ Container bundles-php-1  Created
+ Container bundles-nginx-1  Created
+ Container bundles-chrome-1  Starting
+ Container bundles-opensearch-dashboards-1  Starting
+ Container bundles-node-1  Starting
+ Container bundles-opensearch-1  Starting
+ Container bundles-db-1  Starting
+ Container bundles-mercure-1  Starting
+ Container bundles-gotenberg-1  Starting
+ Container bundles-redis-1  Starting
+ Container bundles-chrome-1  Started
+ Container bundles-opensearch-1  Started
+ Container bundles-node-1  Started
+ Container bundles-opensearch-dashboards-1  Started
+ Container bundles-redis-1  Started
+ Container bundles-gotenberg-1  Started
+ Container bundles-db-1  Started
+ Container bundles-php-1  Starting
+ Container bundles-supervisord-1  Starting
+ Container bundles-mercure-1  Started
+ Container bundles-supervisord-1  Started
+ Container bundles-php-1  Started
+ Container bundles-nginx-1  Starting
+ Container bundles-nginx-1  Started
+Starting OpenVSCode Server...
+bea195cd83798faf48d51ea60a16e4911632d8bc6757205705e5e30e041ee7ae
+Updating port 80 visibility to public (attempt 1/10)
+Port 80 is now publicly accessible.
+Updating port 3030 visibility to public (attempt 1/10)
+Port 3030 is now publicly accessible.
+Updating port 3031 visibility to public (attempt 1/10)
+Port 3031 is now publicly accessible.
+All ports are now publicly accessible.
+Mounting assets to WebDAV...
+Error: Container e7bd1f88fe0c380500bb7a7d1853953d0abb3eb61eef45a703d69d9deaeb7417 is not running.
