@@ -11,27 +11,32 @@
 *  @license    https://github.com/pimcore/studio-ui-bundle/blob/1.x/LICENSE.md POCL and PCL
 */
 
-import React from 'react'
+import React, { useContext } from 'react'
+import { useAssetGetTextDataByIdQuery } from '@Pimcore/modules/asset/asset-api-slice-enhanced'
+import { AssetContext } from '@Pimcore/modules/asset/asset-provider'
+import { useStyle } from './preview-container.styles'
+import { isSet } from '@Pimcore/utils/helpers'
+import { useAssetDraft } from '@Pimcore/modules/asset/hooks/use-asset-draft'
 
-import { TextEditor } from '@Pimcore/components/text-editor/text-editor'
-import { type SupportedLanguage } from '@Pimcore/components/text-editor/detect-language'
+const EditContainer = (): React.JSX.Element => {
+  const assetContext = useContext(AssetContext)
+  const { asset } = useAssetDraft(assetContext.id)
+  const { styles } = useStyle()
 
-interface PreviewViewProps {
-  src: string | undefined
-  language?: SupportedLanguage
-}
-
-const EditView = (props: PreviewViewProps): React.JSX.Element => {
-  const { src, language } = props
+  const fullPath = asset?.fullPath
+  const filePath = asset?.path
 
   return (
-    <div>
-      <TextEditor
-        defaultText={ src }
-        language={ language }
-      />
+    <div className={ styles.relativeContainer }>
+      { isSet(fullPath) && isSet(filePath) && (
+        <iframe 
+          src={`https://literate-space-palm-tree-x5wwpr4xpcvx7g-3000.app.github.dev/?folder=${encodeURIComponent(fullPath)}&file=${encodeURIComponent(filePath)}`} 
+          style={{ width: '100%', height: '100%', border: 'none' }}
+          title="Embedded Editor"
+        />
+      )}
     </div>
   )
 }
 
-export { EditView }
+export { EditContainer }
