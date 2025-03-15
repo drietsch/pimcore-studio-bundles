@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "rootDir": "./js/",
+    "module": "ESNext",
+    "target": "ES2023",
+    "moduleResolution": "Node",
+    "types": ["reflect-metadata", "@types/webpack-env", "jest", "react", "react-dom", "node"],
+    "baseUrl": "./js/",
+    "paths": {
+      "@Pimcore/*": ["./src/core/*"],
+      "@test-utils/*": ["./test-utils/*"]
+    },
+    "strictNullChecks": true,
+    "jsx": "react",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true,
+    "declaration": true,
+    "declarationMap": false,
+    "outDir": "./dist/build/types",
+    "composite": true
+  },
+  "include": [
+    "./js/**/*"
+  ]
+}
