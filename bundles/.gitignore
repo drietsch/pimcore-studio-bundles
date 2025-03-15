@@ -43,8 +43,10 @@
 !/vendor/pimcore/       # Allow only the pimcore directory
 /vendor/pimcore/*       # Ignore everything inside pimcore
 !/vendor/pimcore/studio-ui-bundle/  # Allow only studio-ui-bundle
+/vendor/pimcore/studio-ui-bundle/assets/node_modules/
 
-
+cache/
+cache/*
 
 # PhpStorm / IDEA
 .idea

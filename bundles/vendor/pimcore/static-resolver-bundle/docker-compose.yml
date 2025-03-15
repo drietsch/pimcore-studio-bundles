@@ -1,0 +1,8 @@
+services:
+    php-static-resolver-bundle:
+        image: pimcore/pimcore:php8.4-debug-v4-dev
+        environment:
+            PHP_IDE_CONFIG: serverName=localhost
+        volumes:
+            - .:/var/cli/
+            - ./.docker/30-xdebug.ini:/usr/local/etc/php/conf.d/30-xdebug.ini

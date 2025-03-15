@@ -1,0 +1,38 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  #Voters
+  Pimcore\Bundle\StudioBackendBundle\Security\Voter\AuthorizationVoter:
+    tags:
+      - { name: security.voter }
+
+  Pimcore\Bundle\StudioBackendBundle\Security\Voter\UserPermissionVoter:
+    tags:
+      - { name: security.voter }
+
+  Pimcore\Bundle\StudioBackendBundle\Security\Voter\PublicAuthorizationVoter:
+    arguments: [ '@request_stack' ]
+    tags:
+      - { name: security.voter }
+
+  Pimcore\Bundle\StudioBackendBundle\Security\Voter\ElementTypePermissionVoter:
+    arguments: [ '@request_stack' ]
+    tags:
+      - { name: security.voter }
+
+  Pimcore\Bundle\StudioBackendBundle\Security\Voter\UserPerspectiveVoter:
+    arguments: [ '@request_stack' ]
+    tags:
+      - { name: security.voter }
+
+  Pimcore\Bundle\StudioBackendBundle\Security\Service\SecurityServiceInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Security\Service\SecurityService
+
+  Pimcore\Bundle\StudioBackendBundle\Security\Service\LanguageServiceInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Security\Service\LanguageService
+
+  Pimcore\Bundle\StudioBackendBundle\Security\Service\LayoutServiceInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Security\Service\LayoutService

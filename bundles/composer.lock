@@ -2040,16 +2040,16 @@
         },
         {
             "name": "endroid/qr-code",
-            "version": "6.0.5",
+            "version": "6.0.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/endroid/qr-code.git",
-                "reference": "238baddf22500bbfeb2fa1ddc1eb2bd9374a6998"
+                "reference": "11e6a94458dab8dd18736c11892130ec788b5028"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/endroid/qr-code/zipball/238baddf22500bbfeb2fa1ddc1eb2bd9374a6998",
-                "reference": "238baddf22500bbfeb2fa1ddc1eb2bd9374a6998",
+                "url": "https://api.github.com/repos/endroid/qr-code/zipball/11e6a94458dab8dd18736c11892130ec788b5028",
+                "reference": "11e6a94458dab8dd18736c11892130ec788b5028",
                 "shasum": ""
             },
             "require": {
@@ -2100,7 +2100,7 @@
             ],
             "support": {
                 "issues": "https://github.com/endroid/qr-code/issues",
-                "source": "https://github.com/endroid/qr-code/tree/6.0.5"
+                "source": "https://github.com/endroid/qr-code/tree/6.0.6"
             },
             "funding": [
                 {
@@ -2108,7 +2108,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-07T08:15:43+00:00"
+            "time": "2025-03-14T23:29:08+00:00"
         },
         {
             "name": "ezimuel/guzzlestreams",
@@ -5442,12 +5442,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pimcore/admin-ui-classic-bundle.git",
-                "reference": "e5690cde769e9b9b19c2d7ae1a12935695f4833f"
+                "reference": "8b486609eea7f47eae760894ea0d8522f0d3ab57"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pimcore/admin-ui-classic-bundle/zipball/e5690cde769e9b9b19c2d7ae1a12935695f4833f",
-                "reference": "e5690cde769e9b9b19c2d7ae1a12935695f4833f",
+                "url": "https://api.github.com/repos/pimcore/admin-ui-classic-bundle/zipball/8b486609eea7f47eae760894ea0d8522f0d3ab57",
+                "reference": "8b486609eea7f47eae760894ea0d8522f0d3ab57",
                 "shasum": ""
             },
             "require": {
@@ -5494,7 +5494,7 @@
                 "issues": "https://github.com/pimcore/admin-ui-classic-bundle/issues",
                 "source": "https://github.com/pimcore/admin-ui-classic-bundle/tree/2.x"
             },
-            "time": "2025-03-06T09:46:29+00:00"
+            "time": "2025-03-12T08:20:10+00:00"
         },
         {
             "name": "pimcore/elasticsearch-client",
@@ -5664,12 +5664,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pimcore/pimcore.git",
-                "reference": "404c9cbd2aa1a262a14a5b27fdedc1d2fc110c48"
+                "reference": "0dfed31ef8a1827da2d33eb7305cfb93cb5b92d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pimcore/pimcore/zipball/404c9cbd2aa1a262a14a5b27fdedc1d2fc110c48",
-                "reference": "404c9cbd2aa1a262a14a5b27fdedc1d2fc110c48",
+                "url": "https://api.github.com/repos/pimcore/pimcore/zipball/0dfed31ef8a1827da2d33eb7305cfb93cb5b92d0",
+                "reference": "0dfed31ef8a1827da2d33eb7305cfb93cb5b92d0",
                 "shasum": ""
             },
             "require": {
@@ -5876,7 +5876,7 @@
                 "source": "https://github.com/pimcore/pimcore",
                 "wiki": "https://pimcore.com/docs/latest/"
             },
-            "time": "2025-03-10T09:34:40+00:00"
+            "time": "2025-03-14T06:40:25+00:00"
         },
         {
             "name": "pimcore/quill-bundle",
@@ -5884,12 +5884,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pimcore/quill-bundle.git",
-                "reference": "4a0a8cb2b088715b048f62b1d6a8cdae6decac3e"
+                "reference": "09c77b633f94009b7527441d1b74121a1b2c251e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pimcore/quill-bundle/zipball/4a0a8cb2b088715b048f62b1d6a8cdae6decac3e",
-                "reference": "4a0a8cb2b088715b048f62b1d6a8cdae6decac3e",
+                "url": "https://api.github.com/repos/pimcore/quill-bundle/zipball/09c77b633f94009b7527441d1b74121a1b2c251e",
+                "reference": "09c77b633f94009b7527441d1b74121a1b2c251e",
                 "shasum": ""
             },
             "require": {
@@ -5925,7 +5925,7 @@
                 "issues": "https://github.com/pimcore/quill-bundle/issues",
                 "source": "https://github.com/pimcore/quill-bundle/tree/1.x"
             },
-            "time": "2025-02-13T10:29:57+00:00"
+            "time": "2025-03-12T09:06:10+00:00"
         },
         {
             "name": "pimcore/static-resolver-bundle",
@@ -5987,12 +5987,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pimcore/studio-backend-bundle.git",
-                "reference": "70eeef14310737db39b11b952471eae367516afa"
+                "reference": "72165360ce4f7537eae878b99f9c81f20ef87490"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pimcore/studio-backend-bundle/zipball/70eeef14310737db39b11b952471eae367516afa",
-                "reference": "70eeef14310737db39b11b952471eae367516afa",
+                "url": "https://api.github.com/repos/pimcore/studio-backend-bundle/zipball/72165360ce4f7537eae878b99f9c81f20ef87490",
+                "reference": "72165360ce4f7537eae878b99f9c81f20ef87490",
                 "shasum": ""
             },
             "require": {
@@ -6047,7 +6047,7 @@
                 "issues": "https://github.com/pimcore/studio-backend-bundle/issues",
                 "source": "https://github.com/pimcore/studio-backend-bundle/tree/1.x"
             },
-            "time": "2025-03-07T10:43:51+00:00"
+            "time": "2025-03-12T11:40:48+00:00"
         },
         {
             "name": "pimcore/studio-ui-bundle",
@@ -6055,12 +6055,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pimcore/studio-ui-bundle.git",
-                "reference": "6fe02943530ed3188ed9ea314d52887270f64eb4"
+                "reference": "45e4412c7f973e8253cfbb4f53d46e6872f350cb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pimcore/studio-ui-bundle/zipball/6fe02943530ed3188ed9ea314d52887270f64eb4",
-                "reference": "6fe02943530ed3188ed9ea314d52887270f64eb4",
+                "url": "https://api.github.com/repos/pimcore/studio-ui-bundle/zipball/45e4412c7f973e8253cfbb4f53d46e6872f350cb",
+                "reference": "45e4412c7f973e8253cfbb4f53d46e6872f350cb",
                 "shasum": ""
             },
             "require": {
@@ -6104,7 +6104,7 @@
                 "issues": "https://github.com/pimcore/studio-ui-bundle/issues",
                 "source": "https://github.com/pimcore/studio-ui-bundle/tree/1.x"
             },
-            "time": "2025-03-10T18:03:08+00:00"
+            "time": "2025-03-14T16:50:40+00:00"
         },
         {
             "name": "presta/sitemap-bundle",
@@ -14185,16 +14185,16 @@
         },
         {
             "name": "codeception/lib-asserts",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Codeception/lib-asserts.git",
-                "reference": "b8c7dff552249e560879c682ba44a4b963af91bc"
+                "reference": "06750a60af3ebc66faab4313981accec1be4eefc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Codeception/lib-asserts/zipball/b8c7dff552249e560879c682ba44a4b963af91bc",
-                "reference": "b8c7dff552249e560879c682ba44a4b963af91bc",
+                "url": "https://api.github.com/repos/Codeception/lib-asserts/zipball/06750a60af3ebc66faab4313981accec1be4eefc",
+                "reference": "06750a60af3ebc66faab4313981accec1be4eefc",
                 "shasum": ""
             },
             "require": {
@@ -14233,9 +14233,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Codeception/lib-asserts/issues",
-                "source": "https://github.com/Codeception/lib-asserts/tree/2.1.0"
+                "source": "https://github.com/Codeception/lib-asserts/tree/2.2.0"
             },
-            "time": "2023-02-10T18:36:23+00:00"
+            "time": "2025-03-10T20:41:33+00:00"
         },
         {
             "name": "codeception/lib-innerbrowser",
@@ -14600,16 +14600,16 @@
         },
         {
             "name": "phpunit/php-code-coverage",
-            "version": "12.0.4",
+            "version": "12.0.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-code-coverage.git",
-                "reference": "79e5ef5897068689c7c325554d6df905480ce942"
+                "reference": "da732486790670c622aa367eb3dbb7e1619e68be"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/79e5ef5897068689c7c325554d6df905480ce942",
-                "reference": "79e5ef5897068689c7c325554d6df905480ce942",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-code-coverage/zipball/da732486790670c622aa367eb3dbb7e1619e68be",
+                "reference": "da732486790670c622aa367eb3dbb7e1619e68be",
                 "shasum": ""
             },
             "require": {
@@ -14665,7 +14665,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/php-code-coverage/issues",
                 "security": "https://github.com/sebastianbergmann/php-code-coverage/security/policy",
-                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/12.0.4"
+                "source": "https://github.com/sebastianbergmann/php-code-coverage/tree/12.0.5"
             },
             "funding": [
                 {
@@ -14673,7 +14673,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-02-25T13:27:48+00:00"
+            "time": "2025-03-15T07:24:51+00:00"
         },
         {
             "name": "phpunit/php-file-iterator",

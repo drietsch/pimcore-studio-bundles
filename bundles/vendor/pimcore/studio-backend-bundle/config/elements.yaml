@@ -1,0 +1,81 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+    public: false
+
+  # controllers are imported separately to make sure they're public
+  # and have a tag that allows actions to type-hint services
+  Pimcore\Bundle\StudioBackendBundle\Element\Controller\:
+    resource: '../src/Element/Controller'
+    public: true
+    tags: [ 'controller.service_arguments' ]
+
+  #
+  # Services
+  #
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Service\ElementServiceInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Element\Service\ElementService
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Service\ElementDeleteServiceInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Element\Service\ElementDeleteService
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Service\ElementFolderServiceInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Element\Service\ElementFolderService
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Service\StorageServiceInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Element\Service\StorageService
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Service\ExecutionEngine\ElementReferenceServiceInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Element\Service\ExecutionEngine\ElementReferenceService
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Service\ExecutionEngine\DeleteServiceInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Element\Service\ExecutionEngine\DeleteService
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Service\ElementSaveServiceInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Element\Service\ElementSaveService
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Service\ElementLocationServiceInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Element\Service\ElementLocationService
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Service\Permissions\ContextPermissionServiceInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Element\Service\Permissions\ContextPermissionsService
+
+  #
+  # Handler
+  #
+
+  Pimcore\Bundle\StudioBackendBundle\Element\ExecutionEngine\AutomationAction\Messenger\Handler\ElementDeleteHandler: ~
+  Pimcore\Bundle\StudioBackendBundle\Element\ExecutionEngine\AutomationAction\Messenger\Handler\RecycleBinHandler: ~
+  Pimcore\Bundle\StudioBackendBundle\Element\ExecutionEngine\AutomationAction\Messenger\Handler\RewriteRefHandler: ~
+  Pimcore\Bundle\StudioBackendBundle\Element\ExecutionEngine\AutomationAction\Messenger\Handler\PatchHandler: ~
+  Pimcore\Bundle\StudioBackendBundle\Element\ExecutionEngine\AutomationAction\Messenger\Handler\PatchFolderHandler: ~
+
+  #
+  # Event Subscriber
+  #
+
+  Pimcore\Bundle\StudioBackendBundle\Element\EventSubscriber\PatchSubscriber: ~
+  Pimcore\Bundle\StudioBackendBundle\Element\EventSubscriber\RewriteReferencesSubscriber: ~
+  Pimcore\Bundle\StudioBackendBundle\Element\EventSubscriber\DeletionSubscriber: ~
+
+  #
+  # Mercure SSE
+  #
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Mercure\Provider\ElementTopicProvider:
+    tags: [ 'pimcore.studio_backend.mercure.topic.provider' ]
+
+  #
+  # Hydrator
+  #
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Hydrator\Permissions\AssetContextPermissionHydratorInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Element\Hydrator\Permissions\AssetContextPermissionHydrator
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Hydrator\Permissions\DataObjectContextPermissionHydratorInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Element\Hydrator\Permissions\DataObjectContextPermissionHydrator
+
+  Pimcore\Bundle\StudioBackendBundle\Element\Hydrator\Permissions\DocumentContextPermissionHydratorInterface:
+    class: Pimcore\Bundle\StudioBackendBundle\Element\Hydrator\Permissions\DocumentContextPermissionHydrator
