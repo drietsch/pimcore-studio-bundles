@@ -18,16 +18,10 @@ else
     exit 1
 fi
 
-# Start OpenVSCode Server only if not already running
-if docker ps | grep -q "gitpod/openvscode-server"; then
-    echo "VSCode Server is already running."
-else
-    echo "Starting OpenVSCode Server..."
-    docker run -d --init -p 3000:3000 -v "$(pwd):/home/workspace:consistent" gitpod/openvscode-server
-fi
+sleep 2
 
 # Define the ports to make public
-PORTS=(80 3030 3031)
+PORTS=(80 3030 3031 3000)
 VISIBILITY="public"
 MAX_ATTEMPTS=10
 BACKOFF_SECONDS=10  # Initial backoff time
@@ -67,8 +61,19 @@ echo "All ports are now publicly accessible."
 echo "Mounting assets to WebDAV..."
 nohup rclone mount pimcore: ./assets -vv > rclone.log 2>&1 &
 
+# Start OpenVSCode Server only if not already running
+if docker ps | grep -q "gitpod/openvscode-server"; then
+    echo "VSCode Server is already running."
+else
+    echo "Starting OpenVSCode Server..."
+    docker run -d --init --name vscode-server -p 3000:3000 -v "$(pwd):/home/workspace" gitpod/openvscode-server
+
+fi
+
+sleep 2
+
 # Check if the specified container is running before executing commands inside it
-CONTAINER_ID="e7bd1f88fe0c380500bb7a7d1853953d0abb3eb61eef45a703d69d9deaeb7417"
+CONTAINER_ID="e7bd1f88fe0c"
 if docker ps -q -f id="$CONTAINER_ID" | grep -q "$CONTAINER_ID"; then
     echo "Starting Pimcore Studio UI dev server inside the container..."
     docker exec -it "$CONTAINER_ID" /bin/bash -c "cd vendor/pimcore/studio-ui-bundle/assets && npm run dev-server"
