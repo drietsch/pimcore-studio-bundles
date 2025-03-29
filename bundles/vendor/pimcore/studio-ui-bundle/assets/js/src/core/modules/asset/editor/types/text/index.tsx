@@ -19,7 +19,6 @@ import { container } from '@Pimcore/app/depency-injection'
 import { serviceIds } from '@Pimcore/app/config/services/service-ids'
 import { TAB_CUSTOM_METADATA, TAB_VERSIONS } from '@Pimcore/modules/asset/editor/shared-tab-manager/tab-definitions'
 import { EditContainer } from '@Pimcore/modules/asset/editor/types/text/tab-manager/tabs/edit/edit-container'
-import { PreviewContainer } from '@Pimcore/modules/asset/editor/types/text/tab-manager/tabs/preview/preview-container'
 import {
   TAB_DEPENDENCIES,
   TAB_NOTES_AND_EVENTS,
@@ -38,13 +37,6 @@ moduleSystem.registerModule({
       label: 'asset.asset-editor-tabs.edit',
       children: <EditContainer />,
       icon: <Icon value={ 'edit-pen' } />
-    })
-
-    textTabManager.register({
-      key: 'view',
-      label: 'steamlit',
-      children: <PreviewContainer />,
-      icon: <Icon value={ 'view' } />
     })
 
     textTabManager.register(TAB_CUSTOM_METADATA)

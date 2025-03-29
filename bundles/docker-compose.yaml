@@ -5,9 +5,8 @@ services:
         command: [ redis-server, --maxmemory, 128mb, --maxmemory-policy, volatile-lru, --save, '""' ]
 
     db:
-        image: mariadb:10.11
+        image: mariadb:11.7.2
         working_dir: /application
-        command: [ mysqld, --character-set-server=utf8mb4, --collation-server=utf8mb4_general_ci, --innodb-file-per-table=1 ]
         volumes:
             - pimcore-demo-database:/var/lib/mysql
         environment:
@@ -15,6 +14,8 @@ services:
             MYSQL_DATABASE: pimcore
             MYSQL_USER: pimcore
             MYSQL_PASSWORD: pimcore
+        ports:
+            - "3306:3306"
 
     nginx:
         image: nginx:stable-alpine

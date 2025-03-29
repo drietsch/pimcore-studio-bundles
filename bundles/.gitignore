@@ -42,16 +42,6 @@
 # Ignore everything in vendor
 /vendor/
 
-# Allow only vendor/pimcore/
-!vendor/pimcore/
-
-# Ignore everything inside vendor/pimcore, except studio-ui-bundle
-vendor/pimcore/*
-!vendor/pimcore/studio-ui-bundle/
-
-# Ignore node_modules inside studio-ui-bundle
-vendor/pimcore/studio-ui-bundle/assets/node_modules/
-
 # Ignore cache completely
 cache/
 cache/*
