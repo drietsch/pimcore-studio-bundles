@@ -1,0 +1,5 @@
+pimcore_studio_ui_demo_plugin:
+    resource: "@PimcoreStudioUiDemoPluginBundle/src/Controller/"
+    type:     annotation
+    prefix:   /
+

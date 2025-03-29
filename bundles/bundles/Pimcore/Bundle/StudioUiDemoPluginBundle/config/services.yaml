@@ -1,0 +1,28 @@
+services:
+    # default configuration for services in *this* file
+    _defaults:
+        # automatically injects dependencies in your services
+        autowire: true
+        # automatically registers your services as commands, event subscribers, etc.
+        autoconfigure: true
+        # this means you cannot fetch services directly from the container via $container->get()
+        # if you need to do this, you can override this setting on individual services
+        public: false
+
+    # controllers are imported separately to make sure they're public
+    # and have a tag that allows actions to type-hint services
+    Pimcore\Bundle\StudioUiDemoPluginBundle\Controller\:
+        resource: '../src/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
+    Pimcore\Bundle\StudioUiDemoPluginBundle\Webpack\WebpackEntryPointProvider:
+        tags:
+            - { name: pimcore_studio_ui.webpack_entry_point_provider }
+
+# add more services, or override services that need manual wiring
+#    Pimcore\Bundle\StudioUiDemoPluginBundle\ExampleClass:
+#        arguments:
+#            - "@service_id"
+#            - "plain_value"
+#            - "%parameter%"

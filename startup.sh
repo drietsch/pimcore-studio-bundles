@@ -20,6 +20,26 @@ fi
 
 sleep 2
 
+
+
+# Start OpenVSCode Server only if not already running
+# Check if the OpenVSCode Server container is running
+if docker ps --filter "name=vscode-server" --format '{{.Names}}' | grep -q "vscode-server"; then
+    echo "VSCode Server is already running."
+else
+    # Check if a stopped container with the same name exists
+    if docker ps -a --filter "name=vscode-server" --format '{{.Names}}' | grep -q "vscode-server"; then
+        echo "Restarting existing VSCode Server container..."
+        docker start vscode-server
+    else
+        echo "Starting a new OpenVSCode Server container..."
+        docker run -d --init --name vscode-server -p 3000:3000 -v "$(pwd):/home/workspace" gitpod/openvscode-server
+    fi
+fi
+
+sleep 2
+
+
 # Define the ports to make public
 PORTS=(80 3030 3031 3000)
 VISIBILITY="public"
@@ -57,29 +77,21 @@ done
 
 echo "All ports are now publicly accessible."
 
-# Mount assets to WebDAV using rclone in the background
-echo "Mounting assets to WebDAV..."
-nohup rclone mount pimcore: ./assets -vv > rclone.log 2>&1 &
-
-# Start OpenVSCode Server only if not already running
-if docker ps | grep -q "gitpod/openvscode-server"; then
-    echo "VSCode Server is already running."
-else
-    echo "Starting OpenVSCode Server..."
-    docker run -d --init --name vscode-server -p 3000:3000 -v "$(pwd):/home/workspace" gitpod/openvscode-server
-
-fi
-
-sleep 2
 
 # Check if the specified container is running before executing commands inside it
-CONTAINER_ID="e7bd1f88fe0c"
+CONTAINER_ID="01453242c23f"
 if docker ps -q -f id="$CONTAINER_ID" | grep -q "$CONTAINER_ID"; then
     echo "Starting Pimcore Studio UI dev server inside the container..."
-    docker exec -it "$CONTAINER_ID" /bin/bash -c "cd vendor/pimcore/studio-ui-bundle/assets && npm run dev-server"
+    docker exec -it "$CONTAINER_ID" /bin/bash -c "cd bundles/pimcore/Bundle/StudioUiDemoBundle && npm run dev-server"
 else
     echo "Error: Container $CONTAINER_ID is not running."
     exit 1
 fi
+
+Sleep 1
+
+# Mount assets to WebDAV using rclone in the background
+echo "Mounting assets to WebDAV..."
+nohup rclone mount pimcore: ./assets -vv > rclone.log 2>&1 &
 
 echo "Script execution complete."

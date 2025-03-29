@@ -179,9 +179,8 @@ if (Encore.isDevServer()) {
 
   Encore
     .setOutputPath(buildPath)
-    .setPublicPath('https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/' + buildId)
+    .setPublicPath('/build/' + buildId)
     .addPlugin(new ReactRefreshPlugin())
-    .setManifestKeyPrefix(`build/${buildId}`)
 }
 
 let config = Encore.getWebpackConfig()
