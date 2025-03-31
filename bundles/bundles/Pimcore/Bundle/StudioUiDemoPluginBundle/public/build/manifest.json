@@ -1,7 +1,5 @@
 {
   "build/main.js": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/main.js",
-  "build/main.wasm": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/assets/ort-wasm-simd-threaded.jsep.64f8fa90.wasm",
-  "build/main.mjs": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/assets/ort.bundle.min.09c21376.mjs",
   "build/vendors-node_modules_shikijs_langs_dist_angular-html_mjs.js": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/vendors-node_modules_shikijs_langs_dist_angular-html_mjs.js",
   "build/vendors-node_modules_shikijs_langs_dist_angular-ts_mjs.js": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/vendors-node_modules_shikijs_langs_dist_angular-ts_mjs.js",
   "build/vendors-node_modules_shikijs_langs_dist_astro_mjs.js": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/vendors-node_modules_shikijs_langs_dist_astro_mjs.js",
@@ -110,5 +108,6 @@
   "build/vendors-node_modules_shikijs_themes_dist_vitesse-dark_mjs.js": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/vendors-node_modules_shikijs_themes_dist_vitesse-dark_mjs.js",
   "build/vendors-node_modules_shikijs_themes_dist_vitesse-light_mjs.js": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/vendors-node_modules_shikijs_themes_dist_vitesse-light_mjs.js",
   "build/assets/ort-wasm-simd-threaded.jsep.wasm": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/assets/ort-wasm-simd-threaded.jsep.64f8fa90.wasm",
-  "build/assets/ort.bundle.min.mjs": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/assets/ort.bundle.min.09c21376.mjs"
+  "build/assets/ort.bundle.min.mjs": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/assets/ort.bundle.min.09c21376.mjs",
+  "build/main.css": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/main.css"
 }

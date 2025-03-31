@@ -7,6 +7,7 @@ import { type MainNavRegistry } from '@pimcore/studio-ui-bundle/modules/app'
 import { type WidgetRegistry } from '@pimcore/studio-ui-bundle/modules/widget-manager'
 import RapidDataApps from './components/rapid-data-apps/rapid-data-apps'
 import CodeEditor from './components/code-editor/code-editor'
+import CreativeEditor from './components/creative-editor/creative-editor'
 import Chat from './components/chat/chat'
 import film03 from './icons/film-03.inline.svg'
 
@@ -96,7 +97,29 @@ export const DietzToolsModule: AbstractModule = {
       }
     })
 
+    mainNavRegistryService.registerMainNavItem({
+      path: 'Dietz Tools/Creative Editor',
+      className: 'item-style-modifier',
+      icon: 'dashboard',
+      widgetConfig: {
+        name: 'Creative Editor',
+        id: 'creative-editor',
+        component: 'creative-editor',
+        config: {
+          icon: {
+            type: 'name',
+            value: 'user'
+          }
+        }
+      }
+    })
+
     const widgetRegistryService = container.get<WidgetRegistry>(serviceIds.widgetManager)
+
+    widgetRegistryService.registerWidget({
+      name: 'creative-editor',
+      component: CreativeEditor
+    })
 
     widgetRegistryService.registerWidget({
       name: 'chat',

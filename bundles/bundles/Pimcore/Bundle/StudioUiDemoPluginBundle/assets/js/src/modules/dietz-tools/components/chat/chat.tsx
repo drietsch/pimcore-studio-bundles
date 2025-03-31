@@ -4,6 +4,7 @@ import * as webllm from '@mlc-ai/web-llm'
 import { theme, Upload, message, Input, Button, Spin, Typography } from 'antd'
 import { InboxOutlined } from '@ant-design/icons'
 import pluginRegistry from './plugins/pluginRegistry'
+import { Toolbar } from '@pimcore/studio-ui-bundle/components'
 
 const { Dragger } = Upload
 
@@ -72,21 +73,23 @@ const ChatComponent = () => {
       style={ {
         backgroundColor: token.colorBgLayout,
         height: '100%',
-        width: '100%',
-        display: 'flex',
-        flexDirection: 'column'
+        width: '100%'
       } }
     >
+      <Toolbar>
+        TBD Toolbar for Chat
+      </Toolbar>
+
       {engine
         ? (
           <>
             {loadingMessage && (
-            <Spin
-              style={ { margin: 'auto' } }
-              tip={ loadingMessage }
-            >
-              <Typography.Text>{loadingMessage}</Typography.Text>
-            </Spin>
+              <Spin
+                style={ { margin: 'auto' } }
+                tip={ loadingMessage }
+              >
+                <Typography.Text>{loadingMessage}</Typography.Text>
+              </Spin>
             )}
             <ProChat
               renderInputArea={ (defaultDom, onMessageSend) => (
@@ -133,8 +136,7 @@ const ChatComponent = () => {
           <Spin
             style={ { margin: 'auto' } }
             tip={ initLabel }
-          >
-            <Typography.Text>{initLabel}</Typography.Text>
+          >&nbsp;
           </Spin>
           )}
     </div>
