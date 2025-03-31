@@ -82,7 +82,7 @@ echo "All ports are now publicly accessible."
 CONTAINER_ID="01453242c23f"
 if docker ps -q -f id="$CONTAINER_ID" | grep -q "$CONTAINER_ID"; then
     echo "Starting Pimcore Studio UI dev server inside the container..."
-    docker exec -it "$CONTAINER_ID" /bin/bash -c "cd bundles/pimcore/Bundle/StudioUiDemoBundle && npm run dev-server"
+    docker exec -it "$CONTAINER_ID" /bin/bash -c "cd bundles/Pimcore/Bundle/StudioUiDemoPluginBundle && npm run dev-server"
 else
     echo "Error: Container $CONTAINER_ID is not running."
     exit 1
