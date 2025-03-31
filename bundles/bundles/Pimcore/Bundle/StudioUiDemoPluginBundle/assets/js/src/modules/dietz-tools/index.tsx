@@ -7,6 +7,7 @@ import { type MainNavRegistry } from '@pimcore/studio-ui-bundle/modules/app'
 import { type WidgetRegistry } from '@pimcore/studio-ui-bundle/modules/widget-manager'
 import RapidDataApps from './components/rapid-data-apps/rapid-data-apps'
 import CodeEditor from './components/code-editor/code-editor'
+import Chat from './components/chat/chat'
 import film03 from './icons/film-03.inline.svg'
 
 import { type TextTabManager } from '@pimcore/studio-ui-bundle/modules/asset'
@@ -25,6 +26,23 @@ export const DietzToolsModule: AbstractModule = {
     mainNavRegistryService.registerMainNavItem({
       path: 'Dietz Tools',
       icon: 'dashboard'
+    })
+
+    mainNavRegistryService.registerMainNavItem({
+      path: 'Dietz Tools/Copilot Chat',
+      className: 'item-style-modifier',
+      icon: 'dashboard',
+      widgetConfig: {
+        name: 'Copilot Chat',
+        id: 'chat',
+        component: 'chat',
+        config: {
+          icon: {
+            type: 'name',
+            value: 'user'
+          }
+        }
+      }
     })
 
     mainNavRegistryService.registerMainNavItem({
@@ -79,6 +97,11 @@ export const DietzToolsModule: AbstractModule = {
     })
 
     const widgetRegistryService = container.get<WidgetRegistry>(serviceIds.widgetManager)
+
+    widgetRegistryService.registerWidget({
+      name: 'chat',
+      component: Chat
+    })
 
     widgetRegistryService.registerWidget({
       name: 'rapid-data-apps',

@@ -56,6 +56,9 @@
     "whatwg-fetch": "^3.6.20"
   },
   "dependencies": {
+    "@ant-design/pro-chat": "^1.15.3",
+    "@huggingface/transformers": "^3.4.1",
+    "@mlc-ai/web-llm": "^0.2.78",
     "@pimcore/studio-ui-bundle": "file:../../../../vendor/pimcore/studio-ui-bundle/public/build/studio-npm-package.tgz",
     "react": "18.3.x",
     "react-dom": "18.3.x"
