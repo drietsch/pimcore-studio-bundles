@@ -9,6 +9,7 @@ import RapidDataApps from './components/rapid-data-apps/rapid-data-apps'
 import CodeEditor from './components/code-editor/code-editor'
 import CreativeEditor from './components/creative-editor/creative-editor'
 import Chat from './components/chat/chat'
+import Droppable from './components/droppable/droppable'
 import film03 from './icons/film-03.inline.svg'
 
 import { type TextTabManager } from '@pimcore/studio-ui-bundle/modules/asset'
@@ -27,6 +28,23 @@ export const DietzToolsModule: AbstractModule = {
     mainNavRegistryService.registerMainNavItem({
       path: 'Dietz Tools',
       icon: 'dashboard'
+    })
+
+    mainNavRegistryService.registerMainNavItem({
+      path: 'Dietz Tools/Droppable',
+      className: 'item-style-modifier',
+      icon: 'dashboard',
+      widgetConfig: {
+        name: 'Droppable',
+        id: 'droppable',
+        component: 'droppable',
+        config: {
+          icon: {
+            type: 'name',
+            value: 'user'
+          }
+        }
+      }
     })
 
     mainNavRegistryService.registerMainNavItem({
@@ -134,6 +152,11 @@ export const DietzToolsModule: AbstractModule = {
     widgetRegistryService.registerWidget({
       name: 'code-editor',
       component: CodeEditor
+    })
+
+    widgetRegistryService.registerWidget({
+      name: 'droppable',
+      component: Droppable
     })
 
     const assetTabManager = container.get<TextTabManager>((serviceIds['Asset/Editor/TextTabManager']))
