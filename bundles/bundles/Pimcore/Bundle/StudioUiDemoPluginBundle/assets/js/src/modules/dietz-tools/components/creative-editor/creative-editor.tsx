@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import CreativeEditorSDK from '@cesdk/cesdk-js'
-import { Droppable } from '@pimcore/studio-ui-bundle/components'
+import { Droppable, Toolbar, Button } from '@pimcore/studio-ui-bundle/components'
 import './styles.css'
 
 const config = {
@@ -14,6 +14,7 @@ const config = {
 const CreativeEditor: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [cesdkInstance, setCesdkInstance] = useState<any>(null)
+  const [isUploading, setIsUploading] = useState(false)
 
   useEffect(() => {
     const style = document.createElement('style')
@@ -44,21 +45,16 @@ const CreativeEditor: React.FC = () => {
       setCesdkInstance(instance)
 
       const engine = instance.engine
+      engine.addDefaultAssetSources()
 
-      // ✅ Create initial empty scene and page
       const scene = engine.scene.create()
       const page = engine.block.create('page')
       engine.block.appendChild(scene, page)
 
-      // ✅ Define a writable asset source for Pimcore assets
-      const pimcoreSource = {
+      engine.asset.addSource({
         id: 'pimcore',
         async findAssets () {
-          return {
-            assets: [],
-            total: 0,
-            currentPage: 0
-          }
+          return { assets: [], total: 0, currentPage: 0 }
         },
         async applyAsset (asset) {
           return engine.asset.defaultApplyAsset(asset)
@@ -67,14 +63,9 @@ const CreativeEditor: React.FC = () => {
           return engine.asset.defaultApplyAssetToBlock(asset, block)
         },
         async addAsset (asset) {
-          // We’ll just return it directly; this enables addAssetToSource()
           return asset
         }
-      }
-
-      engine.asset.addSource(pimcoreSource)
-
-      console.log('[CE.SDK] Initialized with scene and Pimcore asset source.')
+      })
     })
 
     return () => {
@@ -96,19 +87,19 @@ const CreativeEditor: React.FC = () => {
 
     const engine = cesdkInstance.engine
     const assetId = `pimcore:${asset.id}`
-    const assetUrl = 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-80.app.github.dev' + asset.fullPath
+    const assetUrl = 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-80.app.github.dev/' + asset.fullPath
     const thumbUrl = asset.imageThumbnailPath || asset.fullPath
 
     try {
       await engine.asset.addAssetToSource('pimcore', {
         id: assetId,
-        label: asset.filename || 'Pimcore Asset',
+        label: asset.filename,
         meta: {
           uri: assetUrl,
           thumbUri: thumbUrl,
           mimeType: asset.mimeType,
-          width: asset.width || 512,
-          height: asset.height || 512,
+          width: asset.width,
+          height: asset.height,
           blockType: '//ly.img.ubq/image'
         },
         context: {
@@ -116,18 +107,15 @@ const CreativeEditor: React.FC = () => {
         }
       })
 
-      const scene = engine.scene.get()
-      const page = engine.block.getChildren(scene)[0]
-
-      const insertedBlockId = await engine.asset.apply('pimcore', {
+      await engine.asset.apply('pimcore', {
         id: assetId,
         label: asset.filename,
         meta: {
           uri: assetUrl,
           thumbUri: thumbUrl,
           mimeType: asset.mimeType,
-          width: asset.width || 512,
-          height: asset.height || 512
+          width: asset.width,
+          height: asset.height
         },
         context: {
           sourceId: 'pimcore'
@@ -135,25 +123,75 @@ const CreativeEditor: React.FC = () => {
       })
 
       engine.asset.assetSourceContentsChanged('pimcore')
-
-      console.log('[CE.SDK Drop] Inserted Pimcore image:', asset.filename)
     } catch (err) {
       console.error('[CE.SDK Drop] Error inserting asset:', err)
     }
   }
 
+  const handleSaveToPimcore = async () => {
+    if (!cesdkInstance) return
+
+    try {
+      setIsUploading(true)
+
+      const archive = await cesdkInstance.engine.scene.saveToArchive()
+      const file = new File([archive], 'scene.ce.scene', {
+        type: 'application/zip'
+      })
+
+      const formData = new FormData()
+      formData.append('file', file)
+
+      const parentId = 1 // Replace with your actual Pimcore folder ID
+      const response = await fetch(
+        `/pimcore-studio/api/assets/add/${parentId}`,
+        {
+          method: 'POST',
+          headers: {
+            accept: 'application/json'
+          },
+          body: formData
+        }
+      )
+
+      if (!response.ok) {
+        const text = await response.text()
+        throw new Error(`${response.status}: ${text}`)
+      }
+
+      const result = await response.json()
+      console.log('[✅ Scene uploaded]', result)
+      alert(`Scene saved to Pimcore asset ID ${result.id}`)
+    } catch (err) {
+      console.error('[❌ Failed to upload]', err)
+      alert('Upload failed. Check console for details.')
+    } finally {
+      setIsUploading(false)
+    }
+  }
+
   return (
     <Droppable
-      isValidContext={ (info) => info.type === 'asset' }
-      isValidData={ (info) => info.type === 'asset' }
+      isValidContext={ info => info.type === 'asset' }
+      isValidData={ info => info.type === 'asset' }
       onDrop={ handleStudioDrop }
       style={ { width: '100%', height: '100%' } }
       variant="outline"
     >
-      <div
-        ref={ containerRef }
-        style={ { width: '100%', height: '100%' } }
-      />
+      <div style={ { width: '100%', height: '100vh', display: 'flex', flexDirection: 'column' } }>
+        <Toolbar>
+          <Button
+            disabled={ isUploading }
+            onClick={ handleSaveToPimcore }
+          >
+            {isUploading ? 'Saving...' : 'Save Scene'}
+          </Button>
+        </Toolbar>
+        <div
+          ref={ containerRef }
+          style={ { width: '100%', height: '100%', display: 'flex', flexGrow: 1 } }
+        />
+      </div>
     </Droppable>
   )
 }
