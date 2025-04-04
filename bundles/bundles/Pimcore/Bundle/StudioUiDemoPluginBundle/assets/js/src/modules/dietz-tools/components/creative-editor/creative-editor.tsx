@@ -7,7 +7,6 @@ import {
   Select,
   useFormModal
 } from '@pimcore/studio-ui-bundle/components'
-import './styles.css'
 
 const config = {
   license: 'yhikTVeBiYBEHCibwv8bvH6V_Oe0XMnX7czfXSr2Asj3sCvz-hiiSwR0US5LeA3M',
@@ -16,14 +15,6 @@ const config = {
   callbacks: {
     onUpload: 'local'
   }
-}
-
-// Convert ArrayBuffer to data URI
-function arrayBufferToDataUri (buffer: ArrayBuffer): string {
-  const bytes = new Uint8Array(buffer)
-  const binary = bytes.reduce((acc, byte) => acc + String.fromCharCode(byte), '')
-  const base64 = btoa(binary)
-  return `data:application/zip;base64,${base64}`
 }
 
 const CreativeEditor: React.FC = () => {
@@ -36,15 +27,33 @@ const CreativeEditor: React.FC = () => {
   const formModal = useFormModal()
 
   useEffect(() => {
+    const fontLink = document.createElement('link')
+    fontLink.href = 'https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap'
+    fontLink.rel = 'stylesheet'
+    document.head.appendChild(fontLink)
+
     const style = document.createElement('style')
     style.innerHTML = `
-      :root {
-        --ubq-color-primary: #531dab;
-        --ubq-color-primary-dark: #391085;
-        --ubq-typography-font_family: 'Lato', sans-serif;
-        --ubq-typography-button-m-font_family: 'Lato', sans-serif;
-      }
-    `
+    body {
+      font-family: 'Lato', sans-serif !important;
+    }
+
+    :root {
+      --ubq-color-primary: #531dab;
+      --ubq-color-primary-dark: #391085;
+  
+      --ubq-typography-font_family: 'Lato', sans-serif;
+      --ubq-typography-body-m-font_family: 'Lato', sans-serif;
+      --ubq-typography-heading-l-font_family: 'Lato', sans-serif;
+      --ubq-typography-input-font_family: 'Lato', sans-serif;
+      --ubq-typography-button-m-font_family: 'Lato', sans-serif;
+  
+      --ubq-typography-label-s-size: 12px;
+      --ubq-typography-body-m-font_size: 14px;
+      --ubq-typography-heading-l-font_size: 24px;
+      --ubq-typography-button-m-font_size: 13px;
+    }
+  `
     document.head.appendChild(style)
   }, [])
 
