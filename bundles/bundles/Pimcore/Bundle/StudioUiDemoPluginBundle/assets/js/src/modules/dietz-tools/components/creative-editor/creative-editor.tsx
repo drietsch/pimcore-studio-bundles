@@ -1,6 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import CreativeEditorSDK from '@cesdk/cesdk-js'
-import { Droppable, Toolbar, Button } from '@pimcore/studio-ui-bundle/components'
+import {
+  Droppable,
+  Toolbar,
+  Button,
+  Select,
+  useFormModal
+} from '@pimcore/studio-ui-bundle/components'
 import './styles.css'
 
 const config = {
@@ -16,6 +22,10 @@ const CreativeEditor: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [cesdkInstance, setCesdkInstance] = useState<any>(null)
   const [isUploading, setIsUploading] = useState(false)
+  const [scenes, setScenes] = useState<any[]>([])
+  const [selectedScene, setSelectedScene] = useState<string | null>(null)
+
+  const formModal = useFormModal()
 
   useEffect(() => {
     const style = document.createElement('style')
@@ -32,9 +42,7 @@ const CreativeEditor: React.FC = () => {
 
   useEffect(() => {
     if (!containerRef.current) return
-
     let isUnmounted = false
-    let instance: any
 
     CreativeEditorSDK.create(containerRef.current, config).then(async (_instance) => {
       if (isUnmounted) {
@@ -42,10 +50,9 @@ const CreativeEditor: React.FC = () => {
         return
       }
 
-      instance = _instance
-      setCesdkInstance(instance)
+      setCesdkInstance(_instance)
 
-      const engine = instance.engine
+      const engine = _instance.engine
       engine.addDefaultAssetSources()
 
       const scene = engine.scene.create()
@@ -58,10 +65,10 @@ const CreativeEditor: React.FC = () => {
           return { assets: [], total: 0, currentPage: 0 }
         },
         async applyAsset (asset) {
-          return engine.asset.defaultApplyAsset(asset)
+          return await engine.asset.defaultApplyAsset(asset)
         },
         async applyAssetToBlock (asset, block) {
-          return engine.asset.defaultApplyAssetToBlock(asset, block)
+          await engine.asset.defaultApplyAssetToBlock(asset, block)
         },
         async addAsset (asset) {
           return asset
@@ -76,23 +83,58 @@ const CreativeEditor: React.FC = () => {
     }
   }, [])
 
+  useEffect(() => {
+    const fetchScenes = async () => {
+      try {
+        const res = await fetch(
+          '/pimcore-studio/api/assets/tree?page=1&pageSize=100&idSearchTerm=*&excludeFolders=false&path=/scenes&pathIncludeParent=true&pathIncludeDescendants=true',
+          { headers: { accept: 'application/json' } }
+        )
+        const result = await res.json()
+
+        const files = result.items?.filter((item: any) =>
+          item.type === 'archive' && item.filename?.endsWith('.scene')
+        )
+
+        setScenes(files || [])
+      } catch (err) {
+        console.error('[❌ Failed to fetch scenes]', err)
+      }
+    }
+
+    fetchScenes()
+  }, [])
+
+  const handleSceneSelect = async (sceneId: string) => {
+    if (!cesdkInstance || !sceneId) return
+    const engine = cesdkInstance.engine
+
+    try {
+      const res = await fetch(`/pimcore-studio/api/assets/${sceneId}/download`)
+      const blob = await res.blob()
+      const arrayBuffer = await blob.arrayBuffer()
+
+      await engine.scene.loadFromArchive(arrayBuffer)
+
+      setSelectedScene(sceneId)
+      console.log('[✅ Scene loaded]', sceneId)
+    } catch (err) {
+      console.error('[❌ Failed to load scene]', err)
+      alert('Failed to load scene. See console for details.')
+    }
+  }
+
   const handleStudioDrop = async (info: any) => {
     if (!cesdkInstance) return
     const engine = cesdkInstance.engine
 
-    // Drop: Pimcore Image Asset
     if (info.type === 'asset') {
       const asset = info.data
-
       const isImage = asset.mimeType?.startsWith('image/') || asset.type === 'image'
-      if (!asset?.fullPath || !isImage) {
-        console.warn('[CE.SDK Drop] Not an image:', asset)
-        return
-      }
+      if (!asset?.fullPath || !isImage) return
 
       const assetId = `pimcore:${asset.id}`
-      const assetUrl = 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-80.app.github.dev/' + asset.fullPath
-      const thumbUrl = asset.imageThumbnailPath || asset.fullPath
+      const assetUrl = 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-80.app.github.dev' + asset.fullPath
 
       try {
         await engine.asset.addAssetToSource('pimcore', {
@@ -100,7 +142,7 @@ const CreativeEditor: React.FC = () => {
           label: asset.filename,
           meta: {
             uri: assetUrl,
-            thumbUri: thumbUrl,
+            thumbUri: asset.imageThumbnailPath || assetUrl,
             mimeType: asset.mimeType,
             width: asset.width,
             height: asset.height,
@@ -116,7 +158,7 @@ const CreativeEditor: React.FC = () => {
           label: asset.filename,
           meta: {
             uri: assetUrl,
-            thumbUri: thumbUrl,
+            thumbUri: asset.imageThumbnailPath || assetUrl,
             mimeType: asset.mimeType,
             width: asset.width,
             height: asset.height
@@ -132,94 +174,74 @@ const CreativeEditor: React.FC = () => {
       }
     }
 
-    // Drop: Pimcore Data Object (fills variables)
-
     if (info.type === 'data-object') {
       const droppedObject = info.data
-
-      if (!droppedObject?.id) {
-        console.warn('[CE.SDK Drop] Data Object missing ID:', droppedObject)
-        return
-      }
+      if (!droppedObject?.id) return
 
       try {
         const res = await fetch(`/pimcore-studio/api/data-objects/${droppedObject.id}`, {
-          headers: {
-            accept: 'application/json'
-          }
+          headers: { accept: 'application/json' }
         })
 
-        if (!res.ok) {
-          const text = await res.text()
-          throw new Error(`${res.status}: ${text}`)
-        }
+        const { objectData } = await res.json()
 
-        const fullData = await res.json()
-        const objectData = fullData?.objectData
-
-        if (!objectData) {
-          console.warn('[CE.SDK Drop] No objectData found in response:', fullData)
-          return
-        }
         engine.variable.setString('name', 'Name')
         engine.variable.setString('desc', 'Description')
+
         const variables = engine.variable.findAll()
-        console.log(variables)
         for (const key in variables) {
           const value = objectData[variables[key]]
-          console.log(key + ' = ' + value)
-          if (key === undefined || value === null) continue
-          engine.variable.setString(variables[key], String(value))
+          if (value !== undefined && value !== null) {
+            engine.variable.setString(variables[key], String(value))
+          }
         }
-
-        console.log('[✅ Variables updated from full Data Object]', objectData)
       } catch (err) {
         console.error('[❌ Failed to fetch data object]', err)
-        alert('Could not fetch full data object. See console for details.')
       }
     }
   }
 
-  const handleSaveToPimcore = async () => {
-    if (!cesdkInstance) return
+  const handleSaveAs = () => {
+    formModal.input({
+      title: 'Save Scene As',
+      label: 'Scene name',
+      rule: { required: true, message: 'Please enter a scene name' },
+      onOk: async (name) => {
+        try {
+          setIsUploading(true)
 
-    try {
-      setIsUploading(true)
+          const archive = await cesdkInstance.engine.scene.saveToArchive()
+          const file = new File([archive], `${name}.scene`, {
+            type: 'application/zip'
+          })
 
-      const archive = await cesdkInstance.engine.scene.saveToArchive()
-      const file = new File([archive], 'scene.ce.scene', {
-        type: 'application/zip'
-      })
+          const formData = new FormData()
+          formData.append('file', file)
 
-      const formData = new FormData()
-      formData.append('file', file)
+          const parentId = 27 // /scenes
+          const response = await fetch(`/pimcore-studio/api/assets/add/${parentId}`, {
+            method: 'POST',
+            headers: { accept: 'application/json' },
+            body: formData
+          })
 
-      const parentId = 1
-      const response = await fetch(
-        `/pimcore-studio/api/assets/add/${parentId}`,
-        {
-          method: 'POST',
-          headers: {
-            accept: 'application/json'
-          },
-          body: formData
+          if (!response.ok) {
+            const text = await response.text()
+            throw new Error(`${response.status}: ${text}`)
+          }
+
+          const result = await response.json()
+          console.log('[✅ Scene saved]', result)
+          setSelectedScene(result.id.toString())
+          setScenes(prev => [...prev, result])
+        } catch (err) {
+          console.error('[❌ Upload error]', err)
+          alert('Upload failed. See console for details.')
+        } finally {
+          setIsUploading(false)
         }
-      )
-
-      if (!response.ok) {
-        const text = await response.text()
-        throw new Error(`${response.status}: ${text}`)
       }
-
-      const result = await response.json()
-      console.log('[✅ Scene uploaded]', result)
-      alert(`Scene saved to Pimcore asset ID ${result.id}`)
-    } catch (err) {
-      console.error('[❌ Failed to upload]', err)
-      alert('Upload failed. Check console for details.')
-    } finally {
-      setIsUploading(false)
-    }
+    })
   }
 
   return (
@@ -232,11 +254,20 @@ const CreativeEditor: React.FC = () => {
     >
       <div style={ { width: '100%', height: '100vh', display: 'flex', flexDirection: 'column' } }>
         <Toolbar>
+          <Select
+            onValueChange={ handleSceneSelect }
+            options={ scenes.map(scene => ({
+              label: scene.filename,
+              value: scene.id.toString()
+            })) }
+            placeholder="Open Scene"
+            value={ selectedScene || undefined }
+          />
           <Button
             disabled={ isUploading }
-            onClick={ handleSaveToPimcore }
+            onClick={ handleSaveAs }
           >
-            {isUploading ? 'Saving...' : 'Save Scene'}
+            Save As…
           </Button>
         </Toolbar>
         <div
