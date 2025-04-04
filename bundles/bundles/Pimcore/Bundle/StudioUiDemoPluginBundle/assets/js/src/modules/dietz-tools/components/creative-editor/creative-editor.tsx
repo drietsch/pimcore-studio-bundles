@@ -6,6 +6,7 @@ import './styles.css'
 const config = {
   license: 'yhikTVeBiYBEHCibwv8bvH6V_Oe0XMnX7czfXSr2Asj3sCvz-hiiSwR0US5LeA3M',
   userId: 'guides-user',
+  role: 'Creator',
   callbacks: {
     onUpload: 'local'
   }
@@ -76,55 +77,106 @@ const CreativeEditor: React.FC = () => {
   }, [])
 
   const handleStudioDrop = async (info: any) => {
-    if (info.type !== 'asset') return
-    const asset = info.data
+    if (!cesdkInstance) return
+    const engine = cesdkInstance.engine
 
-    const isImage = asset.mimeType?.startsWith('image/') || asset.type === 'image'
-    if (!asset?.fullPath || !isImage) {
-      console.warn('[CE.SDK Drop] Not an image:', asset)
-      return
+    // Drop: Pimcore Image Asset
+    if (info.type === 'asset') {
+      const asset = info.data
+
+      const isImage = asset.mimeType?.startsWith('image/') || asset.type === 'image'
+      if (!asset?.fullPath || !isImage) {
+        console.warn('[CE.SDK Drop] Not an image:', asset)
+        return
+      }
+
+      const assetId = `pimcore:${asset.id}`
+      const assetUrl = 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-80.app.github.dev/' + asset.fullPath
+      const thumbUrl = asset.imageThumbnailPath || asset.fullPath
+
+      try {
+        await engine.asset.addAssetToSource('pimcore', {
+          id: assetId,
+          label: asset.filename,
+          meta: {
+            uri: assetUrl,
+            thumbUri: thumbUrl,
+            mimeType: asset.mimeType,
+            width: asset.width,
+            height: asset.height,
+            blockType: '//ly.img.ubq/image'
+          },
+          context: {
+            sourceId: 'pimcore'
+          }
+        })
+
+        await engine.asset.apply('pimcore', {
+          id: assetId,
+          label: asset.filename,
+          meta: {
+            uri: assetUrl,
+            thumbUri: thumbUrl,
+            mimeType: asset.mimeType,
+            width: asset.width,
+            height: asset.height
+          },
+          context: {
+            sourceId: 'pimcore'
+          }
+        })
+
+        engine.asset.assetSourceContentsChanged('pimcore')
+      } catch (err) {
+        console.error('[CE.SDK Drop] Error inserting asset:', err)
+      }
     }
 
-    const engine = cesdkInstance.engine
-    const assetId = `pimcore:${asset.id}`
-    const assetUrl = 'https://literate-space-palm-tree-x5wwpr4xpcvx7g-80.app.github.dev/' + asset.fullPath
-    const thumbUrl = asset.imageThumbnailPath || asset.fullPath
+    // Drop: Pimcore Data Object (fills variables)
 
-    try {
-      await engine.asset.addAssetToSource('pimcore', {
-        id: assetId,
-        label: asset.filename,
-        meta: {
-          uri: assetUrl,
-          thumbUri: thumbUrl,
-          mimeType: asset.mimeType,
-          width: asset.width,
-          height: asset.height,
-          blockType: '//ly.img.ubq/image'
-        },
-        context: {
-          sourceId: 'pimcore'
+    if (info.type === 'data-object') {
+      const droppedObject = info.data
+
+      if (!droppedObject?.id) {
+        console.warn('[CE.SDK Drop] Data Object missing ID:', droppedObject)
+        return
+      }
+
+      try {
+        const res = await fetch(`/pimcore-studio/api/data-objects/${droppedObject.id}`, {
+          headers: {
+            accept: 'application/json'
+          }
+        })
+
+        if (!res.ok) {
+          const text = await res.text()
+          throw new Error(`${res.status}: ${text}`)
         }
-      })
 
-      await engine.asset.apply('pimcore', {
-        id: assetId,
-        label: asset.filename,
-        meta: {
-          uri: assetUrl,
-          thumbUri: thumbUrl,
-          mimeType: asset.mimeType,
-          width: asset.width,
-          height: asset.height
-        },
-        context: {
-          sourceId: 'pimcore'
+        const fullData = await res.json()
+        const objectData = fullData?.objectData
+
+        if (!objectData) {
+          console.warn('[CE.SDK Drop] No objectData found in response:', fullData)
+          return
         }
-      })
+        engine.variable.setString('name', 'Name')
+        engine.variable.setString('desc', 'Description')
+        const variables = engine.variable.findAll()
+        console.log(variables)
+        for (const key in variables) {
+          const value = objectData[variables[key]]
+          console.log(key + ' = ' + value)
+          if (key === undefined || value === null) continue
+          engine.variable.setString(variables[key], String(value))
+        }
 
-      engine.asset.assetSourceContentsChanged('pimcore')
-    } catch (err) {
-      console.error('[CE.SDK Drop] Error inserting asset:', err)
+        console.log('[✅ Variables updated from full Data Object]', objectData)
+      } catch (err) {
+        console.error('[❌ Failed to fetch data object]', err)
+        alert('Could not fetch full data object. See console for details.')
+      }
     }
   }
 
@@ -142,7 +194,7 @@ const CreativeEditor: React.FC = () => {
       const formData = new FormData()
       formData.append('file', file)
 
-      const parentId = 1 // Replace with your actual Pimcore folder ID
+      const parentId = 1
       const response = await fetch(
         `/pimcore-studio/api/assets/add/${parentId}`,
         {
@@ -172,8 +224,8 @@ const CreativeEditor: React.FC = () => {
 
   return (
     <Droppable
-      isValidContext={ info => info.type === 'asset' }
-      isValidData={ info => info.type === 'asset' }
+      isValidContext={ info => info.type === 'asset' || info.type === 'data-object' }
+      isValidData={ info => info.type === 'asset' || info.type === 'data-object' }
       onDrop={ handleStudioDrop }
       style={ { width: '100%', height: '100%' } }
       variant="outline"
@@ -189,7 +241,7 @@ const CreativeEditor: React.FC = () => {
         </Toolbar>
         <div
           ref={ containerRef }
-          style={ { width: '100%', height: '100%', display: 'flex', flexGrow: 1 } }
+          style={ { width: '100%', height: '100%', flexGrow: 1 } }
         />
       </div>
     </Droppable>
