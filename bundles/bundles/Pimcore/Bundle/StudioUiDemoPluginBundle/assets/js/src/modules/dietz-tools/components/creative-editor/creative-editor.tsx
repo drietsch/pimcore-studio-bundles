@@ -18,12 +18,20 @@ const config = {
   }
 }
 
+// Convert ArrayBuffer to data URI
+function arrayBufferToDataUri (buffer: ArrayBuffer): string {
+  const bytes = new Uint8Array(buffer)
+  const binary = bytes.reduce((acc, byte) => acc + String.fromCharCode(byte), '')
+  const base64 = btoa(binary)
+  return `data:application/zip;base64,${base64}`
+}
+
 const CreativeEditor: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null)
   const [cesdkInstance, setCesdkInstance] = useState<any>(null)
   const [isUploading, setIsUploading] = useState(false)
   const [scenes, setScenes] = useState<any[]>([])
-  const [selectedScene, setSelectedScene] = useState<string | null>(null)
+  const [selectedScene, setSelectedScene] = useState<string | undefined>()
 
   const formModal = useFormModal()
 
@@ -110,11 +118,9 @@ const CreativeEditor: React.FC = () => {
     const engine = cesdkInstance.engine
 
     try {
-      const res = await fetch(`/pimcore-studio/api/assets/${sceneId}/download`)
-      const blob = await res.blob()
-      const arrayBuffer = await blob.arrayBuffer()
+      const url = `https://literate-space-palm-tree-x5wwpr4xpcvx7g-80.app.github.dev/pimcore-studio/api/assets/${sceneId}/download`
 
-      await engine.scene.loadFromArchive(arrayBuffer)
+      await engine.scene.loadFromArchiveURL(url)
 
       setSelectedScene(sceneId)
       console.log('[✅ Scene loaded]', sceneId)
@@ -244,6 +250,48 @@ const CreativeEditor: React.FC = () => {
     })
   }
 
+  const handleSave = async () => {
+    if (!cesdkInstance || !selectedScene) {
+      alert('Please select a scene to overwrite.')
+      return
+    }
+
+    try {
+      setIsUploading(true)
+
+      const archive = await cesdkInstance.engine.scene.saveToArchive()
+      const file = new File([archive], 'scene.scene', {
+        type: 'application/zip'
+      })
+
+      const formData = new FormData()
+      formData.append('file', file)
+
+      const response = await fetch(`/pimcore-studio/api/assets/${selectedScene}/replace`, {
+        method: 'POST',
+        headers: {
+          // Do not set Content-Type — browser will handle multipart boundaries
+          accept: 'application/json'
+        },
+        body: formData
+      })
+
+      if (!response.ok) {
+        const errorText = await response.text()
+        throw new Error(`HTTP ${response.status}: ${errorText}`)
+      }
+
+      const result = await response.json()
+      console.log('[✅ Scene binary replaced]', result)
+      alert('Scene successfully overwritten!')
+    } catch (err) {
+      console.error('[❌ Failed to overwrite scene]', err)
+      alert('Failed to save. Check console for details.')
+    } finally {
+      setIsUploading(false)
+    }
+  }
+
   return (
     <Droppable
       isValidContext={ info => info.type === 'asset' || info.type === 'data-object' }
@@ -254,21 +302,34 @@ const CreativeEditor: React.FC = () => {
     >
       <div style={ { width: '100%', height: '100vh', display: 'flex', flexDirection: 'column' } }>
         <Toolbar>
-          <Select
-            onValueChange={ handleSceneSelect }
-            options={ scenes.map(scene => ({
-              label: scene.filename,
-              value: scene.id.toString()
-            })) }
-            placeholder="Open Scene"
-            value={ selectedScene || undefined }
-          />
-          <Button
-            disabled={ isUploading }
-            onClick={ handleSaveAs }
-          >
-            Save As…
-          </Button>
+          <div style={ { display: 'flex', gap: '0.5rem', alignItems: 'center' } }>
+            <Select
+              onChange={ (value) => {
+                setSelectedScene(value?.toString() ?? undefined)
+              } }
+              options={ scenes.map(scene => ({
+                label: scene.filename,
+                value: scene.id.toString()
+              })) }
+              placeholder="Open Scene"
+              value={ selectedScene }
+            />
+            <Button onClick={ async () => await (selectedScene && handleSceneSelect(selectedScene)) }>
+              Load
+            </Button>
+            <Button
+              disabled={ !selectedScene || isUploading }
+              onClick={ handleSave }
+            >
+              💾 Save
+            </Button>
+            <Button
+              disabled={ isUploading }
+              onClick={ handleSaveAs }
+            >
+              Save As…
+            </Button>
+          </div>
         </Toolbar>
         <div
           ref={ containerRef }
