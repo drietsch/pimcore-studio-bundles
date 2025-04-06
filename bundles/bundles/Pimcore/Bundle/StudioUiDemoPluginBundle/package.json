@@ -58,10 +58,15 @@
   "dependencies": {
     "@ant-design/pro-chat": "^1.15.3",
     "@cesdk/cesdk-js": "^1.47.0",
+    "@copilotkit/react-core": "^1.8.4",
+    "@copilotkit/react-ui": "^1.8.4",
+    "@copilotkit/runtime": "^1.8.4",
     "@huggingface/transformers": "^3.4.1",
     "@mlc-ai/web-llm": "^0.2.78",
     "@pimcore/studio-ui-bundle": "file:../../../../vendor/pimcore/studio-ui-bundle/public/build/studio-npm-package.tgz",
+    "kaibanjs": "^0.18.0",
     "react": "18.3.x",
-    "react-dom": "18.3.x"
+    "react-dom": "18.3.x",
+    "react-markdown": "^10.1.0"
   }
 }

@@ -1,18 +1,22 @@
-2025/04/01 05:31:21 DEBUG : rclone: Version "v1.53.3-DEV" starting with parameters ["rclone" "mount" "pimcore:" "./assets" "-vv"]
-2025/04/01 05:31:21 DEBUG : Creating backend with remote "pimcore:"
-2025/04/01 05:31:21 DEBUG : Using config file from "/home/vscode/.config/rclone/rclone.conf"
-2025/04/01 05:31:21 INFO  : webdav root '': poll-interval is not supported by this remote
-2025/04/01 05:31:21 NOTICE: webdav root '': --vfs-cache-mode writes or full is recommended for this remote as it can't stream
-2025/04/01 05:31:21 DEBUG : webdav root '': Mounting on "./assets"
-2025/04/01 05:31:21 DEBUG : : Root: 
-2025/04/01 05:31:21 DEBUG : : >Root: node=/, err=<nil>
-2025/04/01 05:33:12 DEBUG : /: ReadDirAll: 
-2025/04/01 05:33:13 DEBUG : /: >ReadDirAll: item=2, err=<nil>
-2025/04/01 05:33:17 DEBUG : /: ReadDirAll: 
-2025/04/01 05:33:17 DEBUG : /: >ReadDirAll: item=2, err=<nil>
-2025/04/01 05:33:17 DEBUG : /: ReadDirAll: 
-2025/04/01 05:33:17 DEBUG : /: >ReadDirAll: item=2, err=<nil>
-2025/04/01 05:33:23 DEBUG : /: ReadDirAll: 
-2025/04/01 05:33:23 DEBUG : /: >ReadDirAll: item=2, err=<nil>
-2025/04/01 05:33:23 DEBUG : /: ReadDirAll: 
-2025/04/01 05:33:23 DEBUG : /: >ReadDirAll: item=2, err=<nil>
+2025/04/06 04:28:15 DEBUG : rclone: Version "v1.53.3-DEV" starting with parameters ["rclone" "mount" "pimcore:" "./assets" "-vv"]
+2025/04/06 04:28:15 DEBUG : Creating backend with remote "pimcore:"
+2025/04/06 04:28:15 DEBUG : Using config file from "/home/vscode/.config/rclone/rclone.conf"
+2025/04/06 04:28:15 INFO  : webdav root '': poll-interval is not supported by this remote
+2025/04/06 04:28:15 NOTICE: webdav root '': --vfs-cache-mode writes or full is recommended for this remote as it can't stream
+2025/04/06 04:28:15 DEBUG : webdav root '': Mounting on "./assets"
+2025/04/06 04:28:15 DEBUG : : Root: 
+2025/04/06 04:28:15 DEBUG : : >Root: node=/, err=<nil>
+2025/04/06 05:12:39 DEBUG : /: ReadDirAll: 
+2025/04/06 05:12:40 DEBUG : /: >ReadDirAll: item=5, err=<nil>
+2025/04/06 05:12:45 DEBUG : /: ReadDirAll: 
+2025/04/06 05:12:45 DEBUG : /: >ReadDirAll: item=5, err=<nil>
+2025/04/06 05:12:45 DEBUG : /: Lookup: name="scenes"
+2025/04/06 05:12:45 DEBUG : /: >Lookup: node=scenes/, err=<nil>
+2025/04/06 05:12:45 DEBUG : scenes/: Attr: 
+2025/04/06 05:12:45 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/06 05:12:45 DEBUG : scenes/: ReadDirAll: 
+2025/04/06 05:12:45 DEBUG : /: ReadDirAll: 
+2025/04/06 05:12:45 DEBUG : scenes/: >ReadDirAll: item=6, err=<nil>
+2025/04/06 05:12:45 DEBUG : /: >ReadDirAll: item=5, err=<nil>
+2025/04/06 05:12:45 DEBUG : scenes/: ReadDirAll: 
+2025/04/06 05:12:45 DEBUG : scenes/: >ReadDirAll: item=6, err=<nil>

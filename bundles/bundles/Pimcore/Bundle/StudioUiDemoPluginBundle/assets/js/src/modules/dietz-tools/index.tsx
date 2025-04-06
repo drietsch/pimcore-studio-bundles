@@ -9,6 +9,7 @@ import RapidDataApps from './components/rapid-data-apps/rapid-data-apps'
 import CodeEditor from './components/code-editor/code-editor'
 import CreativeEditor from './components/creative-editor/creative-editor'
 import Chat from './components/chat/chat'
+import Copilot from './components/copilot/copilot'
 import Droppable from './components/droppable/droppable'
 import film03 from './icons/film-03.inline.svg'
 
@@ -28,6 +29,23 @@ export const DietzToolsModule: AbstractModule = {
     mainNavRegistryService.registerMainNavItem({
       path: 'Dietz Tools',
       icon: 'dashboard'
+    })
+
+    mainNavRegistryService.registerMainNavItem({
+      path: 'Dietz Tools/Copilot',
+      className: 'item-style-modifier',
+      icon: 'dashboard',
+      widgetConfig: {
+        name: 'Copilot',
+        id: 'copilot',
+        component: 'copilot',
+        config: {
+          icon: {
+            type: 'name',
+            value: 'user'
+          }
+        }
+      }
     })
 
     mainNavRegistryService.registerMainNavItem({
@@ -133,6 +151,11 @@ export const DietzToolsModule: AbstractModule = {
     })
 
     const widgetRegistryService = container.get<WidgetRegistry>(serviceIds.widgetManager)
+
+    widgetRegistryService.registerWidget({
+      name: 'copilot',
+      component: Copilot
+    })
 
     widgetRegistryService.registerWidget({
       name: 'creative-editor',
