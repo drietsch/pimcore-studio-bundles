@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react'
-import { Toolbar } from '@pimcore/studio-ui-bundle/components'
+import { Toolbar, Button } from '@pimcore/studio-ui-bundle/components'
 
 const slides = [
   { type: 'iframe', src: 'http://www.google.at' },
@@ -117,7 +117,7 @@ const Inspire = () => {
     <div>
       <div>
         <Toolbar>
-          <button
+          <Button
             onClick={ enterFullscreen }
             style={ {
               padding: '6px 12px',
@@ -129,10 +129,10 @@ const Inspire = () => {
             } }
           >
             Full Screen
-          </button>
+          </Button>
         </Toolbar>
       </div>
-      <div style={ { height: '500px', width: '500px' } }>
+      <div style={ { height: 'calc(100vh - 100px)', width: '100%' } }>
         <div
           className="reveal"
           ref={ revealRef }
