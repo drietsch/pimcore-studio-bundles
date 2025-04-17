@@ -108,5 +108,7 @@
   "build/vendors-node_modules_shikijs_themes_dist_vitesse-dark_mjs.js": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/vendors-node_modules_shikijs_themes_dist_vitesse-dark_mjs.js",
   "build/vendors-node_modules_shikijs_themes_dist_vitesse-light_mjs.js": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/vendors-node_modules_shikijs_themes_dist_vitesse-light_mjs.js",
   "build/assets/ort-wasm-simd-threaded.jsep.wasm": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/assets/ort-wasm-simd-threaded.jsep.64f8fa90.wasm",
-  "build/assets/ort.bundle.min.mjs": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/assets/ort.bundle.min.09c21376.mjs"
+  "build/assets/ort.bundle.min.mjs": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/assets/ort.bundle.min.09c21376.mjs",
+  "build/main.wasm": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/assets/ort-wasm-simd-threaded.jsep.64f8fa90.wasm",
+  "build/main.mjs": "https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/assets/ort.bundle.min.09c21376.mjs"
 }
