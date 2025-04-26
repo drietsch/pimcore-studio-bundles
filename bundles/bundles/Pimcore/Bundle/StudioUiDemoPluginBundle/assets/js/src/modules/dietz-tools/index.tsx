@@ -1,3 +1,4 @@
+// imports (static, normal!)
 import { type AbstractModule, container } from '@pimcore/studio-ui-bundle'
 import React from 'react'
 import { Icon } from '@pimcore/studio-ui-bundle/components'
@@ -10,13 +11,23 @@ import CodeEditor from './components/code-editor/code-editor'
 import CreativeEditor from './components/creative-editor/creative-editor'
 import Chat from './components/chat/chat'
 import Copilot from './components/copilot/copilot'
-
 import Inspire from './components/inspire/inspire'
 import Studio from './components/studio/studio'
 import Droppable from './components/droppable/droppable'
 import film03 from './icons/film-03.inline.svg'
-
 import { type TextTabManager } from '@pimcore/studio-ui-bundle/modules/asset'
+
+// feature toggles
+const features = {
+  copilot: true,
+  inspire: true,
+  studio: true,
+  creativeEditor: true,
+  chat: true,
+  rapidDataApps: true,
+  codeEditor: true,
+  droppable: true
+}
 
 export const DietzToolsModule: AbstractModule = {
   onInit: (): void => {
@@ -30,211 +41,186 @@ export const DietzToolsModule: AbstractModule = {
     const mainNavRegistryService = container.get<MainNavRegistry>(serviceIds.mainNavRegistry)
 
     mainNavRegistryService.registerMainNavItem({
-      path: 'Dietz Tools',
+      path: 'Inspire 2025',
       icon: 'dashboard'
-    })
-
-    mainNavRegistryService.registerMainNavItem({
-      path: 'Dietz Tools/Copilot',
-      className: 'item-style-modifier',
-      icon: 'dashboard',
-      widgetConfig: {
-        name: 'Copilot',
-        id: 'copilot',
-        component: 'copilot',
-        config: {
-          icon: {
-            type: 'name',
-            value: 'user'
-          }
-        }
-      }
-    })
-
-    mainNavRegistryService.registerMainNavItem({
-      path: 'Dietz Tools/Droppable',
-      className: 'item-style-modifier',
-      icon: 'dashboard',
-      widgetConfig: {
-        name: 'Droppable',
-        id: 'droppable',
-        component: 'droppable',
-        config: {
-          icon: {
-            type: 'name',
-            value: 'user'
-          }
-        }
-      }
-    })
-
-    mainNavRegistryService.registerMainNavItem({
-      path: 'Dietz Tools/Copilot Chat',
-      className: 'item-style-modifier',
-      icon: 'dashboard',
-      widgetConfig: {
-        name: 'Copilot Chat',
-        id: 'chat',
-        component: 'chat',
-        config: {
-          icon: {
-            type: 'name',
-            value: 'user'
-          }
-        }
-      }
-    })
-
-    mainNavRegistryService.registerMainNavItem({
-      path: 'Dietz Tools/Rapid Data Apps',
-      className: 'item-style-modifier',
-      icon: 'dashboard',
-      widgetConfig: {
-        name: 'Pimcore Rapid Data Apps',
-        id: 'rapid-data-apps',
-        component: 'rapid-data-apps',
-        config: {
-          icon: {
-            type: 'name',
-            value: 'user'
-          }
-        }
-      }
-    })
-
-    mainNavRegistryService.registerMainNavItem({
-      path: 'Dietz Tools/Code Editor',
-      className: 'item-style-modifier',
-      icon: 'dashboard',
-      widgetConfig: {
-        name: 'Pimcore Code Editor',
-        id: 'code-editor',
-        component: 'code-editor',
-        config: {
-          icon: {
-            type: 'name',
-            value: 'user'
-          }
-        }
-      }
-    })
-
-    mainNavRegistryService.registerMainNavItem({
-      path: 'Dietz Tools/Copilot Chat',
-      className: 'item-style-modifier',
-      icon: 'dashboard',
-      widgetConfig: {
-        name: 'Copilot Chat',
-        id: 'super-ai-tool',
-        component: 'super-ai-tool',
-        config: {
-          icon: {
-            type: 'name',
-            value: 'user'
-          }
-        }
-      }
-    })
-
-    mainNavRegistryService.registerMainNavItem({
-      path: 'Dietz Tools/Creative Editor',
-      className: 'item-style-modifier',
-      icon: 'dashboard',
-      widgetConfig: {
-        name: 'Creative Editor',
-        id: 'creative-editor',
-        component: 'creative-editor',
-        config: {
-          icon: {
-            type: 'name',
-            value: 'user'
-          }
-        }
-      }
-    })
-
-    mainNavRegistryService.registerMainNavItem({
-      path: 'Dietz Tools/Inspire 2025',
-      className: 'item-style-modifier',
-      icon: 'dashboard',
-      widgetConfig: {
-        name: 'Inspire 2025',
-        id: 'inspire',
-        component: 'inspire',
-        config: {
-          icon: {
-            type: 'name',
-            value: 'user'
-          }
-        }
-      }
-    })
-
-    mainNavRegistryService.registerMainNavItem({
-      path: 'Dietz Tools/Studio Presentation',
-      className: 'item-style-modifier',
-      icon: 'dashboard',
-      widgetConfig: {
-        name: 'Studio Presentation',
-        id: 'Studio',
-        component: 'studio',
-        config: {
-          icon: {
-            type: 'name',
-            value: 'user'
-          }
-        }
-      }
     })
 
     const widgetRegistryService = container.get<WidgetRegistry>(serviceIds.widgetManager)
 
-    widgetRegistryService.registerWidget({
-      name: 'copilot',
-      component: Copilot
-    })
+    // Copilot
+    if (features.copilot) {
+      mainNavRegistryService.registerMainNavItem({
+        path: 'Inspire 2025/Copilot',
+        className: 'item-style-modifier',
+        icon: 'dashboard',
+        widgetConfig: {
+          name: 'Copilot',
+          id: 'copilot',
+          component: 'copilot',
+          config: {
+            icon: { type: 'name', value: 'user' }
+          }
+        }
+      })
+      widgetRegistryService.registerWidget({
+        name: 'copilot',
+        component: Copilot
+      })
+    }
 
-    widgetRegistryService.registerWidget({
-      name: 'inspire',
-      component: Inspire
-    })
+    // Droppable
+    if (features.droppable) {
+      mainNavRegistryService.registerMainNavItem({
+        path: 'Inspire 2025/Droppable',
+        className: 'item-style-modifier',
+        icon: 'dashboard',
+        widgetConfig: {
+          name: 'Droppable',
+          id: 'droppable',
+          component: 'droppable',
+          config: {
+            icon: { type: 'name', value: 'user' }
+          }
+        }
+      })
+      widgetRegistryService.registerWidget({
+        name: 'droppable',
+        component: Droppable
+      })
+    }
 
-    widgetRegistryService.registerWidget({
-      name: 'studio',
-      component: Studio
-    })
+    // Chat
+    if (features.chat) {
+      mainNavRegistryService.registerMainNavItem({
+        path: 'Inspire 2025/Copilot Chat',
+        className: 'item-style-modifier',
+        icon: 'dashboard',
+        widgetConfig: {
+          name: 'Copilot Chat',
+          id: 'chat',
+          component: 'chat',
+          config: {
+            icon: { type: 'name', value: 'user' }
+          }
+        }
+      })
+      widgetRegistryService.registerWidget({
+        name: 'chat',
+        component: Chat
+      })
+    }
 
-    widgetRegistryService.registerWidget({
-      name: 'creative-editor',
-      component: CreativeEditor
-    })
+    // Rapid Data Apps
+    if (features.rapidDataApps) {
+      mainNavRegistryService.registerMainNavItem({
+        path: 'Inspire 2025/Rapid Data Apps',
+        className: 'item-style-modifier',
+        icon: 'dashboard',
+        widgetConfig: {
+          name: 'Pimcore Rapid Data Apps',
+          id: 'rapid-data-apps',
+          component: 'rapid-data-apps',
+          config: {
+            icon: { type: 'name', value: 'user' }
+          }
+        }
+      })
+      widgetRegistryService.registerWidget({
+        name: 'rapid-data-apps',
+        component: RapidDataApps
+      })
 
-    widgetRegistryService.registerWidget({
-      name: 'chat',
-      component: Chat
-    })
+      const assetTabManager = container.get<TextTabManager>(serviceIds['Asset/Editor/TextTabManager'])
+      assetTabManager.register({
+        key: 'my-first-tab-component',
+        label: 'Rapid Data App',
+        icon: <Icon value="film-03" />,
+        children: <RapidDataApps />
+      })
+    }
 
-    widgetRegistryService.registerWidget({
-      name: 'rapid-data-apps',
-      component: RapidDataApps
-    })
+    // Code Editor
+    if (features.codeEditor) {
+      mainNavRegistryService.registerMainNavItem({
+        path: 'Inspire 2025/Code Editor',
+        className: 'item-style-modifier',
+        icon: 'dashboard',
+        widgetConfig: {
+          name: 'Pimcore Code Editor',
+          id: 'code-editor',
+          component: 'code-editor',
+          config: {
+            icon: { type: 'name', value: 'user' }
+          }
+        }
+      })
+      widgetRegistryService.registerWidget({
+        name: 'code-editor',
+        component: CodeEditor
+      })
+    }
 
-    widgetRegistryService.registerWidget({
-      name: 'code-editor',
-      component: CodeEditor
-    })
+    // Creative Editor
+    if (features.creativeEditor) {
+      mainNavRegistryService.registerMainNavItem({
+        path: 'Inspire 2025/Creative Editor',
+        className: 'item-style-modifier',
+        icon: 'dashboard',
+        widgetConfig: {
+          name: 'Creative Editor',
+          id: 'creative-editor',
+          component: 'creative-editor',
+          config: {
+            icon: { type: 'name', value: 'user' }
+          }
+        }
+      })
+      widgetRegistryService.registerWidget({
+        name: 'creative-editor',
+        component: CreativeEditor
+      })
+    }
 
-    widgetRegistryService.registerWidget({
-      name: 'droppable',
-      component: Droppable
-    })
+    // Inspire
+    if (features.inspire) {
+      mainNavRegistryService.registerMainNavItem({
+        path: 'Inspire 2025/Inspire 2025',
+        className: 'item-style-modifier',
+        icon: 'dashboard',
+        widgetConfig: {
+          name: 'Inspire 2025',
+          id: 'inspire',
+          component: 'inspire',
+          config: {
+            icon: { type: 'name', value: 'user' }
+          }
+        }
+      })
+      widgetRegistryService.registerWidget({
+        name: 'inspire',
+        component: Inspire
+      })
+    }
 
-    const assetTabManager = container.get<TextTabManager>((serviceIds['Asset/Editor/TextTabManager']))
-    assetTabManager.register({
-      key: 'my-first-tab-component',
-      label: 'Rapid Data App',
-      icon: <Icon value="film-03" />,
-      children: <RapidDataApps />
-    })
+    // Studio
+    if (features.studio) {
+      mainNavRegistryService.registerMainNavItem({
+        path: 'Inspire 2025/Studio Presentation',
+        className: 'item-style-modifier',
+        icon: 'dashboard',
+        widgetConfig: {
+          name: 'Studio Presentation',
+          id: 'studio',
+          component: 'studio',
+          config: {
+            icon: { type: 'name', value: 'user' }
+          }
+        }
+      })
+      widgetRegistryService.registerWidget({
+        name: 'studio',
+        component: Studio
+      })
+    }
   }
 }

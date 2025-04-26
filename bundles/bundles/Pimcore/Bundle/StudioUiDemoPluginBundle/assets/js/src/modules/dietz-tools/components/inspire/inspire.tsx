@@ -71,6 +71,12 @@ const Inspire = () => {
 
     const loadReveal = async () => {
       try {
+        if (window.Reveal) {
+          Reveal.destroy()
+          await loadScript('https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/inspire/lib/reveal.js')
+          await loadScript('https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/inspire/lib/reveal-plugins.js')
+          await loadScript('https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/inspire/lib/offline.js')
+        }
         if (!window.Reveal) {
           await loadScript('https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/inspire/lib/reveal.js')
           await loadScript('https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/inspire/lib/reveal-plugins.js')

@@ -3,8 +3,11 @@ import { Toolbar, Button } from '@pimcore/studio-ui-bundle/components'
 
 const slides: Slide[] = [
   { type: 'video', src: 'deck-620304/e71d5f55b0fd0add20f72c4f6adf9d66.mp4', thumb: 'https://s3.amazonaws.com/media-p.slid.es/videos/2799794/Ad5Bzg3B/02_thumb_00001.jpg' },
+  { type: 'video', src: 'deck-620304/users.mp4', thumb: 'https://s3.amazonaws.com/media-p.slid.es/videos/2799794/mDDx_z7s/03_thumb_00001.jpg' },
+  { type: 'video', src: 'deck-620304/partners.mp4', thumb: 'https://s3.amazonaws.com/media-p.slid.es/videos/2799794/mDDx_z7s/03_thumb_00001.jpg' },
+  { type: 'video', src: 'deck-620304/devs.mp4', thumb: 'https://s3.amazonaws.com/media-p.slid.es/videos/2799794/mDDx_z7s/03_thumb_00001.jpg' },
   { type: 'video', src: 'deck-620304/37eb09e3ce250860f6599ae474f2c40d.mp4', thumb: 'https://s3.amazonaws.com/media-p.slid.es/videos/2799794/mDDx_z7s/03_thumb_00001.jpg' },
-  { type: 'video', src: 'deck-620304/0e34d58c210155d35a21375f67fcc754.mp4', thumb: 'https://s3.amazonaws.com/media-p.slid.es/videos/2799794/SMoay1nU/04_thumb_00001.jpg' },
+  { type: 'video', src: 'deck-620304/gui.mp4', thumb: 'https://s3.amazonaws.com/media-p.slid.es/videos/2799794/mDDx_z7s/03_thumb_00001.jpg' },
   { type: 'video', src: 'deck-620304/2d7fdddd06a6c64d7fa0b048363c6022.mp4', thumb: 'https://s3.amazonaws.com/media-p.slid.es/videos/2799794/zzfWOWQs/05_thumb_00001.jpg' },
   { type: 'video', src: 'deck-620304/97ced5ebb47a4d7b7b76c5793b09f4e2.mp4', thumb: 'https://s3.amazonaws.com/media-p.slid.es/videos/2799794/qgOXwoFe/06_thumb_00001.jpg' }
 ]
@@ -60,6 +63,12 @@ const Studio = () => {
 
     const loadReveal = async () => {
       try {
+        if (window.Reveal) {
+          Reveal.destroy()
+          await loadScript('https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/inspire/lib/reveal.js')
+          await loadScript('https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/inspire/lib/reveal-plugins.js')
+          await loadScript('https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/inspire/lib/offline.js')
+        }
         if (!window.Reveal) {
           await loadScript('https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/inspire/lib/reveal.js')
           await loadScript('https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/inspire/lib/reveal-plugins.js')
