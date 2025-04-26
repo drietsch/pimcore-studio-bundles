@@ -12,9 +12,11 @@
 */
 
 import { useAppDispatch } from '@Pimcore/app/store'
+import trackError, { ApiError } from '@Pimcore/modules/app/error-handler'
 import { api, type DataObjectGetGridApiArg, useDataObjectPatchByIdMutation } from '@Pimcore/modules/data-object/data-object-api-slice-enhanced'
 import { type UseInlineEditApiUpdateReturn } from '@Pimcore/modules/element/listing/decorators/inline-edit/inline-edit-decorator'
-import { set } from 'lodash'
+import { isNil, set } from 'lodash'
+import { addBatchAppendMode, BatchAppendMode, META_SUPPORTS_BATCH_APPEND_MODE } from '../../../batch-actions/batch-append-mode/batch-append-mode'
 
 export const useInlineEditApiUpdate = (): UseInlineEditApiUpdateReturn => {
   const [patchDataObject] = useDataObjectPatchByIdMutation()
@@ -34,6 +36,9 @@ export const useInlineEditApiUpdate = (): UseInlineEditApiUpdateReturn => {
         for (const column of item.columns!) {
           if (column.key === columnToUpdate.key && column.locale === columnToUpdate.locale) {
             column.value = value
+            if (column.inheritance === true) {
+              column.inheritance = 'broken'
+            }
             // for now we assume that there can be only one value updated at the time
             break item_loop
           }
@@ -46,6 +51,20 @@ export const useInlineEditApiUpdate = (): UseInlineEditApiUpdateReturn => {
 
   const updateApiData: UseInlineEditApiUpdateReturn['updateApiData'] = async (event) => {
     const { update } = event
+    let columnKey = update.column.key
+
+    if (update.column.localizable && update.column.locale !== undefined && update.column.locale !== null) {
+      const splittedColumnKey = columnKey.split('.')
+      const columnId = splittedColumnKey[splittedColumnKey.length - 1]
+      splittedColumnKey.pop()
+      const hasPrepath = splittedColumnKey.length > 0 && splittedColumnKey[0] !== ''
+
+      columnKey = `${splittedColumnKey.join('.')}${hasPrepath ? '.' : ''}localizedfields.${columnId}.${update.column.locale}`
+    }
+
+    const value = event.meta?.[META_SUPPORTS_BATCH_APPEND_MODE] === true
+      ? addBatchAppendMode(update.value, BatchAppendMode.Replace)
+      : update.value
 
     const promise = patchDataObject({
       body: {
@@ -53,14 +72,19 @@ export const useInlineEditApiUpdate = (): UseInlineEditApiUpdateReturn => {
           {
             id: update.id,
             editableData: {
-              ...set({}, update.column.key, update.value)
+              ...set({}, columnKey, value)
             }
           }
         ]
       }
     })
 
-    return await promise
+    const result = await promise
+    if (!isNil(result.error)) {
+      trackError(new ApiError(result.error))
+    }
+
+    return result
   }
 
   return {

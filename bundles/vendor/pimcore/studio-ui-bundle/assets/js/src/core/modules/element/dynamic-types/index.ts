@@ -11,6 +11,7 @@
 *  @license    https://github.com/pimcore/studio-ui-bundle/blob/1.x/LICENSE.md POCL and PCL
 */
 
+/* eslint-disable max-lines */
 import { container } from '@Pimcore/app/depency-injection'
 import { moduleSystem } from '@Pimcore/app/module-system/module-system'
 import { type DynamicTypeFieldFilterRegistry } from './definitions/field-filters/dynamic-type-field-filter-registry'
@@ -67,6 +68,7 @@ import { type DynamicTypeObjectLayoutFieldset } from './definitions/objects/layo
 import { type DynamicTypeObjectLayoutFieldContainer } from './definitions/objects/layout-related/types/dynamic-type-object-layout-field-container'
 import { type DynamicTypeObjectDataInput } from './definitions/objects/data-related/types/dynamic-type-object-data-input'
 import { type DynamicTypeObjectDataTextarea } from '@Pimcore/modules/element/dynamic-types/definitions/objects/data-related/types/dynamic-type-object-data-textarea'
+import { type DynamicTypeObjectDataWysiwyg } from '@Pimcore/modules/element/dynamic-types/definitions/objects/data-related/types/dynamic-type-object-data-wysiwyg'
 import { type DynamicTypeObjectDataPassword } from '@Pimcore/modules/element/dynamic-types/definitions/objects/data-related/types/dynamic-type-object-data-password'
 import { type DynamicTypeObjectDataInputQuantityValue } from '@Pimcore/modules/element/dynamic-types/definitions/objects/data-related/types/dynamic-type-object-data-input-quantity-value'
 import { type DynamicTypeObjectDataSelect } from '@Pimcore/modules/element/dynamic-types/definitions/objects/data-related/types/dynamic-type-object-data-select'
@@ -117,15 +119,13 @@ import { type DynamicTypeObjectDataStructuredTable } from '@Pimcore/modules/elem
 
 import { type DynamicTypeObjectDataBlock } from './definitions/objects/data-related/types/dynamic-type-object-data-block'
 import { type DynamicTypeObjectDataLocalizedFields } from './definitions/objects/data-related/types/dynamic-type-object-data-localized-fields'
-import {
-  type DynamicTypeBatchEditRegistry
-} from '@Pimcore/modules/element/dynamic-types/definitions/batch-edits/dynamic-type-batch-edit-registry'
-import {
-  type DynamicTypeBatchEditText
-} from '@Pimcore/modules/element/dynamic-types/definitions/batch-edits/types/text/dynamic-type-batch-edit-text'
-import {
-  type DynamicTypeBatchEditTextArea
-} from '@Pimcore/modules/element/dynamic-types/definitions/batch-edits/types/text/dynamic-type-batch-edit-text-area'
+import { type DynamicTypeBatchEditRegistry } from '@Pimcore/modules/element/dynamic-types/definitions/batch-edits/dynamic-type-batch-edit-registry'
+import { type DynamicTypeBatchEditText } from '@Pimcore/modules/element/dynamic-types/definitions/batch-edits/types/text/dynamic-type-batch-edit-text'
+import { type DynamicTypeBatchEditTextArea } from '@Pimcore/modules/element/dynamic-types/definitions/batch-edits/types/text/dynamic-type-batch-edit-text-area'
+import { type DynamicTypeBatchEditDatetime } from '@Pimcore/modules/element/dynamic-types/definitions/batch-edits/types/datetime/dynamic-type-batch-edit-datetime'
+import { type DynamicTypeBatchEditSelect } from '@Pimcore/modules/element/dynamic-types/definitions/batch-edits/types/select/dynamic-type-batch-edit-select'
+import { type DynamicTypeBatchEditCheckbox } from '@Pimcore/modules/element/dynamic-types/definitions/batch-edits/types/checkbox/dynamic-type-batch-edit-checkbox'
+import { type DynamicTypeBatchEditElementDropzone } from '@Pimcore/modules/element/dynamic-types/definitions/batch-edits/types/element-dropzone/dynamic-type-batch-edit-element-dropzone'
 import { type DynamicTypeGridCellLanguageSelect } from './definitions/grid-cell/types/language-select/dynamic-type-grid-cell-language-select'
 import { type DynamicTypeGridCellTranslate } from '@Pimcore/modules/element/dynamic-types/definitions/grid-cell/types/translate/dynamic-type-grid-cell-translate'
 import { type DynamicTypeListingRegistry } from '@Pimcore/modules/element/dynamic-types/definitions/listing/dynamic-type-listing-registry'
@@ -137,6 +137,21 @@ import { type DynamicTypeGridCellDataObjectActions } from './definitions/grid-ce
 import { type DynamicTypeGridCellDataObjectObjectBrick } from './definitions/grid-cell/types/data-object-object-brick/dynamic-type-grid-cell-data-object-adapter'
 import { type DynamicTypeBatchEditDataObjectAdapter } from './definitions/batch-edits/types/data-object-adapter/dynamic-type-batch-edit-data-object-adpater'
 import { type DynamicTypeBatchEditDataObjectObjectBrick } from './definitions/batch-edits/types/data-object-object-brick/dynamic-type-batch-edit-data-object-object-brick'
+import { type DynamicTypeAssetRegistry } from './definitions/asset/dynamic-type-asset-registry'
+import { type DynamicTypeAssetArchive } from './definitions/asset/types/dynamic-type-asset-archive'
+import { type DynamicTypeAssetAudio } from './definitions/asset/types/dynamic-type-asset-audio'
+import { type DynamicTypeAssetDocument } from './definitions/asset/types/dynamic-type-asset-document'
+import { type DynamicTypeAssetFolder } from './definitions/asset/types/dynamic-type-asset-folder'
+import { type DynamicTypeAssetImage } from './definitions/asset/types/dynamic-type-asset-image'
+import { type DynamicTypeAssetText } from './definitions/asset/types/dynamic-type-asset-text'
+import { type DynamicTypeAssetUnknown } from './definitions/asset/types/dynamic-type-asset-unknown'
+import { type DynamicTypeAssetVideo } from './definitions/asset/types/dynamic-type-asset-video'
+import { type DynamicTypeObjectRegistry } from './definitions/objects/dynamic-type-object-registry'
+import { type DynamicTypeObjectFolder } from './definitions/objects/types/dynamic-type-object-folder'
+import { type DynamicTypeObjectObject } from './definitions/objects/types/dynamic-type-object-object'
+import { type DynamicTypeObjectVariant } from './definitions/objects/types/dynamic-type-object-variant'
+import { type DynamicTypeObjectDataClassificationStore } from './definitions/objects/data-related/types/dynamic-type-object-data-classification-store'
+import { type DynamicTypeGridCellBoolean } from './definitions/grid-cell/types/boolean/dynamic-type-grid-cell-boolean'
 
 moduleSystem.registerModule({
   onInit () {
@@ -151,6 +166,10 @@ moduleSystem.registerModule({
 
     batchEditRegistry.registerDynamicType(container.get<DynamicTypeBatchEditText>(serviceIds['DynamicTypes/BatchEdit/Text']))
     batchEditRegistry.registerDynamicType(container.get<DynamicTypeBatchEditTextArea>(serviceIds['DynamicTypes/BatchEdit/TextArea']))
+    batchEditRegistry.registerDynamicType(container.get<DynamicTypeBatchEditDatetime>(serviceIds['DynamicTypes/BatchEdit/Datetime']))
+    batchEditRegistry.registerDynamicType(container.get<DynamicTypeBatchEditSelect>(serviceIds['DynamicTypes/BatchEdit/Select']))
+    batchEditRegistry.registerDynamicType(container.get<DynamicTypeBatchEditCheckbox>(serviceIds['DynamicTypes/BatchEdit/Checkbox']))
+    batchEditRegistry.registerDynamicType(container.get<DynamicTypeBatchEditElementDropzone>(serviceIds['DynamicTypes/BatchEdit/ElementDropzone']))
     batchEditRegistry.registerDynamicType(container.get<DynamicTypeBatchEditDataObjectAdapter>(serviceIds['DynamicTypes/BatchEdit/DataObjectAdapter']))
     batchEditRegistry.registerDynamicType(container.get<DynamicTypeBatchEditDataObjectObjectBrick>(serviceIds['DynamicTypes/BatchEdit/DataObjectObjectBrick']))
 
@@ -165,6 +184,7 @@ moduleSystem.registerModule({
     GridCellRegistry.registerDynamicType(container.get<DynamicTypeGridCellNumber>(serviceIds['DynamicTypes/GridCell/Number']))
     GridCellRegistry.registerDynamicType(container.get<DynamicTypeGridCellSelect>(serviceIds['DynamicTypes/GridCell/Select']))
     GridCellRegistry.registerDynamicType(container.get<DynamicTypeGridCellMultiSelect>(serviceIds['DynamicTypes/GridCell/MultiSelect']))
+    GridCellRegistry.registerDynamicType(container.get<DynamicTypeGridCellBoolean>(serviceIds['DynamicTypes/GridCell/Boolean']))
     GridCellRegistry.registerDynamicType(container.get<DynamicTypeGridCellCheckbox>(serviceIds['DynamicTypes/GridCell/Checkbox']))
     GridCellRegistry.registerDynamicType(container.get<DynamicTypeGridCellDate>(serviceIds['DynamicTypes/GridCell/Date']))
     GridCellRegistry.registerDynamicType(container.get<DynamicTypeGridCellTime>(serviceIds['DynamicTypes/GridCell/Time']))
@@ -218,6 +238,7 @@ moduleSystem.registerModule({
 
     objectDataRegistry.registerDynamicType(container.get<DynamicTypeObjectDataInput>(serviceIds['DynamicTypes/ObjectData/Input']))
     objectDataRegistry.registerDynamicType(container.get<DynamicTypeObjectDataTextarea>(serviceIds['DynamicTypes/ObjectData/Textarea']))
+    objectDataRegistry.registerDynamicType(container.get<DynamicTypeObjectDataWysiwyg>(serviceIds['DynamicTypes/ObjectData/Wysiwyg']))
     objectDataRegistry.registerDynamicType(container.get<DynamicTypeObjectDataPassword>(serviceIds['DynamicTypes/ObjectData/Password']))
     objectDataRegistry.registerDynamicType(container.get<DynamicTypeObjectDataInputQuantityValue>(serviceIds['DynamicTypes/ObjectData/InputQuantityValue']))
     objectDataRegistry.registerDynamicType(container.get<DynamicTypeObjectDataSelect>(serviceIds['DynamicTypes/ObjectData/Select']))
@@ -269,5 +290,23 @@ moduleSystem.registerModule({
     objectDataRegistry.registerDynamicType(container.get<DynamicTypeObjectDataLocalizedFields>(serviceIds['DynamicTypes/ObjectData/LocalizedFields']))
     objectDataRegistry.registerDynamicType(container.get<DynamicTypeObjectDataFieldCollection>(serviceIds['DynamicTypes/ObjectData/FieldCollection']))
     objectDataRegistry.registerDynamicType(container.get<DynamicTypeObjectDataObjectBrick>(serviceIds['DynamicTypes/ObjectData/ObjectBrick']))
+    objectDataRegistry.registerDynamicType(container.get<DynamicTypeObjectDataClassificationStore>(serviceIds['DynamicTypes/ObjectData/ClassificationStore']))
+
+    const assetRegistry = container.get<DynamicTypeAssetRegistry>(serviceIds['DynamicTypes/AssetRegistry'])
+
+    assetRegistry.registerDynamicType(container.get<DynamicTypeAssetArchive>(serviceIds['DynamicTypes/Asset/Archive']))
+    assetRegistry.registerDynamicType(container.get<DynamicTypeAssetAudio>(serviceIds['DynamicTypes/Asset/Audio']))
+    assetRegistry.registerDynamicType(container.get<DynamicTypeAssetDocument>(serviceIds['DynamicTypes/Asset/Document']))
+    assetRegistry.registerDynamicType(container.get<DynamicTypeAssetFolder>(serviceIds['DynamicTypes/Asset/Folder']))
+    assetRegistry.registerDynamicType(container.get<DynamicTypeAssetImage>(serviceIds['DynamicTypes/Asset/Image']))
+    assetRegistry.registerDynamicType(container.get<DynamicTypeAssetText>(serviceIds['DynamicTypes/Asset/Text']))
+    assetRegistry.registerDynamicType(container.get<DynamicTypeAssetUnknown>(serviceIds['DynamicTypes/Asset/Unknown']))
+    assetRegistry.registerDynamicType(container.get<DynamicTypeAssetVideo>(serviceIds['DynamicTypes/Asset/Video']))
+
+    const objectRegistry = container.get<DynamicTypeObjectRegistry>(serviceIds['DynamicTypes/ObjectRegistry'])
+
+    objectRegistry.registerDynamicType(container.get<DynamicTypeObjectFolder>(serviceIds['DynamicTypes/Object/Folder']))
+    objectRegistry.registerDynamicType(container.get<DynamicTypeObjectObject>(serviceIds['DynamicTypes/Object/Object']))
+    objectRegistry.registerDynamicType(container.get<DynamicTypeObjectVariant>(serviceIds['DynamicTypes/Object/Variant']))
   }
 })

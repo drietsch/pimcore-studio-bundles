@@ -39,6 +39,12 @@ pimcore_admin:
 
 
 pimcore:
+    encryption:
+        secret: def000006790fe8eecc8fc0d6144c2cdd8ff293f8cefa7486f80281fdb70ce55aa2a7cb36d6cd7bdb2aa67d1e673d5a445d70b7a9bca98782bf3489182029433206af3b7
+
+    product_registration:
+        instance_identifier: 4q5vBvnC6W6MuKDfaf9tYV
+        product_key: 'eyJwYXlsb2FkIjoie1wiaWRcIjpcIjc5MDIzNWQ1NGZlMWVlY2E2YzBkMTAyN2I4N2E4OTZlMWY4MjUwODg1NWNkODA2NzhjOWY4Y2E0M2I0NGJlNDRcIixcInRpbWVzdGFtcFwiOjE3NDU2NDM0NjN9Iiwic2lnbmF0dXJlIjoiTUVVQ0lDSnB0ZGNFOHpEK2hKMXI1MDVZUVRVR1lTTzRKeUdUeTNSUVF3dDRHK1RIQWlFQTdydFwvXC9zOEsxMmFxejV4QWFSdEFibWJhRzJDODVZc3MzcEZYOVFFQmpTUT0ifQ=='
 
 # IMPORTANT Notice!
 # Following there are only some examples listed, for a full list of possible options, please run the following command:

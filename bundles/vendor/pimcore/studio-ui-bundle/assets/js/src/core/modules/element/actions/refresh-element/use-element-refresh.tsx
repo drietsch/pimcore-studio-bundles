@@ -18,15 +18,19 @@ import { api as dataObjectApi } from '@Pimcore/modules/data-object/data-object-a
 import { invalidatingTags } from '@Pimcore/app/api/pimcore/tags'
 import { removeAsset } from '@Pimcore/modules/asset/asset-draft-slice'
 import { removeDataObject } from '@Pimcore/modules/data-object/data-object-draft-slice'
+import { useDataObjectDraftFetcher } from '@Pimcore/modules/data-object/hooks/use-data-object-draft-fetcher'
+import { useAssetDraftFetcher } from '@Pimcore/modules/asset/hooks/use-asset-draft-fetcher'
 
 interface UseElementRefreshHookReturn {
-  refreshElement: (id: number) => void
+  refreshElement: (id: number, inElementTab?: boolean) => void
 }
 
 export const useElementRefresh = (elementType: ElementType): UseElementRefreshHookReturn => {
   const dispatch = useAppDispatch()
+  const { updateDataObjectDraft } = useDataObjectDraftFetcher()
+  const { updateAssetDraft } = useAssetDraftFetcher()
 
-  const refreshElement = (id: number): void => {
+  const refreshElement = (id: number, inElementTab?: boolean): void => {
     if (elementType === 'asset') {
       dispatch(removeAsset(id))
       dispatch(
@@ -34,6 +38,15 @@ export const useElementRefresh = (elementType: ElementType): UseElementRefreshHo
           invalidatingTags.ASSET_DETAIL_ID(id)
         )
       )
+
+      if (inElementTab === true) {
+        dispatch(
+          assetApi.util.invalidateTags(
+            invalidatingTags.PREDEFINED_ASSET_METADATA()
+          )
+        )
+      }
+      void updateAssetDraft(id, true)
     } else if (elementType === 'data-object') {
       dispatch(removeDataObject(id))
       dispatch(
@@ -41,6 +54,8 @@ export const useElementRefresh = (elementType: ElementType): UseElementRefreshHo
           invalidatingTags.DATA_OBJECT_DETAIL_ID(id)
         )
       )
+
+      void updateDataObjectDraft(id, true)
     }
   }
 

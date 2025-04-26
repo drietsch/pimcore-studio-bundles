@@ -1,390 +1,46 @@
-2025/04/09 08:53:06 DEBUG : rclone: Version "v1.53.3-DEV" starting with parameters ["rclone" "mount" "pimcore:" "./assets" "-vv"]
-2025/04/09 08:53:06 DEBUG : Creating backend with remote "pimcore:"
-2025/04/09 08:53:06 DEBUG : Using config file from "/home/vscode/.config/rclone/rclone.conf"
-2025/04/09 08:53:06 INFO  : webdav root '': poll-interval is not supported by this remote
-2025/04/09 08:53:06 NOTICE: webdav root '': --vfs-cache-mode writes or full is recommended for this remote as it can't stream
-2025/04/09 08:53:06 DEBUG : webdav root '': Mounting on "./assets"
-2025/04/09 08:53:06 DEBUG : : Root: 
-2025/04/09 08:53:06 DEBUG : : >Root: node=/, err=<nil>
-2025/04/09 08:53:14 DEBUG : /: Attr: 
-2025/04/09 08:53:14 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:53:14 DEBUG : /: ReadDirAll: 
-2025/04/09 08:53:17 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:53:17 DEBUG : /: Lookup: name="Luxus-sauna-nimbus-corso-3-1.jpg"
-2025/04/09 08:53:17 DEBUG : /: >Lookup: node=Luxus-sauna-nimbus-corso-3-1.jpg, err=<nil>
-2025/04/09 08:53:17 DEBUG : Luxus-sauna-nimbus-corso-3-1.jpg: Attr: 
-2025/04/09 08:53:17 DEBUG : Luxus-sauna-nimbus-corso-3-1.jpg: >Attr: a=valid=1s ino=0 size=241284 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:53:17 DEBUG : /: Lookup: name="Unbenannt.jpg"
-2025/04/09 08:53:17 DEBUG : /: >Lookup: node=Unbenannt.jpg, err=<nil>
-2025/04/09 08:53:17 DEBUG : Unbenannt.jpg: Attr: 
-2025/04/09 08:53:17 DEBUG : Unbenannt.jpg: >Attr: a=valid=1s ino=0 size=86980 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:53:17 DEBUG : /: Lookup: name="api-explorer.txt"
-2025/04/09 08:53:17 DEBUG : /: >Lookup: node=api-explorer.txt, err=<nil>
-2025/04/09 08:53:17 DEBUG : api-explorer.txt: Attr: 
-2025/04/09 08:53:17 DEBUG : api-explorer.txt: >Attr: a=valid=1s ino=0 size=2507 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:53:17 DEBUG : /: Lookup: name="corso-sauna-manufaktur-banner_1920x1920.jpg"
-2025/04/09 08:53:17 DEBUG : /: >Lookup: node=corso-sauna-manufaktur-banner_1920x1920.jpg, err=<nil>
-2025/04/09 08:53:17 DEBUG : corso-sauna-manufaktur-banner_1920x1920.jpg: Attr: 
-2025/04/09 08:53:17 DEBUG : corso-sauna-manufaktur-banner_1920x1920.jpg: >Attr: a=valid=1s ino=0 size=124830 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:53:17 DEBUG : /: Lookup: name="scenes"
-2025/04/09 08:53:17 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/: Attr: 
-2025/04/09 08:53:17 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 08:53:17 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/: Lookup: name="dietz.scene"
-2025/04/09 08:53:17 DEBUG : scenes/: >Lookup: node=scenes/dietz.scene, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/dietz.scene: Attr: 
-2025/04/09 08:53:17 DEBUG : scenes/dietz.scene: >Attr: a=valid=1s ino=0 size=4465 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/: Lookup: name="dietz2.scene"
-2025/04/09 08:53:17 DEBUG : scenes/: >Lookup: node=scenes/dietz2.scene, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/dietz2.scene: Attr: 
-2025/04/09 08:53:17 DEBUG : scenes/dietz2.scene: >Attr: a=valid=1s ino=0 size=0 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/: Lookup: name="scene.ce.scene"
-2025/04/09 08:53:17 DEBUG : scenes/: >Lookup: node=scenes/scene.ce.scene, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/scene.ce.scene: Attr: 
-2025/04/09 08:53:17 DEBUG : scenes/scene.ce.scene: >Attr: a=valid=1s ino=0 size=1109953 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/: Lookup: name="scene.ce_1.scene"
-2025/04/09 08:53:17 DEBUG : scenes/: >Lookup: node=scenes/scene.ce_1.scene, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/scene.ce_1.scene: Attr: 
-2025/04/09 08:53:17 DEBUG : scenes/scene.ce_1.scene: >Attr: a=valid=1s ino=0 size=1108977 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/: Lookup: name="scene.ce_2.scene"
-2025/04/09 08:53:17 DEBUG : scenes/: >Lookup: node=scenes/scene.ce_2.scene, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/scene.ce_2.scene: Attr: 
-2025/04/09 08:53:17 DEBUG : scenes/scene.ce_2.scene: >Attr: a=valid=1s ino=0 size=1108977 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/: Lookup: name="test.scene"
-2025/04/09 08:53:17 DEBUG : scenes/: >Lookup: node=scenes/test.scene, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/test.scene: Attr: 
-2025/04/09 08:53:17 DEBUG : scenes/test.scene: >Attr: a=valid=1s ino=0 size=92018 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/: Lookup: name="test123.scene"
-2025/04/09 08:53:17 DEBUG : scenes/: >Lookup: node=scenes/test123.scene, err=<nil>
-2025/04/09 08:53:17 DEBUG : scenes/test123.scene: Attr: 
-2025/04/09 08:53:17 DEBUG : scenes/test123.scene: >Attr: a=valid=1s ino=0 size=1425761 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:54:52 DEBUG : /: Attr: 
-2025/04/09 08:54:52 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:54:52 DEBUG : /: ReadDirAll: 
-2025/04/09 08:54:52 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:54:52 DEBUG : /: Attr: 
-2025/04/09 08:54:52 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:54:52 DEBUG : /: Lookup: name=".git"
-2025/04/09 08:54:52 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
-2025/04/09 08:54:52 DEBUG : /: Lookup: name=".git"
-2025/04/09 08:54:52 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
-2025/04/09 08:54:52 DEBUG : /: Lookup: name="HEAD"
-2025/04/09 08:54:52 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
-2025/04/09 08:54:53 DEBUG : /: ReadDirAll: 
-2025/04/09 08:54:53 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:54:53 DEBUG : /: Lookup: name="scenes"
-2025/04/09 08:54:53 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/09 08:54:53 DEBUG : scenes/: Attr: 
-2025/04/09 08:54:53 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:54:53 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 08:54:53 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 08:54:59 DEBUG : /: ReadDirAll: 
-2025/04/09 08:54:59 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:54:59 DEBUG : /: Lookup: name="scenes"
-2025/04/09 08:54:59 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/09 08:54:59 DEBUG : scenes/: Attr: 
-2025/04/09 08:54:59 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:54:59 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 08:54:59 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 08:55:04 DEBUG : /: Attr: 
-2025/04/09 08:55:04 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:55:04 DEBUG : /: ReadDirAll: 
-2025/04/09 08:55:04 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:55:04 DEBUG : /: Lookup: name="Luxus-sauna-nimbus-corso-3-1.jpg"
-2025/04/09 08:55:04 DEBUG : /: >Lookup: node=Luxus-sauna-nimbus-corso-3-1.jpg, err=<nil>
-2025/04/09 08:55:04 DEBUG : Luxus-sauna-nimbus-corso-3-1.jpg: Attr: 
-2025/04/09 08:55:04 DEBUG : Luxus-sauna-nimbus-corso-3-1.jpg: >Attr: a=valid=1s ino=0 size=241284 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:55:04 DEBUG : /: Lookup: name="Unbenannt.jpg"
-2025/04/09 08:55:04 DEBUG : /: >Lookup: node=Unbenannt.jpg, err=<nil>
-2025/04/09 08:55:04 DEBUG : Unbenannt.jpg: Attr: 
-2025/04/09 08:55:04 DEBUG : Unbenannt.jpg: >Attr: a=valid=1s ino=0 size=86980 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:55:04 DEBUG : /: Lookup: name="api-explorer.txt"
-2025/04/09 08:55:04 DEBUG : /: >Lookup: node=api-explorer.txt, err=<nil>
-2025/04/09 08:55:04 DEBUG : api-explorer.txt: Attr: 
-2025/04/09 08:55:04 DEBUG : api-explorer.txt: >Attr: a=valid=1s ino=0 size=2507 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:55:04 DEBUG : /: Lookup: name="corso-sauna-manufaktur-banner_1920x1920.jpg"
-2025/04/09 08:55:04 DEBUG : /: >Lookup: node=corso-sauna-manufaktur-banner_1920x1920.jpg, err=<nil>
-2025/04/09 08:55:04 DEBUG : corso-sauna-manufaktur-banner_1920x1920.jpg: Attr: 
-2025/04/09 08:55:04 DEBUG : corso-sauna-manufaktur-banner_1920x1920.jpg: >Attr: a=valid=1s ino=0 size=124830 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:55:04 DEBUG : /: Lookup: name="scenes"
-2025/04/09 08:55:04 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/: Attr: 
-2025/04/09 08:55:04 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 08:55:04 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/: Lookup: name="dietz.scene"
-2025/04/09 08:55:04 DEBUG : scenes/: >Lookup: node=scenes/dietz.scene, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/dietz.scene: Attr: 
-2025/04/09 08:55:04 DEBUG : scenes/dietz.scene: >Attr: a=valid=1s ino=0 size=4465 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/: Lookup: name="dietz2.scene"
-2025/04/09 08:55:04 DEBUG : scenes/: >Lookup: node=scenes/dietz2.scene, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/dietz2.scene: Attr: 
-2025/04/09 08:55:04 DEBUG : scenes/dietz2.scene: >Attr: a=valid=1s ino=0 size=0 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/: Lookup: name="scene.ce.scene"
-2025/04/09 08:55:04 DEBUG : scenes/: >Lookup: node=scenes/scene.ce.scene, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/scene.ce.scene: Attr: 
-2025/04/09 08:55:04 DEBUG : scenes/scene.ce.scene: >Attr: a=valid=1s ino=0 size=1109953 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/: Lookup: name="scene.ce_1.scene"
-2025/04/09 08:55:04 DEBUG : scenes/: >Lookup: node=scenes/scene.ce_1.scene, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/scene.ce_1.scene: Attr: 
-2025/04/09 08:55:04 DEBUG : scenes/scene.ce_1.scene: >Attr: a=valid=1s ino=0 size=1108977 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/: Lookup: name="scene.ce_2.scene"
-2025/04/09 08:55:04 DEBUG : scenes/: >Lookup: node=scenes/scene.ce_2.scene, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/scene.ce_2.scene: Attr: 
-2025/04/09 08:55:04 DEBUG : scenes/scene.ce_2.scene: >Attr: a=valid=1s ino=0 size=1108977 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/: Lookup: name="test.scene"
-2025/04/09 08:55:04 DEBUG : scenes/: >Lookup: node=scenes/test.scene, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/test.scene: Attr: 
-2025/04/09 08:55:04 DEBUG : scenes/test.scene: >Attr: a=valid=1s ino=0 size=92018 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/: Lookup: name="test123.scene"
-2025/04/09 08:55:04 DEBUG : scenes/: >Lookup: node=scenes/test123.scene, err=<nil>
-2025/04/09 08:55:04 DEBUG : scenes/test123.scene: Attr: 
-2025/04/09 08:55:04 DEBUG : scenes/test123.scene: >Attr: a=valid=1s ino=0 size=1425761 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:56:18 DEBUG : /: Attr: 
-2025/04/09 08:56:18 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:56:18 DEBUG : /: ReadDirAll: 
-2025/04/09 08:56:18 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:56:18 DEBUG : /: Attr: 
-2025/04/09 08:56:18 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:56:18 DEBUG : /: Lookup: name=".git"
-2025/04/09 08:56:18 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
-2025/04/09 08:56:18 DEBUG : /: Lookup: name=".git"
-2025/04/09 08:56:18 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
-2025/04/09 08:56:18 DEBUG : /: Lookup: name="HEAD"
-2025/04/09 08:56:18 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
-2025/04/09 08:56:19 DEBUG : /: ReadDirAll: 
-2025/04/09 08:56:19 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:56:19 DEBUG : /: Lookup: name="scenes"
-2025/04/09 08:56:19 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/09 08:56:19 DEBUG : scenes/: Attr: 
-2025/04/09 08:56:19 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:56:19 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 08:56:19 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 08:56:25 DEBUG : /: ReadDirAll: 
-2025/04/09 08:56:25 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:56:25 DEBUG : /: Lookup: name="scenes"
-2025/04/09 08:56:25 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/09 08:56:25 DEBUG : scenes/: Attr: 
-2025/04/09 08:56:25 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:56:25 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 08:56:25 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 08:56:31 DEBUG : /: Attr: 
-2025/04/09 08:56:31 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:56:31 DEBUG : /: ReadDirAll: 
-2025/04/09 08:56:31 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:56:31 DEBUG : /: Lookup: name="Luxus-sauna-nimbus-corso-3-1.jpg"
-2025/04/09 08:56:31 DEBUG : /: >Lookup: node=Luxus-sauna-nimbus-corso-3-1.jpg, err=<nil>
-2025/04/09 08:56:31 DEBUG : Luxus-sauna-nimbus-corso-3-1.jpg: Attr: 
-2025/04/09 08:56:31 DEBUG : Luxus-sauna-nimbus-corso-3-1.jpg: >Attr: a=valid=1s ino=0 size=241284 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:56:31 DEBUG : /: Lookup: name="Unbenannt.jpg"
-2025/04/09 08:56:31 DEBUG : /: >Lookup: node=Unbenannt.jpg, err=<nil>
-2025/04/09 08:56:31 DEBUG : Unbenannt.jpg: Attr: 
-2025/04/09 08:56:31 DEBUG : Unbenannt.jpg: >Attr: a=valid=1s ino=0 size=86980 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:56:31 DEBUG : /: Lookup: name="api-explorer.txt"
-2025/04/09 08:56:31 DEBUG : /: >Lookup: node=api-explorer.txt, err=<nil>
-2025/04/09 08:56:31 DEBUG : api-explorer.txt: Attr: 
-2025/04/09 08:56:31 DEBUG : api-explorer.txt: >Attr: a=valid=1s ino=0 size=2507 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:56:31 DEBUG : /: Lookup: name="corso-sauna-manufaktur-banner_1920x1920.jpg"
-2025/04/09 08:56:31 DEBUG : /: >Lookup: node=corso-sauna-manufaktur-banner_1920x1920.jpg, err=<nil>
-2025/04/09 08:56:31 DEBUG : corso-sauna-manufaktur-banner_1920x1920.jpg: Attr: 
-2025/04/09 08:56:31 DEBUG : corso-sauna-manufaktur-banner_1920x1920.jpg: >Attr: a=valid=1s ino=0 size=124830 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:56:31 DEBUG : /: Lookup: name="scenes"
-2025/04/09 08:56:31 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/: Attr: 
-2025/04/09 08:56:31 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 08:56:31 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/: Lookup: name="dietz.scene"
-2025/04/09 08:56:31 DEBUG : scenes/: >Lookup: node=scenes/dietz.scene, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/dietz.scene: Attr: 
-2025/04/09 08:56:31 DEBUG : scenes/dietz.scene: >Attr: a=valid=1s ino=0 size=4465 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/: Lookup: name="dietz2.scene"
-2025/04/09 08:56:31 DEBUG : scenes/: >Lookup: node=scenes/dietz2.scene, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/dietz2.scene: Attr: 
-2025/04/09 08:56:31 DEBUG : scenes/dietz2.scene: >Attr: a=valid=1s ino=0 size=0 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/: Lookup: name="scene.ce.scene"
-2025/04/09 08:56:31 DEBUG : scenes/: >Lookup: node=scenes/scene.ce.scene, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/scene.ce.scene: Attr: 
-2025/04/09 08:56:31 DEBUG : scenes/scene.ce.scene: >Attr: a=valid=1s ino=0 size=1109953 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/: Lookup: name="scene.ce_1.scene"
-2025/04/09 08:56:31 DEBUG : scenes/: >Lookup: node=scenes/scene.ce_1.scene, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/scene.ce_1.scene: Attr: 
-2025/04/09 08:56:31 DEBUG : scenes/scene.ce_1.scene: >Attr: a=valid=1s ino=0 size=1108977 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/: Lookup: name="scene.ce_2.scene"
-2025/04/09 08:56:31 DEBUG : scenes/: >Lookup: node=scenes/scene.ce_2.scene, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/scene.ce_2.scene: Attr: 
-2025/04/09 08:56:31 DEBUG : scenes/scene.ce_2.scene: >Attr: a=valid=1s ino=0 size=1108977 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/: Lookup: name="test.scene"
-2025/04/09 08:56:31 DEBUG : scenes/: >Lookup: node=scenes/test.scene, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/test.scene: Attr: 
-2025/04/09 08:56:31 DEBUG : scenes/test.scene: >Attr: a=valid=1s ino=0 size=92018 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/: Lookup: name="test123.scene"
-2025/04/09 08:56:31 DEBUG : scenes/: >Lookup: node=scenes/test123.scene, err=<nil>
-2025/04/09 08:56:31 DEBUG : scenes/test123.scene: Attr: 
-2025/04/09 08:56:31 DEBUG : scenes/test123.scene: >Attr: a=valid=1s ino=0 size=1425761 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:56:55 DEBUG : /: Attr: 
-2025/04/09 08:56:55 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:56:55 DEBUG : /: ReadDirAll: 
-2025/04/09 08:56:55 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:56:56 DEBUG : /: Attr: 
-2025/04/09 08:56:56 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:56:56 DEBUG : /: Lookup: name=".git"
-2025/04/09 08:56:56 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
-2025/04/09 08:56:56 DEBUG : /: Lookup: name=".git"
-2025/04/09 08:56:56 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
-2025/04/09 08:56:56 DEBUG : /: Lookup: name="HEAD"
-2025/04/09 08:56:56 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
-2025/04/09 08:56:57 DEBUG : /: ReadDirAll: 
-2025/04/09 08:56:57 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:56:57 DEBUG : /: Lookup: name="scenes"
-2025/04/09 08:56:57 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/09 08:56:57 DEBUG : scenes/: Attr: 
-2025/04/09 08:56:57 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:56:57 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 08:56:57 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 08:57:00 DEBUG : /: ReadDirAll: 
-2025/04/09 08:57:00 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:57:00 DEBUG : /: Lookup: name="scenes"
-2025/04/09 08:57:00 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/09 08:57:00 DEBUG : scenes/: Attr: 
-2025/04/09 08:57:00 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:57:00 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 08:57:00 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 08:57:07 DEBUG : /: Attr: 
-2025/04/09 08:57:07 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:57:07 DEBUG : /: ReadDirAll: 
-2025/04/09 08:57:07 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 08:57:07 DEBUG : /: Lookup: name="Luxus-sauna-nimbus-corso-3-1.jpg"
-2025/04/09 08:57:07 DEBUG : /: >Lookup: node=Luxus-sauna-nimbus-corso-3-1.jpg, err=<nil>
-2025/04/09 08:57:07 DEBUG : Luxus-sauna-nimbus-corso-3-1.jpg: Attr: 
-2025/04/09 08:57:07 DEBUG : Luxus-sauna-nimbus-corso-3-1.jpg: >Attr: a=valid=1s ino=0 size=241284 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:57:07 DEBUG : /: Lookup: name="Unbenannt.jpg"
-2025/04/09 08:57:07 DEBUG : /: >Lookup: node=Unbenannt.jpg, err=<nil>
-2025/04/09 08:57:07 DEBUG : Unbenannt.jpg: Attr: 
-2025/04/09 08:57:07 DEBUG : Unbenannt.jpg: >Attr: a=valid=1s ino=0 size=86980 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:57:07 DEBUG : /: Lookup: name="api-explorer.txt"
-2025/04/09 08:57:07 DEBUG : /: >Lookup: node=api-explorer.txt, err=<nil>
-2025/04/09 08:57:07 DEBUG : api-explorer.txt: Attr: 
-2025/04/09 08:57:07 DEBUG : api-explorer.txt: >Attr: a=valid=1s ino=0 size=2507 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:57:07 DEBUG : /: Lookup: name="corso-sauna-manufaktur-banner_1920x1920.jpg"
-2025/04/09 08:57:07 DEBUG : /: >Lookup: node=corso-sauna-manufaktur-banner_1920x1920.jpg, err=<nil>
-2025/04/09 08:57:07 DEBUG : corso-sauna-manufaktur-banner_1920x1920.jpg: Attr: 
-2025/04/09 08:57:07 DEBUG : corso-sauna-manufaktur-banner_1920x1920.jpg: >Attr: a=valid=1s ino=0 size=124830 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:57:07 DEBUG : /: Lookup: name="scenes"
-2025/04/09 08:57:07 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/: Attr: 
-2025/04/09 08:57:07 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 08:57:07 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/: Lookup: name="dietz.scene"
-2025/04/09 08:57:07 DEBUG : scenes/: >Lookup: node=scenes/dietz.scene, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/dietz.scene: Attr: 
-2025/04/09 08:57:07 DEBUG : scenes/dietz.scene: >Attr: a=valid=1s ino=0 size=4465 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/: Lookup: name="dietz2.scene"
-2025/04/09 08:57:07 DEBUG : scenes/: >Lookup: node=scenes/dietz2.scene, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/dietz2.scene: Attr: 
-2025/04/09 08:57:07 DEBUG : scenes/dietz2.scene: >Attr: a=valid=1s ino=0 size=0 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/: Lookup: name="scene.ce.scene"
-2025/04/09 08:57:07 DEBUG : scenes/: >Lookup: node=scenes/scene.ce.scene, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/scene.ce.scene: Attr: 
-2025/04/09 08:57:07 DEBUG : scenes/scene.ce.scene: >Attr: a=valid=1s ino=0 size=1109953 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/: Lookup: name="scene.ce_1.scene"
-2025/04/09 08:57:07 DEBUG : scenes/: >Lookup: node=scenes/scene.ce_1.scene, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/scene.ce_1.scene: Attr: 
-2025/04/09 08:57:07 DEBUG : scenes/scene.ce_1.scene: >Attr: a=valid=1s ino=0 size=1108977 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/: Lookup: name="scene.ce_2.scene"
-2025/04/09 08:57:07 DEBUG : scenes/: >Lookup: node=scenes/scene.ce_2.scene, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/scene.ce_2.scene: Attr: 
-2025/04/09 08:57:07 DEBUG : scenes/scene.ce_2.scene: >Attr: a=valid=1s ino=0 size=1108977 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/: Lookup: name="test.scene"
-2025/04/09 08:57:07 DEBUG : scenes/: >Lookup: node=scenes/test.scene, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/test.scene: Attr: 
-2025/04/09 08:57:07 DEBUG : scenes/test.scene: >Attr: a=valid=1s ino=0 size=92018 mode=-rw-r--r--, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/: Lookup: name="test123.scene"
-2025/04/09 08:57:07 DEBUG : scenes/: >Lookup: node=scenes/test123.scene, err=<nil>
-2025/04/09 08:57:07 DEBUG : scenes/test123.scene: Attr: 
-2025/04/09 08:57:07 DEBUG : scenes/test123.scene: >Attr: a=valid=1s ino=0 size=1425761 mode=-rw-r--r--, err=<nil>
-2025/04/09 09:02:18 DEBUG : /: Attr: 
-2025/04/09 09:02:18 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 13:37:20 DEBUG : /: Attr: 
-2025/04/09 13:37:20 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 13:37:20 DEBUG : /: ReadDirAll: 
-2025/04/09 13:37:20 DEBUG : : Re-reading directory (4h44m6.410380312s old)
-2025/04/09 13:37:21 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 13:37:22 DEBUG : /: Attr: 
-2025/04/09 13:37:22 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 13:37:22 DEBUG : /: Lookup: name=".git"
-2025/04/09 13:37:22 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
-2025/04/09 13:37:22 DEBUG : /: Lookup: name=".git"
-2025/04/09 13:37:22 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
-2025/04/09 13:37:22 DEBUG : /: Lookup: name="HEAD"
-2025/04/09 13:37:22 DEBUG : /: >Lookup: node=<nil>, err=no such file or directory
-2025/04/09 13:37:23 DEBUG : /: ReadDirAll: 
-2025/04/09 13:37:23 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 13:37:23 DEBUG : /: Lookup: name="scenes"
-2025/04/09 13:37:23 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/09 13:37:23 DEBUG : scenes/: Attr: 
-2025/04/09 13:37:23 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 13:37:23 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 13:37:23 DEBUG : scenes: Re-reading directory (4h44m5.768568422s old)
-2025/04/09 13:37:23 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 13:37:23 DEBUG : /: ReadDirAll: 
-2025/04/09 13:37:23 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 13:37:23 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 13:37:23 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 13:37:33 DEBUG : /: Attr: 
-2025/04/09 13:37:33 DEBUG : /: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 13:37:33 DEBUG : /: ReadDirAll: 
-2025/04/09 13:37:33 DEBUG : /: >ReadDirAll: item=5, err=<nil>
-2025/04/09 13:37:33 DEBUG : /: Lookup: name="Luxus-sauna-nimbus-corso-3-1.jpg"
-2025/04/09 13:37:33 DEBUG : /: >Lookup: node=Luxus-sauna-nimbus-corso-3-1.jpg, err=<nil>
-2025/04/09 13:37:33 DEBUG : Luxus-sauna-nimbus-corso-3-1.jpg: Attr: 
-2025/04/09 13:37:33 DEBUG : Luxus-sauna-nimbus-corso-3-1.jpg: >Attr: a=valid=1s ino=0 size=241284 mode=-rw-r--r--, err=<nil>
-2025/04/09 13:37:33 DEBUG : /: Lookup: name="Unbenannt.jpg"
-2025/04/09 13:37:33 DEBUG : /: >Lookup: node=Unbenannt.jpg, err=<nil>
-2025/04/09 13:37:33 DEBUG : Unbenannt.jpg: Attr: 
-2025/04/09 13:37:33 DEBUG : Unbenannt.jpg: >Attr: a=valid=1s ino=0 size=86980 mode=-rw-r--r--, err=<nil>
-2025/04/09 13:37:33 DEBUG : /: Lookup: name="api-explorer.txt"
-2025/04/09 13:37:33 DEBUG : /: >Lookup: node=api-explorer.txt, err=<nil>
-2025/04/09 13:37:33 DEBUG : api-explorer.txt: Attr: 
-2025/04/09 13:37:33 DEBUG : api-explorer.txt: >Attr: a=valid=1s ino=0 size=2507 mode=-rw-r--r--, err=<nil>
-2025/04/09 13:37:33 DEBUG : /: Lookup: name="corso-sauna-manufaktur-banner_1920x1920.jpg"
-2025/04/09 13:37:33 DEBUG : /: >Lookup: node=corso-sauna-manufaktur-banner_1920x1920.jpg, err=<nil>
-2025/04/09 13:37:33 DEBUG : corso-sauna-manufaktur-banner_1920x1920.jpg: Attr: 
-2025/04/09 13:37:33 DEBUG : corso-sauna-manufaktur-banner_1920x1920.jpg: >Attr: a=valid=1s ino=0 size=124830 mode=-rw-r--r--, err=<nil>
-2025/04/09 13:37:33 DEBUG : /: Lookup: name="scenes"
-2025/04/09 13:37:33 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/: Attr: 
-2025/04/09 13:37:33 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/: ReadDirAll: 
-2025/04/09 13:37:33 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/: Lookup: name="dietz.scene"
-2025/04/09 13:37:33 DEBUG : scenes/: >Lookup: node=scenes/dietz.scene, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/dietz.scene: Attr: 
-2025/04/09 13:37:33 DEBUG : scenes/dietz.scene: >Attr: a=valid=1s ino=0 size=4465 mode=-rw-r--r--, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/: Lookup: name="dietz2.scene"
-2025/04/09 13:37:33 DEBUG : scenes/: >Lookup: node=scenes/dietz2.scene, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/dietz2.scene: Attr: 
-2025/04/09 13:37:33 DEBUG : scenes/dietz2.scene: >Attr: a=valid=1s ino=0 size=0 mode=-rw-r--r--, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/: Lookup: name="scene.ce.scene"
-2025/04/09 13:37:33 DEBUG : scenes/: >Lookup: node=scenes/scene.ce.scene, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/scene.ce.scene: Attr: 
-2025/04/09 13:37:33 DEBUG : scenes/scene.ce.scene: >Attr: a=valid=1s ino=0 size=1109953 mode=-rw-r--r--, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/: Lookup: name="scene.ce_1.scene"
-2025/04/09 13:37:33 DEBUG : scenes/: >Lookup: node=scenes/scene.ce_1.scene, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/scene.ce_1.scene: Attr: 
-2025/04/09 13:37:33 DEBUG : scenes/scene.ce_1.scene: >Attr: a=valid=1s ino=0 size=1108977 mode=-rw-r--r--, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/: Lookup: name="scene.ce_2.scene"
-2025/04/09 13:37:33 DEBUG : scenes/: >Lookup: node=scenes/scene.ce_2.scene, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/scene.ce_2.scene: Attr: 
-2025/04/09 13:37:33 DEBUG : scenes/scene.ce_2.scene: >Attr: a=valid=1s ino=0 size=1108977 mode=-rw-r--r--, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/: Lookup: name="test.scene"
-2025/04/09 13:37:33 DEBUG : scenes/: >Lookup: node=scenes/test.scene, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/test.scene: Attr: 
-2025/04/09 13:37:33 DEBUG : scenes/test.scene: >Attr: a=valid=1s ino=0 size=92018 mode=-rw-r--r--, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/: Lookup: name="test123.scene"
-2025/04/09 13:37:33 DEBUG : scenes/: >Lookup: node=scenes/test123.scene, err=<nil>
-2025/04/09 13:37:33 DEBUG : scenes/test123.scene: Attr: 
-2025/04/09 13:37:33 DEBUG : scenes/test123.scene: >Attr: a=valid=1s ino=0 size=1425761 mode=-rw-r--r--, err=<nil>
+2025/04/26 04:43:58 DEBUG : rclone: Version "v1.53.3-DEV" starting with parameters ["rclone" "mount" "pimcore:" "./assets" "-vv"]
+2025/04/26 04:43:58 DEBUG : Creating backend with remote "pimcore:"
+2025/04/26 04:43:58 DEBUG : Using config file from "/home/vscode/.config/rclone/rclone.conf"
+2025/04/26 04:43:58 INFO  : webdav root '': poll-interval is not supported by this remote
+2025/04/26 04:43:58 NOTICE: webdav root '': --vfs-cache-mode writes or full is recommended for this remote as it can't stream
+2025/04/26 04:43:58 DEBUG : webdav root '': Mounting on "./assets"
+2025/04/26 04:43:58 DEBUG : : Root: 
+2025/04/26 04:43:58 DEBUG : : >Root: node=/, err=<nil>
+2025/04/26 05:01:33 DEBUG : /: ReadDirAll: 
+2025/04/26 05:01:34 DEBUG : /: >ReadDirAll: item=6, err=<nil>
+2025/04/26 05:01:39 DEBUG : /: ReadDirAll: 
+2025/04/26 05:01:39 DEBUG : /: >ReadDirAll: item=6, err=<nil>
+2025/04/26 05:01:39 DEBUG : /: Lookup: name="inspire"
+2025/04/26 05:01:39 DEBUG : /: >Lookup: node=inspire/, err=<nil>
+2025/04/26 05:01:39 DEBUG : inspire/: Attr: 
+2025/04/26 05:01:39 DEBUG : inspire/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/26 05:01:39 DEBUG : /: Lookup: name="scenes"
+2025/04/26 05:01:39 DEBUG : /: >Lookup: node=scenes/, err=<nil>
+2025/04/26 05:01:39 DEBUG : scenes/: Attr: 
+2025/04/26 05:01:39 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/26 05:01:39 DEBUG : inspire/: ReadDirAll: 
+2025/04/26 05:01:39 DEBUG : /: Lookup: name="RDA"
+2025/04/26 05:01:39 DEBUG : /: >Lookup: node=RDA/, err=<nil>
+2025/04/26 05:01:39 DEBUG : RDA/: Attr: 
+2025/04/26 05:01:39 DEBUG : RDA/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/26 05:01:39 DEBUG : scenes/: ReadDirAll: 
+2025/04/26 05:01:39 DEBUG : RDA/: ReadDirAll: 
+2025/04/26 05:01:39 DEBUG : /: ReadDirAll: 
+2025/04/26 05:01:39 DEBUG : RDA/: >ReadDirAll: item=1, err=<nil>
+2025/04/26 05:01:39 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
+2025/04/26 05:01:39 DEBUG : inspire/: >ReadDirAll: item=4, err=<nil>
+2025/04/26 05:01:39 DEBUG : /: >ReadDirAll: item=6, err=<nil>
+2025/04/26 05:01:39 DEBUG : inspire/: Lookup: name="videos"
+2025/04/26 05:01:39 DEBUG : inspire/: >Lookup: node=inspire/videos/, err=<nil>
+2025/04/26 05:01:39 DEBUG : inspire/videos/: Attr: 
+2025/04/26 05:01:39 DEBUG : inspire/videos/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/26 05:01:39 DEBUG : scenes/: ReadDirAll: 
+2025/04/26 05:01:39 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
+2025/04/26 05:01:39 DEBUG : inspire/: ReadDirAll: 
+2025/04/26 05:01:39 DEBUG : inspire/: >ReadDirAll: item=4, err=<nil>
+2025/04/26 05:01:39 DEBUG : RDA/: ReadDirAll: 
+2025/04/26 05:01:39 DEBUG : RDA/: >ReadDirAll: item=1, err=<nil>
+2025/04/26 05:01:39 DEBUG : inspire/videos/: ReadDirAll: 
+2025/04/26 05:01:39 DEBUG : inspire/videos/: >ReadDirAll: item=0, err=<nil>
+2025/04/26 05:01:39 DEBUG : inspire/videos/: ReadDirAll: 
+2025/04/26 05:01:39 DEBUG : inspire/videos/: >ReadDirAll: item=0, err=<nil>

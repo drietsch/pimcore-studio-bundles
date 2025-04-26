@@ -1,5 +1,5 @@
 import { api } from "../../app/api/pimcore/index";
-export const addTagTypes = ["Assets", "Asset Grid", "Asset Search", "Metadata", "Versions"] as const;
+export const addTagTypes = ["Assets", "Asset Grid", "Metadata", "Search", "Versions"] as const;
 const injectedRtkApi = api
     .enhanceEndpoints({
         addTagTypes,
@@ -45,22 +45,6 @@ const injectedRtkApi = api
             assetDownloadById: build.query<AssetDownloadByIdApiResponse, AssetDownloadByIdApiArg>({
                 query: (queryArg) => ({ url: `/pimcore-studio/api/assets/${queryArg.id}/download` }),
                 providesTags: ["Assets"],
-            }),
-            assetExportCsvAsset: build.mutation<AssetExportCsvAssetApiResponse, AssetExportCsvAssetApiArg>({
-                query: (queryArg) => ({
-                    url: `/pimcore-studio/api/assets/export/csv/asset`,
-                    method: "POST",
-                    body: queryArg.body,
-                }),
-                invalidatesTags: ["Assets"],
-            }),
-            assetExportCsvFolder: build.mutation<AssetExportCsvFolderApiResponse, AssetExportCsvFolderApiArg>({
-                query: (queryArg) => ({
-                    url: `/pimcore-studio/api/assets/export/csv/folder`,
-                    method: "POST",
-                    body: queryArg.body,
-                }),
-                invalidatesTags: ["Assets"],
             }),
             assetExportZipAsset: build.mutation<AssetExportZipAssetApiResponse, AssetExportZipAssetApiArg>({
                 query: (queryArg) => ({
@@ -235,21 +219,6 @@ const injectedRtkApi = api
                 }),
                 invalidatesTags: ["Assets"],
             }),
-            assetGetSearchConfiguration: build.query<
-                AssetGetSearchConfigurationApiResponse,
-                AssetGetSearchConfigurationApiArg
-            >({
-                query: () => ({ url: `/pimcore-studio/api/assets/search/configuration/` }),
-                providesTags: ["Asset Search"],
-            }),
-            assetGetSearch: build.mutation<AssetGetSearchApiResponse, AssetGetSearchApiArg>({
-                query: (queryArg) => ({
-                    url: `/pimcore-studio/api/assets/search`,
-                    method: "POST",
-                    body: queryArg.body,
-                }),
-                invalidatesTags: ["Asset Search"],
-            }),
             assetClearThumbnail: build.mutation<AssetClearThumbnailApiResponse, AssetClearThumbnailApiArg>({
                 query: (queryArg) => ({
                     url: `/pimcore-studio/api/assets/${queryArg.id}/thumbnail/clear`,
@@ -346,6 +315,21 @@ const injectedRtkApi = api
                 query: (queryArg) => ({ url: `/pimcore-studio/api/assets/${queryArg.id}/custom-metadata` }),
                 providesTags: ["Metadata"],
             }),
+            assetGetSearchConfiguration: build.query<
+                AssetGetSearchConfigurationApiResponse,
+                AssetGetSearchConfigurationApiArg
+            >({
+                query: () => ({ url: `/pimcore-studio/api/search/configuration/assets` }),
+                providesTags: ["Search"],
+            }),
+            assetGetSearch: build.query<AssetGetSearchApiResponse, AssetGetSearchApiArg>({
+                query: (queryArg) => ({
+                    url: `/pimcore-studio/api/search/assets`,
+                    method: "POST",
+                    body: queryArg.body,
+                }),
+                providesTags: ["Search"],
+            }),
             versionAssetDownloadById: build.query<VersionAssetDownloadByIdApiResponse, VersionAssetDownloadByIdApiArg>({
                 query: (queryArg) => ({ url: `/pimcore-studio/api/versions/${queryArg.id}/asset/download` }),
                 providesTags: ["Versions"],
@@ -399,75 +383,6 @@ export type AssetDownloadByIdApiResponse = /** status 200 Original asset binary 
 export type AssetDownloadByIdApiArg = {
     /** Id of the asset */
     id: number;
-};
-export type AssetExportCsvAssetApiResponse =
-    /** status 201 Successfully created <strong>jobRun</strong> for csv export */ {
-        /** ID of created jobRun */
-        jobRunId: number;
-    };
-export type AssetExportCsvAssetApiArg = {
-    body: {
-        assets?: number[];
-        columns?: GridColumnRequest[];
-        config?: {
-            delimiter?: string;
-            header?:
-                | "id"
-                | "custom_report_config"
-                | "custom_report_to_export"
-                | "asset_to_export"
-                | "folder_to_export"
-                | "csv_export_data"
-                | "config"
-                | "columns"
-                | "filters"
-                | "delimiter"
-                | "header"
-                | "no_header"
-                | "title"
-                | "name"
-                | "\r\n"
-                | "array"
-                | "int"
-                | "string"
-                | "bool";
-        };
-    };
-};
-export type AssetExportCsvFolderApiResponse =
-    /** status 201 Successfully created <strong>jobRun</strong> for csv export */ {
-        /** ID of created jobRun */
-        jobRunId: number;
-    };
-export type AssetExportCsvFolderApiArg = {
-    body: {
-        folders?: number[];
-        columns?: GridColumnRequest[];
-        filters?: GridFilter;
-        config?: {
-            delimiter?: string;
-            header?:
-                | "id"
-                | "custom_report_config"
-                | "custom_report_to_export"
-                | "asset_to_export"
-                | "folder_to_export"
-                | "csv_export_data"
-                | "config"
-                | "columns"
-                | "filters"
-                | "delimiter"
-                | "header"
-                | "no_header"
-                | "title"
-                | "name"
-                | "\r\n"
-                | "array"
-                | "int"
-                | "string"
-                | "bool";
-        };
-    };
 };
 export type AssetExportZipAssetApiResponse =
     /** status 201 Successfully created <strong>jobRun</strong> for zip export */ {
@@ -733,24 +648,6 @@ export type AssetPatchFolderByIdApiArg = {
         filters?: GridFilter;
     };
 };
-export type AssetGetSearchConfigurationApiResponse =
-    /** status 200 Asset search configuration */ GridDetailedConfiguration;
-export type AssetGetSearchConfigurationApiArg = void;
-export type AssetGetSearchApiResponse = /** status 200 Assets for search grid */ {
-    totalItems: number;
-    items: {
-        id?: number;
-        columns?: GridColumnData[];
-        isLocked?: boolean;
-        permissions?: Permissions;
-    }[];
-};
-export type AssetGetSearchApiArg = {
-    body: {
-        columns: GridColumnRequest[];
-        filters?: GridFilter;
-    };
-};
 export type AssetClearThumbnailApiResponse = /** status 200 Success */ void;
 export type AssetClearThumbnailApiArg = {
     /** Id of the asset */
@@ -863,6 +760,24 @@ export type AssetCustomMetadataGetByIdApiArg = {
     /** Id of the asset */
     id: number;
 };
+export type AssetGetSearchConfigurationApiResponse =
+    /** status 200 Asset search configuration */ GridDetailedConfiguration;
+export type AssetGetSearchConfigurationApiArg = void;
+export type AssetGetSearchApiResponse = /** status 200 Assets for search grid */ {
+    totalItems: number;
+    items: {
+        id?: number;
+        columns?: GridColumnData[];
+        isLocked?: boolean;
+        permissions?: Permissions;
+    }[];
+};
+export type AssetGetSearchApiArg = {
+    body: {
+        columns: GridColumnRequest[];
+        filters?: GridFilter;
+    };
+};
 export type VersionAssetDownloadByIdApiResponse = /** status 200 Asset version binary file */ Blob;
 export type VersionAssetDownloadByIdApiArg = {
     /** Id of the version */
@@ -893,32 +808,6 @@ export type CustomSettings = {
     fixedCustomSettings?: FixedCustomSettings | null;
     /** dynamic custom settings - can be any key-value pair */
     dynamicCustomSettings?: object[];
-};
-export type RelationFieldConfig = {
-    /** Relation Getter */
-    relation: string;
-    /** Field getter */
-    field: string;
-};
-export type SimpleFieldConfig = {
-    /** Field getter */
-    field: string;
-};
-export type AdvancedColumnConfig = {
-    /** advancedColumns */
-    advancedColumn?: (RelationFieldConfig | SimpleFieldConfig)[];
-};
-export type GridColumnRequest = {
-    /** Key */
-    key: string;
-    /** Locale */
-    locale?: any;
-    /** Type */
-    type: string;
-    /** Group */
-    group?: any;
-    /** Config */
-    config: (string | AdvancedColumnConfig)[];
 };
 export type GridFilter = {
     /** Page */
@@ -1146,6 +1035,8 @@ export type GridColumnConfiguration = {
     editable: boolean;
     /** Exportable */
     exportable?: boolean;
+    /** Filterable */
+    filterable?: boolean;
     /** Localizable */
     localizable: boolean;
     /** Locale */
@@ -1183,13 +1074,41 @@ export type GridColumnData = {
     /** inheritance */
     inheritance?: any;
 };
+export type RelationFieldConfig = {
+    /** Relation Getter */
+    relation: string;
+    /** Field getter */
+    field: string;
+};
+export type SimpleFieldConfig = {
+    /** Field getter */
+    field: string;
+};
+export type AdvancedColumnConfig = {
+    /** advancedColumns */
+    advancedColumn?: (RelationFieldConfig | SimpleFieldConfig)[];
+};
+export type GridColumnRequest = {
+    /** Key */
+    key: string;
+    /** Locale */
+    locale?: any;
+    /** Type */
+    type: string;
+    /** Group */
+    group?: any;
+    /** Config */
+    config: (string | AdvancedColumnConfig)[];
+};
 export type PatchCustomMetadata = {
     /** Name */
     name: string;
     /** Language */
-    language?: any;
+    language: any;
+    /** Type */
+    type: string;
     /** Data */
-    data?: any;
+    data: any;
 };
 export type CustomMetadata = {
     /** AdditionalAttributes */
@@ -1213,8 +1132,6 @@ export const {
     useAssetDownloadZipQuery,
     useAssetDeleteZipMutation,
     useAssetDownloadByIdQuery,
-    useAssetExportCsvAssetMutation,
-    useAssetExportCsvFolderMutation,
     useAssetExportZipAssetMutation,
     useAssetExportZipFolderMutation,
     useAssetGetByIdQuery,
@@ -1235,8 +1152,6 @@ export const {
     useAssetImageDownloadByThumbnailQuery,
     useAssetPatchByIdMutation,
     useAssetPatchFolderByIdMutation,
-    useAssetGetSearchConfigurationQuery,
-    useAssetGetSearchMutation,
     useAssetClearThumbnailMutation,
     useAssetGetTreeQuery,
     useAssetAddMutation,
@@ -1247,5 +1162,7 @@ export const {
     useAssetVideoDownloadByThumbnailQuery,
     useAssetVideoStreamByThumbnailQuery,
     useAssetCustomMetadataGetByIdQuery,
+    useAssetGetSearchConfigurationQuery,
+    useAssetGetSearchQuery,
     useVersionAssetDownloadByIdQuery,
 } = injectedRtkApi;

@@ -26,6 +26,7 @@ export interface OnUpdateCellDataEvent {
   columnId: string
   value: any
   rowData: any
+  meta?: Record<string, any>
 }
 
 export interface ListGridContextMenuProps {
@@ -62,4 +63,5 @@ export interface GridProps {
   contextMenu?: ListGridContextMenuComponents
   disabled?: boolean
   className?: string
+  onRowDoubleClick?: (row: any) => void
 }

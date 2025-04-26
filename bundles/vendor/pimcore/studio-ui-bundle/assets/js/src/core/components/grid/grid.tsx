@@ -48,6 +48,7 @@ export interface ColumnMetaType {
   editable?: boolean
   autoWidth?: boolean
   type?: string
+  columnKey?: string
   config?: any
 }
 
@@ -58,7 +59,7 @@ declare module '@tanstack/react-table' {
 
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
   export interface TableMeta<TData extends RowData> {
-    onUpdateCellData?: ({ rowIndex, columnId, value }: { rowIndex: number, columnId: string, value: any, rowData: TData }) => void
+    onUpdateCellData?: ({ rowIndex, columnId, value }: { rowIndex: number, columnId: string, value: any, rowData: TData, meta?: Record<string, any> }) => void
   }
 }
 
@@ -95,7 +96,7 @@ export const Grid = ({
   const { t } = useTranslation()
   const hashId = useCssComponentHash('table')
   const { styles } = useStyles()
-  const [columnResizeMode] = useState<ColumnResizeMode>('onEnd')
+  const [columnResizeMode] = useState<ColumnResizeMode>('onChange')
   const [activeCell, setActiveCell] = useState<GridCellReference | undefined>()
   const [tableAutoWidth, setTableAutoWidth] = useState<boolean>(props.autoWidth ?? false)
   const tableElement = useRef<HTMLTableElement>(null)
@@ -317,6 +318,7 @@ export const Grid = ({
                     key={ row.id }
                     modifiedCells={ JSON.stringify(getModifiedRow(row.id)) }
                     onFocusCell={ onFocusCell }
+                    onRowDoubleClick={ props.onRowDoubleClick }
                     row={ row }
                     tableElement={ tableElement }
                   />
@@ -327,7 +329,7 @@ export const Grid = ({
         </div>
       </div>
     </div>
-  ), [table, modifiedCells, data, columns, rowSelection, internalSorting, highlightActiveCell ? activeCell : undefined])
+  ), [table, modifiedCells, table.getTotalSize(), data, columns, rowSelection, internalSorting, highlightActiveCell ? activeCell : undefined])
 
   function getModifiedRow (rowIndex: string): GridProps['modifiedCells'] {
     return memoModifiedCells.filter(({ rowIndex: rIndex }) => String(rIndex) === String(rowIndex)) ?? []
@@ -427,3 +429,5 @@ export const Grid = ({
     return sortDirection ? SortDirections.DESC : SortDirections.ASC
   }
 }
+
+export * from './edit-mode/use-edit-mode'

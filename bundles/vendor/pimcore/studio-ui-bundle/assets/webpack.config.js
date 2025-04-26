@@ -170,7 +170,11 @@ if (!Encore.isDevServer() && !Encore.isProduction()) {
 
 if (Encore.isDevServer()) {
   if (fs.existsSync( path.resolve(__dirname, '..', 'public', 'build'))) {
-    fs.rmSync(path.resolve(__dirname, '..', 'public', 'build'), { recursive: true });
+    fs.readdirSync(path.resolve(__dirname, '..', 'public', 'build')).forEach((file) => {
+      if (file !== 'studio-npm-package.tgz') {
+        fs.rmSync(path.resolve(__dirname, '..', 'public', 'build', file), { recursive: true });
+      }
+    })
   }
 
   if (!fs.existsSync(buildPath)) {
@@ -179,8 +183,9 @@ if (Encore.isDevServer()) {
 
   Encore
     .setOutputPath(buildPath)
-    .setPublicPath('/build/' + buildId)
+    .setPublicPath('https://literate-space-palm-tree-x5wwpr4xpcvx7g-3030.app.github.dev/build/' + buildId)
     .addPlugin(new ReactRefreshPlugin())
+    .setManifestKeyPrefix(`build/${buildId}`)
 }
 
 let config = Encore.getWebpackConfig()

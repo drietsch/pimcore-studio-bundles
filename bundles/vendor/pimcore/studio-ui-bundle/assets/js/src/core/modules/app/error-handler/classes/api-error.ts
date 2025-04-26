@@ -17,7 +17,7 @@ import type { SerializedError } from '@reduxjs/toolkit'
 import { ErrorKeyTypes } from '@Pimcore/modules/app/error-handler/constants/errorTypes'
 import { type IErrorGetContent } from '@Pimcore/modules/app/error-handler/types'
 
-type ApiErrorData = FetchBaseQueryError | SerializedError
+export type ApiErrorData = FetchBaseQueryError | SerializedError
 
 export interface IApiErrorDetails {
   detail?: string
@@ -41,6 +41,13 @@ class ApiError extends Error {
     const errorKey = errorData?.errorKey
     const errorMessage = errorData?.message
     const errorValue = errorData?.error
+
+    if (!isEmpty(errorKey) && errorKey === ErrorKeyTypes.ELEMENT_VALIDATION_FAILED) {
+      return {
+        title: errorKey,
+        errorKey: errorMessage!
+      }
+    }
 
     if (!isEmpty(errorKey) && errorKey !== ErrorKeyTypes.GENERIC_ERROR) {
       return { errorKey: errorKey! }

@@ -58,6 +58,8 @@ export const useStyles = createStyles(({ token, css }) => {
 
     sectionFieldItem: css`
       flex: 1 1 50%;
+      min-width: 50%;
+      width: 100%;
       padding: ${token.paddingXS}px;
       background-color: ${token.colorBgContainerDisabled};
       border-radius: ${token.borderRadius}px;
@@ -73,12 +75,9 @@ export const useStyles = createStyles(({ token, css }) => {
 
     objectSectionFieldItemWrapper: css`
       flex: 1 1 50%;
+      min-width: 50%;
       max-width: 900px;
       width: 100%;
-    `,
-
-    objectSectionFieldItemWrapperHighlight: css`
-      background-color: ${token.Colors.Brand.Warning.colorWarningBg} !important;
     `,
 
     objectSectionFieldItem: css`
@@ -94,6 +93,23 @@ export const useStyles = createStyles(({ token, css }) => {
       &.versionFieldItem {
         border-color: ${token.colorBorder} !important;
       }
+    `,
+
+    objectSectionEmptyState: css`
+      justify-content: center !important;
+      width: 100%;
+      min-width: 100px;
+      height: 100%;
+      border: 1px solid transparent !important;
+    `,
+
+    objectSectionEmptyStateDisabled: css`
+      background-color: ${token.colorBgContainerDisabled} !important;
+    `,
+
+    objectSectionEmptyStateHighlight: css`
+      background-color: ${token.Colors.Brand.Warning.colorWarningBg} !important;
+      border-color: ${token.colorBorder} !important;
     `
   }
 })

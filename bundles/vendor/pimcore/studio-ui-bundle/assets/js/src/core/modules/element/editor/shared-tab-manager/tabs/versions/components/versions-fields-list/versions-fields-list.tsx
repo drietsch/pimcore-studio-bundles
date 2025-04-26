@@ -31,13 +31,10 @@ import {
   type IVersionsFieldsList
 } from './types'
 import { useStyles } from './versions-fields-list.styles'
-import { Content } from '@Pimcore/components/content/content'
 
-interface IVersionsFieldsListProps extends IVersionsFieldsList {
-  isComparisonViewMode?: boolean
-}
+interface IVersionsFieldsListProps extends IVersionsFieldsList {}
 
-export const VersionsFieldsList = ({ data, isComparisonViewMode = false }: IVersionsFieldsListProps): React.JSX.Element => {
+export const VersionsFieldsList = ({ data }: IVersionsFieldsListProps): React.JSX.Element => {
   const { elementType } = useElementContext()
 
   const isAssetType = elementType === ElementTypeName.ASSET
@@ -98,16 +95,6 @@ export const VersionsFieldsList = ({ data, isComparisonViewMode = false }: IVers
       >
         <Text>{t('version.version')} {Number(versionNumber)}</Text>
       </Flex>
-    )
-  }
-
-  // Check if the comparison view mode is enabled but the data has not been handled yet
-  if (isComparisonViewMode && !isComparisonView) {
-    return (
-      <Content
-        fullPage
-        loading
-      />
     )
   }
 

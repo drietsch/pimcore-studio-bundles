@@ -18,7 +18,9 @@ export const dynamicTypeRegistriesServiceIds = {
   'DynamicTypes/ListingRegistry': 'DynamicTypes/ListingRegistry',
   'DynamicTypes/MetadataRegistry': 'DynamicTypes/MetadataRegistry',
   'DynamicTypes/ObjectLayoutRegistry': 'DynamicTypes/ObjectLayoutRegistry',
-  'DynamicTypes/ObjectDataRegistry': 'DynamicTypes/ObjectDataRegistry'
+  'DynamicTypes/ObjectDataRegistry': 'DynamicTypes/ObjectDataRegistry',
+  'DynamicTypes/AssetRegistry': 'DynamicTypes/AssetRegistry',
+  'DynamicTypes/ObjectRegistry': 'DynamicTypes/ObjectRegistry'
 }
 
 export const serviceIds = {
@@ -61,6 +63,10 @@ export const serviceIds = {
 
   'DynamicTypes/BatchEdit/Text': 'DynamicTypes/BatchEdit/Text',
   'DynamicTypes/BatchEdit/TextArea': 'DynamicTypes/BatchEdit/TextArea',
+  'DynamicTypes/BatchEdit/Datetime': 'DynamicTypes/BatchEdit/Datetime',
+  'DynamicTypes/BatchEdit/Select': 'DynamicTypes/BatchEdit/Select',
+  'DynamicTypes/BatchEdit/Checkbox': 'DynamicTypes/BatchEdit/Checkbox',
+  'DynamicTypes/BatchEdit/ElementDropzone': 'DynamicTypes/BatchEdit/ElementDropzone',
   'DynamicTypes/BatchEdit/DataObjectAdapter': 'DynamicTypes/BatchEdit/DataObjectAdapter',
   'DynamicTypes/BatchEdit/DataObjectObjectBrick': 'DynamicTypes/BatchEdit/DataObjectObjectBrick',
 
@@ -70,6 +76,7 @@ export const serviceIds = {
   'DynamicTypes/GridCell/Select': 'DynamicTypes/GridCell/Select',
   'DynamicTypes/GridCell/MultiSelect': 'DynamicTypes/GridCell/MultiSelect',
   'DynamicTypes/GridCell/Checkbox': 'DynamicTypes/GridCell/Checkbox',
+  'DynamicTypes/GridCell/Boolean': 'DynamicTypes/GridCell/Boolean',
   'DynamicTypes/GridCell/Date': 'DynamicTypes/GridCell/Date',
   'DynamicTypes/GridCell/Time': 'DynamicTypes/GridCell/Time',
   'DynamicTypes/GridCell/DateTime': 'DynamicTypes/GridCell/DateTime',
@@ -122,6 +129,7 @@ export const serviceIds = {
   // Object data
   'DynamicTypes/ObjectData/Input': 'DynamicTypes/ObjectData/Input',
   'DynamicTypes/ObjectData/Textarea': 'DynamicTypes/ObjectData/Textarea',
+  'DynamicTypes/ObjectData/Wysiwyg': 'DynamicTypes/ObjectData/Wysiwyg',
   'DynamicTypes/ObjectData/Password': 'DynamicTypes/ObjectData/Password',
   'DynamicTypes/ObjectData/InputQuantityValue': 'DynamicTypes/ObjectData/InputQuantityValue',
   'DynamicTypes/ObjectData/Select': 'DynamicTypes/ObjectData/Select',
@@ -173,6 +181,22 @@ export const serviceIds = {
   'DynamicTypes/ObjectData/LocalizedFields': 'DynamicTypes/ObjectData/LocalizedFields',
   'DynamicTypes/ObjectData/FieldCollection': 'DynamicTypes/ObjectData/FieldCollection',
   'DynamicTypes/ObjectData/ObjectBrick': 'DynamicTypes/ObjectData/ObjectBrick',
+  'DynamicTypes/ObjectData/ClassificationStore': 'DynamicTypes/ObjectData/ClassificationStore',
+
+  // Asset types
+  'DynamicTypes/Asset/Video': 'DynamicTypes/Asset/Video',
+  'DynamicTypes/Asset/Audio': 'DynamicTypes/Asset/Audio',
+  'DynamicTypes/Asset/Image': 'DynamicTypes/Asset/Image',
+  'DynamicTypes/Asset/Document': 'DynamicTypes/Asset/Document',
+  'DynamicTypes/Asset/Archive': 'DynamicTypes/Asset/Archive',
+  'DynamicTypes/Asset/Unknown': 'DynamicTypes/Asset/Unknown',
+  'DynamicTypes/Asset/Folder': 'DynamicTypes/Asset/Folder',
+  'DynamicTypes/Asset/Text': 'DynamicTypes/Asset/Text',
+
+  // Object types
+  'DynamicTypes/Object/Folder': 'DynamicTypes/Object/Folder',
+  'DynamicTypes/Object/Object': 'DynamicTypes/Object/Object',
+  'DynamicTypes/Object/Variant': 'DynamicTypes/Object/Variant',
 
   // Execution engine
   'ExecutionEngine/JobComponentRegistry': 'ExecutionEngine/JobComponentRegistry',

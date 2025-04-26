@@ -14,6 +14,7 @@
 import { type DropdownProps } from '@Pimcore/components/dropdown/dropdown'
 import React, { createContext, useMemo, useState } from 'react'
 import { type GridColumnConfiguration } from '@Pimcore/modules/asset/asset-api-slice-enhanced'
+import { useTranslation } from 'react-i18next'
 
 // @todo: Create a union type for all the different element types
 export type AvailableColumn = GridColumnConfiguration
@@ -28,7 +29,7 @@ export interface AvailableColumnsData {
   availableColumns: AvailableColumn[]
   setAvailableColumns: (availableColumns: AvailableColumn[]) => void
   getAvailableColumnsDropdown: (menuClickHandler: OnMenuItemClick) => DropdownProps
-};
+}
 
 export type AvailableColumnsContextProps = AvailableColumnsData | undefined
 
@@ -40,6 +41,7 @@ export interface AvailableColumnsProviderProps {
 
 export const AvailableColumnsProvider = ({ children }: AvailableColumnsProviderProps): React.JSX.Element => {
   const [availableColumns, setAvailableColumns] = useState<AvailableColumnsData['availableColumns']>([])
+  const { t } = useTranslation()
 
   const getAvailableColumnsDropdown: AvailableColumnsData['getAvailableColumnsDropdown'] = useMemo(() => {
     return (onMenuItemClick: OnMenuItemClick): DropdownProps => {
@@ -58,14 +60,26 @@ export const AvailableColumnsProvider = ({ children }: AvailableColumnsProviderP
         menu: {
           items: Object.entries(columnsMappedByGroup).map(([key, value]) => ({
             key: index++,
-            label: key,
-            children: value.map((column) => ({
-              key: column.key,
-              label: column.key,
-              onClick: () => {
-                onMenuItemClick(column)
+            label: t(key),
+            children: value.map((column) => {
+              let translationKey = `${column.key}`
+
+              if ('fieldDefinition' in column.config) {
+                const fieldDefinition = column.config.fieldDefinition as Record<string, any>
+                translationKey = fieldDefinition?.title ?? column.key
               }
-            }))
+
+              return {
+                key: column.key,
+                label: t(translationKey),
+                group: column.group,
+                frontendType: column.frontendType,
+                editable: column.editable,
+                onClick: () => {
+                  onMenuItemClick(column)
+                }
+              }
+            })
           }))
         }
       }

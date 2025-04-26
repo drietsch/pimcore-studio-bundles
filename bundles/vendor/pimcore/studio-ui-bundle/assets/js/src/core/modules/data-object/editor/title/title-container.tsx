@@ -21,12 +21,17 @@ export const TitleContainer = (props: TabTitleContainerProps): React.JSX.Element
   const { dataObject } = useDataObjectDraft(node.getConfig().id as number)
   const { t } = useTranslation()
 
-  if (dataObject?.parentId === 0) {
-    node.getName = () => t('home')
+  const nodeName = node.getName()
+  node.getName = () => {
+    if (dataObject?.parentId === 0) {
+      node.getName = () => t('home')
+    }
+
+    return dataObject?.key ?? nodeName
   }
 
   return (
-    <TabTitleContainer//
+    <TabTitleContainer
       modified={ dataObject?.modified ?? false }
       node={ node }
     />
