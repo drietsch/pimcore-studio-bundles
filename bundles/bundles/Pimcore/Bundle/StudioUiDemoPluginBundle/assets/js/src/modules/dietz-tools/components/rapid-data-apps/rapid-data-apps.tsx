@@ -9,11 +9,11 @@ const STLITE_CSS = 'https://cdn.jsdelivr.net/npm/@stlite/browser@0.80.1/build/st
 const isSet = (value: unknown): boolean => value !== undefined && value !== null
 
 const RapidDataApps: React.FC = () => {
-  // const assetContext = useContext(AssetContext)
-  // const { asset } = useAssetDraft(assetContext.id)
-  // const { useAssetGetTextDataByIdQuery } = AssetApiSlice
-  // const { data } = useAssetGetTextDataByIdQuery({ id: assetContext.id })
-  // const { styles } = useStyle()
+  const assetContext = useContext(AssetContext)
+  const { asset } = useAssetDraft(assetContext.id)
+  const { useAssetGetTextDataByIdQuery } = AssetApiSlice
+  const { data } = useAssetGetTextDataByIdQuery({ id: assetContext.id })
+  const { styles } = useStyle()
 
   let pythonScript = data?.data || `
 import streamlit as st

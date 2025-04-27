@@ -1,46 +1,185 @@
-2025/04/26 04:43:58 DEBUG : rclone: Version "v1.53.3-DEV" starting with parameters ["rclone" "mount" "pimcore:" "./assets" "-vv"]
-2025/04/26 04:43:58 DEBUG : Creating backend with remote "pimcore:"
-2025/04/26 04:43:58 DEBUG : Using config file from "/home/vscode/.config/rclone/rclone.conf"
-2025/04/26 04:43:58 INFO  : webdav root '': poll-interval is not supported by this remote
-2025/04/26 04:43:58 NOTICE: webdav root '': --vfs-cache-mode writes or full is recommended for this remote as it can't stream
-2025/04/26 04:43:58 DEBUG : webdav root '': Mounting on "./assets"
-2025/04/26 04:43:58 DEBUG : : Root: 
-2025/04/26 04:43:58 DEBUG : : >Root: node=/, err=<nil>
-2025/04/26 05:01:33 DEBUG : /: ReadDirAll: 
-2025/04/26 05:01:34 DEBUG : /: >ReadDirAll: item=6, err=<nil>
-2025/04/26 05:01:39 DEBUG : /: ReadDirAll: 
-2025/04/26 05:01:39 DEBUG : /: >ReadDirAll: item=6, err=<nil>
-2025/04/26 05:01:39 DEBUG : /: Lookup: name="inspire"
-2025/04/26 05:01:39 DEBUG : /: >Lookup: node=inspire/, err=<nil>
-2025/04/26 05:01:39 DEBUG : inspire/: Attr: 
-2025/04/26 05:01:39 DEBUG : inspire/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/26 05:01:39 DEBUG : /: Lookup: name="scenes"
-2025/04/26 05:01:39 DEBUG : /: >Lookup: node=scenes/, err=<nil>
-2025/04/26 05:01:39 DEBUG : scenes/: Attr: 
-2025/04/26 05:01:39 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/26 05:01:39 DEBUG : inspire/: ReadDirAll: 
-2025/04/26 05:01:39 DEBUG : /: Lookup: name="RDA"
-2025/04/26 05:01:39 DEBUG : /: >Lookup: node=RDA/, err=<nil>
-2025/04/26 05:01:39 DEBUG : RDA/: Attr: 
-2025/04/26 05:01:39 DEBUG : RDA/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/26 05:01:39 DEBUG : scenes/: ReadDirAll: 
-2025/04/26 05:01:39 DEBUG : RDA/: ReadDirAll: 
-2025/04/26 05:01:39 DEBUG : /: ReadDirAll: 
-2025/04/26 05:01:39 DEBUG : RDA/: >ReadDirAll: item=1, err=<nil>
-2025/04/26 05:01:39 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/26 05:01:39 DEBUG : inspire/: >ReadDirAll: item=4, err=<nil>
-2025/04/26 05:01:39 DEBUG : /: >ReadDirAll: item=6, err=<nil>
-2025/04/26 05:01:39 DEBUG : inspire/: Lookup: name="videos"
-2025/04/26 05:01:39 DEBUG : inspire/: >Lookup: node=inspire/videos/, err=<nil>
-2025/04/26 05:01:39 DEBUG : inspire/videos/: Attr: 
-2025/04/26 05:01:39 DEBUG : inspire/videos/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
-2025/04/26 05:01:39 DEBUG : scenes/: ReadDirAll: 
-2025/04/26 05:01:39 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
-2025/04/26 05:01:39 DEBUG : inspire/: ReadDirAll: 
-2025/04/26 05:01:39 DEBUG : inspire/: >ReadDirAll: item=4, err=<nil>
-2025/04/26 05:01:39 DEBUG : RDA/: ReadDirAll: 
-2025/04/26 05:01:39 DEBUG : RDA/: >ReadDirAll: item=1, err=<nil>
-2025/04/26 05:01:39 DEBUG : inspire/videos/: ReadDirAll: 
-2025/04/26 05:01:39 DEBUG : inspire/videos/: >ReadDirAll: item=0, err=<nil>
-2025/04/26 05:01:39 DEBUG : inspire/videos/: ReadDirAll: 
-2025/04/26 05:01:39 DEBUG : inspire/videos/: >ReadDirAll: item=0, err=<nil>
+2025/04/27 05:51:15 DEBUG : rclone: Version "v1.53.3-DEV" starting with parameters ["rclone" "mount" "pimcore:" "./assets" "-vv"]
+2025/04/27 05:51:15 DEBUG : Creating backend with remote "pimcore:"
+2025/04/27 05:51:15 DEBUG : Using config file from "/home/vscode/.config/rclone/rclone.conf"
+2025/04/27 05:51:15 INFO  : webdav root '': poll-interval is not supported by this remote
+2025/04/27 05:51:15 NOTICE: webdav root '': --vfs-cache-mode writes or full is recommended for this remote as it can't stream
+2025/04/27 05:51:15 DEBUG : webdav root '': Mounting on "./assets"
+2025/04/27 05:51:15 DEBUG : : Root: 
+2025/04/27 05:51:15 DEBUG : : >Root: node=/, err=<nil>
+2025/04/27 05:51:24 DEBUG : /: ReadDirAll: 
+2025/04/27 05:51:24 DEBUG : /: >ReadDirAll: item=5, err=<nil>
+2025/04/27 05:51:24 DEBUG : /: Lookup: name="scenes"
+2025/04/27 05:51:24 DEBUG : /: >Lookup: node=scenes/, err=<nil>
+2025/04/27 05:51:24 DEBUG : scenes/: Attr: 
+2025/04/27 05:51:24 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 05:51:24 DEBUG : /: Lookup: name="photos"
+2025/04/27 05:51:24 DEBUG : /: >Lookup: node=photos/, err=<nil>
+2025/04/27 05:51:24 DEBUG : photos/: Attr: 
+2025/04/27 05:51:24 DEBUG : photos/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 05:51:24 DEBUG : scenes/: ReadDirAll: 
+2025/04/27 05:51:24 DEBUG : photos/: ReadDirAll: 
+2025/04/27 05:51:25 DEBUG : /: Lookup: name="inspire"
+2025/04/27 05:51:25 DEBUG : /: >Lookup: node=inspire/, err=<nil>
+2025/04/27 05:51:25 DEBUG : inspire/: Attr: 
+2025/04/27 05:51:25 DEBUG : inspire/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 05:51:25 DEBUG : inspire/: ReadDirAll: 
+2025/04/27 05:51:25 DEBUG : /: Lookup: name="docs"
+2025/04/27 05:51:25 DEBUG : /: >Lookup: node=docs/, err=<nil>
+2025/04/27 05:51:25 DEBUG : docs/: Attr: 
+2025/04/27 05:51:25 DEBUG : docs/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 05:51:25 DEBUG : docs/: ReadDirAll: 
+2025/04/27 05:51:25 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
+2025/04/27 05:51:25 DEBUG : /: Lookup: name="RDA"
+2025/04/27 05:51:25 DEBUG : /: >Lookup: node=RDA/, err=<nil>
+2025/04/27 05:51:25 DEBUG : RDA/: Attr: 
+2025/04/27 05:51:25 DEBUG : RDA/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 05:51:25 DEBUG : RDA/: ReadDirAll: 
+2025/04/27 05:51:25 DEBUG : photos/: >ReadDirAll: item=2, err=<nil>
+2025/04/27 05:51:25 DEBUG : photos/: Lookup: name="human"
+2025/04/27 05:51:25 DEBUG : photos/: >Lookup: node=photos/human/, err=<nil>
+2025/04/27 05:51:25 DEBUG : photos/human/: Attr: 
+2025/04/27 05:51:25 DEBUG : photos/human/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 05:51:25 DEBUG : photos/human/: ReadDirAll: 
+2025/04/27 05:51:25 DEBUG : docs/: >ReadDirAll: item=5, err=<nil>
+2025/04/27 05:51:25 DEBUG : photos/: Lookup: name="cats"
+2025/04/27 05:51:25 DEBUG : photos/: >Lookup: node=photos/cats/, err=<nil>
+2025/04/27 05:51:25 DEBUG : photos/cats/: Attr: 
+2025/04/27 05:51:25 DEBUG : photos/cats/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 05:51:25 DEBUG : photos/cats/: ReadDirAll: 
+2025/04/27 05:51:25 DEBUG : inspire/: >ReadDirAll: item=4, err=<nil>
+2025/04/27 05:51:25 DEBUG : inspire/: Lookup: name="videos"
+2025/04/27 05:51:25 DEBUG : inspire/: >Lookup: node=inspire/videos/, err=<nil>
+2025/04/27 05:51:25 DEBUG : inspire/videos/: Attr: 
+2025/04/27 05:51:25 DEBUG : inspire/videos/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 05:51:25 DEBUG : inspire/videos/: ReadDirAll: 
+2025/04/27 05:51:25 DEBUG : RDA/: >ReadDirAll: item=1, err=<nil>
+2025/04/27 05:51:26 DEBUG : inspire/videos/: >ReadDirAll: item=0, err=<nil>
+2025/04/27 05:51:26 DEBUG : photos/human/: >ReadDirAll: item=202, err=<nil>
+2025/04/27 05:51:26 DEBUG : photos/cats/: >ReadDirAll: item=202, err=<nil>
+2025/04/27 07:02:41 DEBUG : /: ReadDirAll: 
+2025/04/27 07:02:41 DEBUG : : Re-reading directory (1h11m16.761768795s old)
+2025/04/27 07:02:41 DEBUG : /: >ReadDirAll: item=5, err=<nil>
+2025/04/27 07:02:41 DEBUG : /: Lookup: name="scenes"
+2025/04/27 07:02:41 DEBUG : /: >Lookup: node=scenes/, err=<nil>
+2025/04/27 07:02:41 DEBUG : scenes/: Attr: 
+2025/04/27 07:02:41 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:41 DEBUG : scenes/: ReadDirAll: 
+2025/04/27 07:02:41 DEBUG : scenes: Re-reading directory (1h11m16.540602246s old)
+2025/04/27 07:02:41 DEBUG : /: Lookup: name="photos"
+2025/04/27 07:02:41 DEBUG : /: >Lookup: node=photos/, err=<nil>
+2025/04/27 07:02:41 DEBUG : photos/: Attr: 
+2025/04/27 07:02:41 DEBUG : photos/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:41 DEBUG : photos/: ReadDirAll: 
+2025/04/27 07:02:41 DEBUG : photos: Re-reading directory (1h11m16.566258045s old)
+2025/04/27 07:02:41 DEBUG : /: Lookup: name="inspire"
+2025/04/27 07:02:41 DEBUG : /: >Lookup: node=inspire/, err=<nil>
+2025/04/27 07:02:41 DEBUG : inspire/: Attr: 
+2025/04/27 07:02:41 DEBUG : inspire/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:41 DEBUG : inspire/: ReadDirAll: 
+2025/04/27 07:02:41 DEBUG : inspire: Re-reading directory (1h11m16.560493516s old)
+2025/04/27 07:02:41 DEBUG : /: Lookup: name="docs"
+2025/04/27 07:02:41 DEBUG : /: >Lookup: node=docs/, err=<nil>
+2025/04/27 07:02:41 DEBUG : docs/: Attr: 
+2025/04/27 07:02:41 DEBUG : docs/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:41 DEBUG : docs/: ReadDirAll: 
+2025/04/27 07:02:41 DEBUG : docs: Re-reading directory (1h11m16.561260937s old)
+2025/04/27 07:02:41 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
+2025/04/27 07:02:41 DEBUG : /: Lookup: name="RDA"
+2025/04/27 07:02:41 DEBUG : /: >Lookup: node=RDA/, err=<nil>
+2025/04/27 07:02:41 DEBUG : RDA/: Attr: 
+2025/04/27 07:02:41 DEBUG : RDA/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:41 DEBUG : RDA/: ReadDirAll: 
+2025/04/27 07:02:41 DEBUG : RDA: Re-reading directory (1h11m16.406158479s old)
+2025/04/27 07:02:41 DEBUG : docs/: >ReadDirAll: item=5, err=<nil>
+2025/04/27 07:02:41 DEBUG : photos/: >ReadDirAll: item=2, err=<nil>
+2025/04/27 07:02:41 DEBUG : photos/: Lookup: name="human"
+2025/04/27 07:02:41 DEBUG : photos/: >Lookup: node=photos/human/, err=<nil>
+2025/04/27 07:02:41 DEBUG : photos/human/: Attr: 
+2025/04/27 07:02:41 DEBUG : photos/human/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:41 DEBUG : photos/human/: ReadDirAll: 
+2025/04/27 07:02:41 DEBUG : photos/human: Re-reading directory (1h11m16.441083809s old)
+2025/04/27 07:02:41 DEBUG : photos/: Lookup: name="cats"
+2025/04/27 07:02:41 DEBUG : photos/: >Lookup: node=photos/cats/, err=<nil>
+2025/04/27 07:02:41 DEBUG : photos/cats/: Attr: 
+2025/04/27 07:02:41 DEBUG : photos/cats/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:41 DEBUG : photos/cats/: ReadDirAll: 
+2025/04/27 07:02:41 DEBUG : photos/cats: Re-reading directory (1h11m16.431140536s old)
+2025/04/27 07:02:42 DEBUG : inspire/: >ReadDirAll: item=4, err=<nil>
+2025/04/27 07:02:42 DEBUG : inspire/: Lookup: name="videos"
+2025/04/27 07:02:42 DEBUG : inspire/: >Lookup: node=inspire/videos/, err=<nil>
+2025/04/27 07:02:42 DEBUG : inspire/videos/: Attr: 
+2025/04/27 07:02:42 DEBUG : inspire/videos/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:42 DEBUG : inspire/videos/: ReadDirAll: 
+2025/04/27 07:02:42 DEBUG : inspire/videos: Re-reading directory (1h11m16.449350056s old)
+2025/04/27 07:02:42 DEBUG : RDA/: >ReadDirAll: item=3, err=<nil>
+2025/04/27 07:02:42 DEBUG : inspire/videos/: >ReadDirAll: item=0, err=<nil>
+2025/04/27 07:02:42 DEBUG : photos/human/: >ReadDirAll: item=202, err=<nil>
+2025/04/27 07:02:42 DEBUG : photos/cats/: >ReadDirAll: item=202, err=<nil>
+2025/04/27 07:02:46 DEBUG : /: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : /: >ReadDirAll: item=5, err=<nil>
+2025/04/27 07:02:46 DEBUG : /: Lookup: name="scenes"
+2025/04/27 07:02:46 DEBUG : /: >Lookup: node=scenes/, err=<nil>
+2025/04/27 07:02:46 DEBUG : scenes/: Attr: 
+2025/04/27 07:02:46 DEBUG : scenes/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:46 DEBUG : scenes/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
+2025/04/27 07:02:46 DEBUG : /: Lookup: name="photos"
+2025/04/27 07:02:46 DEBUG : /: >Lookup: node=photos/, err=<nil>
+2025/04/27 07:02:46 DEBUG : photos/: Attr: 
+2025/04/27 07:02:46 DEBUG : photos/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:46 DEBUG : photos/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : photos/: >ReadDirAll: item=2, err=<nil>
+2025/04/27 07:02:46 DEBUG : photos/: Lookup: name="human"
+2025/04/27 07:02:46 DEBUG : photos/: >Lookup: node=photos/human/, err=<nil>
+2025/04/27 07:02:46 DEBUG : photos/human/: Attr: 
+2025/04/27 07:02:46 DEBUG : photos/human/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:46 DEBUG : photos/human/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : photos/human/: >ReadDirAll: item=202, err=<nil>
+2025/04/27 07:02:46 DEBUG : photos/: Lookup: name="cats"
+2025/04/27 07:02:46 DEBUG : photos/: >Lookup: node=photos/cats/, err=<nil>
+2025/04/27 07:02:46 DEBUG : photos/cats/: Attr: 
+2025/04/27 07:02:46 DEBUG : photos/cats/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:46 DEBUG : photos/cats/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : /: Lookup: name="inspire"
+2025/04/27 07:02:46 DEBUG : /: >Lookup: node=inspire/, err=<nil>
+2025/04/27 07:02:46 DEBUG : inspire/: Attr: 
+2025/04/27 07:02:46 DEBUG : inspire/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:46 DEBUG : photos/cats/: >ReadDirAll: item=202, err=<nil>
+2025/04/27 07:02:46 DEBUG : inspire/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : inspire/: >ReadDirAll: item=4, err=<nil>
+2025/04/27 07:02:46 DEBUG : inspire/: Lookup: name="videos"
+2025/04/27 07:02:46 DEBUG : inspire/: >Lookup: node=inspire/videos/, err=<nil>
+2025/04/27 07:02:46 DEBUG : inspire/videos/: Attr: 
+2025/04/27 07:02:46 DEBUG : inspire/videos/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:46 DEBUG : inspire/videos/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : inspire/videos/: >ReadDirAll: item=0, err=<nil>
+2025/04/27 07:02:46 DEBUG : /: Lookup: name="docs"
+2025/04/27 07:02:46 DEBUG : /: >Lookup: node=docs/, err=<nil>
+2025/04/27 07:02:46 DEBUG : docs/: Attr: 
+2025/04/27 07:02:46 DEBUG : docs/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:46 DEBUG : /: Lookup: name="RDA"
+2025/04/27 07:02:46 DEBUG : /: >Lookup: node=RDA/, err=<nil>
+2025/04/27 07:02:46 DEBUG : RDA/: Attr: 
+2025/04/27 07:02:46 DEBUG : RDA/: >Attr: attr=valid=1s ino=0 size=0 mode=drwxr-xr-x, err=<nil>
+2025/04/27 07:02:46 DEBUG : docs/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : docs/: >ReadDirAll: item=5, err=<nil>
+2025/04/27 07:02:46 DEBUG : RDA/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : RDA/: >ReadDirAll: item=3, err=<nil>
+2025/04/27 07:02:46 DEBUG : /: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : /: >ReadDirAll: item=5, err=<nil>
+2025/04/27 07:02:46 DEBUG : scenes/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : scenes/: >ReadDirAll: item=7, err=<nil>
+2025/04/27 07:02:46 DEBUG : photos/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : photos/: >ReadDirAll: item=2, err=<nil>
+2025/04/27 07:02:46 DEBUG : photos/human/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : photos/human/: >ReadDirAll: item=202, err=<nil>
+2025/04/27 07:02:46 DEBUG : photos/cats/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : photos/cats/: >ReadDirAll: item=202, err=<nil>
+2025/04/27 07:02:46 DEBUG : inspire/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : inspire/: >ReadDirAll: item=4, err=<nil>
+2025/04/27 07:02:46 DEBUG : inspire/videos/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : inspire/videos/: >ReadDirAll: item=0, err=<nil>
+2025/04/27 07:02:46 DEBUG : docs/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : docs/: >ReadDirAll: item=5, err=<nil>
+2025/04/27 07:02:46 DEBUG : RDA/: ReadDirAll: 
+2025/04/27 07:02:46 DEBUG : RDA/: >ReadDirAll: item=3, err=<nil>

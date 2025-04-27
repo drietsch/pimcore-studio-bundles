@@ -46,6 +46,11 @@ pimcore:
         instance_identifier: 4q5vBvnC6W6MuKDfaf9tYV
         product_key: 'eyJwYXlsb2FkIjoie1wiaWRcIjpcIjc5MDIzNWQ1NGZlMWVlY2E2YzBkMTAyN2I4N2E4OTZlMWY4MjUwODg1NWNkODA2NzhjOWY4Y2E0M2I0NGJlNDRcIixcInRpbWVzdGFtcFwiOjE3NDU2NDM0NjN9Iiwic2lnbmF0dXJlIjoiTUVVQ0lDSnB0ZGNFOHpEK2hKMXI1MDVZUVRVR1lTTzRKeUdUeTNSUVF3dDRHK1RIQWlFQTdydFwvXC9zOEsxMmFxejV4QWFSdEFibWJhRzJDODVZc3MzcEZYOVFFQmpTUT0ifQ=='
 
+
+pimcore_data_importer:
+    messenger_queue_processing:
+        activated: true
+
 # IMPORTANT Notice!
 # Following there are only some examples listed, for a full list of possible options, please run the following command:
 # ./bin/console debug:config pimcore
