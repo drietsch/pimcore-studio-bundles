@@ -183,9 +183,9 @@ const ChatComponent = () => {
                         message.error(`No plugin available for asset type: ${mime}`)
                         return
                       }
-
-                      setDroppedFilename(asset.filename)
-                      message.info(`Processing asset: ${asset.filename}`)
+                      console.log(asset)
+                      setDroppedFilename(asset.fullPath)
+                      message.info(`Processing asset: ${asset.fullPath}`)
 
                       try {
                         const result = await plugin.process(asset, setLoadingMessage, selectedImageModel)
@@ -193,7 +193,7 @@ const ChatComponent = () => {
                         onMessageSend(fullText)
                         setInputText('')
                         setDroppedFilename(null)
-                        message.success(`${asset.filename} processed`)
+                        message.success(`${asset.fullPath} processed`)
                       } catch (e) {
                         console.error(e)
                         message.error('Processing failed')

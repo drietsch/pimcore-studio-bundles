@@ -59,9 +59,9 @@ class ImageProcessor {
     if (input instanceof File) {
       imageUrl = URL.createObjectURL(input)
       revokeUrl = true
-    } else if (input.filename) {
+    } else if (input.fullPath) {
       // Fetch the asset from Pimcore using its filename as relative path
-      const fullUrl = window.location.origin + '/' + input.filename
+      const fullUrl = window.location.origin + input.fullPath
       const response = await fetch(fullUrl)
       if (!response.ok) throw new Error(`Failed to fetch asset: ${response.statusText}`)
 
